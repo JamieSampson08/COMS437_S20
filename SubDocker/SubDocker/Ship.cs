@@ -15,22 +15,29 @@ namespace SpaceDocker
 
         // variables that scale with difficulty
         private int health;
-        private int duckDamage;
         private int maxHealth;
+        private int duckDamage;
+
         private int torpedoCount;
         private int maxTorpedoCount;
+
         private float fuelLevel;
         private float maxFuelLevel;
+
         private float thrustDeduction;
-        private float speed = .04f;
+
+        private float speed = .5f;
         private Vector3 maxVelocityToWin = Vector3.Zero;
+        private Vector3 maxLinearMomentum;
 
         // mode flags
         private bool fireMode = false;
         private String conclusionMessage = null;
 
         // local variables 
-        private float rotationDegree = .005f;
+        private float rotationDegree = .5f;
+        private Vector3 maxAngularMomentum;
+        private Vector3 minAngularMomentum;
 
         // Base Requirements
         private Model model;
@@ -59,6 +66,10 @@ namespace SpaceDocker
         private int torpedoAimSpeed = 2;
         private Quaternion initalAngle;
 
+
+        // helper class
+        private Helpers helper;
+
         public Vector3 modelPosition
         {
             get { return ConversionHelper.MathConverter.Convert(physicsObject.Position); }
@@ -74,7 +85,7 @@ namespace SpaceDocker
         public Vector3 linearMomentum
         {
             get { return ConversionHelper.MathConverter.Convert(physicsObject.LinearMomentum); }
-            set { physicsObject.LinearVelocity = ConversionHelper.MathConverter.Convert(value); }
+            set { physicsObject.LinearMomentum = ConversionHelper.MathConverter.Convert(value); }
         }
 
         public Vector3 linearVelocity
@@ -92,7 +103,7 @@ namespace SpaceDocker
         public Vector3 angularMomentum
         {
             get { return ConversionHelper.MathConverter.Convert(physicsObject.AngularMomentum); }
-            set { physicsObject.AngularVelocity = ConversionHelper.MathConverter.Convert(value); }
+            set { physicsObject.AngularMomentum = ConversionHelper.MathConverter.Convert(value); }
         }
 
         public Ship(Game game) : base(game)
@@ -102,6 +113,7 @@ namespace SpaceDocker
 
         public Ship(Game game, Vector3 pos, string id) : this(game)
         {
+            helper = new Helpers();
 
             physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
@@ -117,6 +129,8 @@ namespace SpaceDocker
             Game.Services.GetService<Space>().Add(physicsObject);
 
             InitItemDifficulty(this.difficulty); // defaults to 1
+            maxAngularMomentum = new Vector3(10f, 10f, 10f);
+            minAngularMomentum = new Vector3(-10f, -10f, -10f);
         }
 
         public Ship(Game game, Vector3 pos, string id, int mass) : this(game, pos, id)
@@ -132,8 +146,14 @@ namespace SpaceDocker
 
         private void Events_CollisionEnded(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
-            linearMomentum = Vector3.Zero;
-            angularMomentum = Vector3.Zero;
+            var otherEntityInformation = other as EntityCollidable;
+            string tag = (string)otherEntityInformation.Entity.Tag;
+
+            if (!tag.Equals("skybox"))
+            {
+                linearMomentum = Vector3.Zero;
+                angularMomentum = Vector3.Zero;
+            }
         }
         private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
@@ -238,7 +258,7 @@ namespace SpaceDocker
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    effect.Alpha = 0.7f;
+                    // effect.Alpha = 0.7f;
                     effect.EnableDefaultLighting();
                     effect.PreferPerPixelLighting = true;
                     effect.World = ConversionHelper.MathConverter.Convert(physicsObject.WorldTransform);
@@ -261,64 +281,50 @@ namespace SpaceDocker
                 if (fuelLevel >= thrustDeduction)
                 {
                     Vector3 displacement = Vector3.Up * speed;
-                    linearMomentum += Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
+                    Vector3 tempMomentum =  linearMomentum + Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
+                    linearMomentum = helper.CheckLinearMomentumBounds(tempMomentum);
                     fuelLevel -= thrustDeduction;
                 }
             }
 
             // ROTATION LOGIC
 
-            Matrix rotation = Matrix.Identity;
-
             // Yaw left (ie. rotate to left)
             if (currentKeyboardState.IsKeyDown(Keys.Q))
             {
-                // rotation = Matrix.CreateRotationY(MathHelper.ToRadians(-rotationDegree));
-                angularMomentum -= new Vector3(0, 0, rotationDegree);
-               
+                angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, "YL");
             }
 
             // Yaw right (ie. rotate to right)
             if (currentKeyboardState.IsKeyDown(Keys.W))
             {
-                // rotation = Matrix.CreateRotationY(MathHelper.ToRadians(rotationDegree));
-                angularMomentum += new Vector3(0, 0, rotationDegree);
+                angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, "YR");
             }
 
             // pitch left (-)
             if (currentKeyboardState.IsKeyDown(Keys.Left))
             {
-                // rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(-rotationDegree));
-                angularMomentum += new Vector3(0, rotationDegree, 0);
+                angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, "PL");
             }
 
             // pitch right (+)
             if (currentKeyboardState.IsKeyDown(Keys.Right))
             {
-                // rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(rotationDegree));
-                angularMomentum -= new Vector3(0, rotationDegree, 0);
+                angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, "PR");
             }
 
             // roll forward
             if (currentKeyboardState.IsKeyDown(Keys.Up))
             {
-                // rotation = Matrix.CreateRotationX(MathHelper.ToRadians(-rotationDegree));
-                angularMomentum -= new Vector3(rotationDegree, 0, 0);
+                angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, "RF");
             }
 
             // roll backward
             if (currentKeyboardState.IsKeyDown(Keys.Down))
             {
-                // rotation = Matrix.CreateRotationX(MathHelper.ToRadians(rotationDegree));
-                angularMomentum += new Vector3(rotationDegree, 0, 0);
+                angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, "RB");
             }
 
-            // apply rotations
-            if (rotation != Matrix.Identity)
-            {
-                Quaternion rot = Quaternion.CreateFromRotationMatrix(rotation);
-                modelOrientation *= rot;
-            }
 
             // FIREING LOGIC
 

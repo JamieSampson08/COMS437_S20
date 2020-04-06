@@ -30,8 +30,8 @@ namespace SpaceDocker
         private int difficulty = 1;
         private int numDuckGeneration = 40; // make scale with difficulty
 
-        public static Camera camera { get; set; }
-        // public static Camera2 camera { get; set; }
+        //public static Camera camera { get; set; }
+        public static Camera2 camera { get; set; }
         public static Ship ship { get; set; }
         public static Jellyfish jellyfish { get; set; }
 
@@ -59,19 +59,20 @@ namespace SpaceDocker
             ship = new Ship(this, Vector3.Zero, "ship", 2, difficulty);
 
             // camera setup
-            // camera = new Camera2(this, ship.modelPosition - new Vector3(0, -.9f, 4f)); // right/left, behind/infront, above/below 
-            camera = new Camera(this);
+            camera = new Camera2(this, ship.modelPosition - new Vector3(0, -.9f, 4f)); // right/left, behind/infront, above/below 
+            // camera = new Camera(this);
             // new RubberDuck(this, new Vector3(0, 3f, 8f), "duck-0", 2);
 
             // jellyfish setup
             Vector3 distanceMultipler = new Vector3(100, 100, 100);
             Vector3 distanceBetween = (new Vector3(
-                (float)rnd.Next((int)-(ship.modelPosition.X * distanceMultipler.X), (int)(ship.modelPosition.X * distanceMultipler.X)),
-                (float)rnd.Next((int)-(ship.modelPosition.Y * distanceMultipler.Y), (int)(ship.modelPosition.X * distanceMultipler.Y)),
-                (float)rnd.Next((int)-(ship.modelPosition.Z * distanceMultipler.Z), (int)(ship.modelPosition.X * distanceMultipler.Z))));
+                (float)rnd.Next(-(int)(distanceMultipler.X), (int)(distanceMultipler.X)),
+                (float)rnd.Next(-(int)(distanceMultipler.Y), (int)(distanceMultipler.Y)),
+                (float)rnd.Next(-(int)(distanceMultipler.Z), (int)distanceMultipler.Z))
+                );
 
-            // jellyfish = new Jellyfish(this, ship.modelPosition + distanceBetween, "jellyfish");
-            jellyfish = new Jellyfish(this, ship.modelPosition + new Vector3(0, 0, 8f), "jellyfish"); // for submition
+           // jellyfish = new Jellyfish(this, distanceBetween, "jellyfish");
+           jellyfish = new Jellyfish(this, ship.modelPosition + new Vector3(0, 0, 20f), "jellyfish"); // for submition
 
             // skybox setup DOESN'T WORK YET
             // skybox = new Skybox(this, ship.modelPosition, "skybox");

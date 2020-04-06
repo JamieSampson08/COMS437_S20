@@ -45,7 +45,7 @@ namespace SpaceDocker
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            model = Game.Content.Load<Model>("skybox");
+            model = Game.Content.Load<Model>("skybox2");
 
             base.LoadContent();
         }

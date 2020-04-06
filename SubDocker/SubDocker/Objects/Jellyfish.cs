@@ -1,7 +1,9 @@
 ﻿using BEPUphysics;
+using System;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace SpaceDocker
 {
@@ -10,6 +12,10 @@ namespace SpaceDocker
         // Base Requirements
         private Model model;
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
+        private Helpers helper;
+        private int updateCount;
+        private float speed = .05f;
+        Random rnd = new Random();
 
         public Vector3 modelPosition
         {
@@ -25,7 +31,7 @@ namespace SpaceDocker
         public Vector3 linearMomentum
         {
             get { return ConversionHelper.MathConverter.Convert(physicsObject.LinearMomentum); }
-            set { physicsObject.LinearVelocity = ConversionHelper.MathConverter.Convert(value); }
+            set { physicsObject.LinearMomentum = ConversionHelper.MathConverter.Convert(value); }
         }
 
         public Vector3 linearVelocity
@@ -43,7 +49,7 @@ namespace SpaceDocker
         public Vector3 angularMomentum
         {
             get { return ConversionHelper.MathConverter.Convert(physicsObject.AngularMomentum); }
-            set { physicsObject.AngularVelocity = ConversionHelper.MathConverter.Convert(value); }
+            set { physicsObject.AngularMomentum = ConversionHelper.MathConverter.Convert(value); }
         }
 
         public Jellyfish(Game game) : base(game)
@@ -53,9 +59,9 @@ namespace SpaceDocker
 
         public Jellyfish(Game game, Vector3 pos, string id) : this(game)
         {
+            helper = new Helpers();
+
             physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
-            physicsObject.AngularDamping = 0f;
-            physicsObject.LinearDamping = 0f;
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
             physicsObject.Tag = id;
 
@@ -63,6 +69,8 @@ namespace SpaceDocker
             Matrix rotation = Matrix.CreateRotationX(MathHelper.ToRadians(-90));
             Quaternion rot = Quaternion.CreateFromRotationMatrix(rotation);
             modelOrientation *= rot;
+
+            updateCount = 0;
 
             Game.Services.GetService<Space>().Add(physicsObject);
         }
@@ -92,6 +100,31 @@ namespace SpaceDocker
 
         public override void Update(GameTime gameTime)
         {
+
+            if (updateCount > 20)
+            {
+                Vector3 displacement = Vector3.Up * speed;
+                Vector3 tempMomentum = linearMomentum + Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
+                linearMomentum = helper.CheckLinearMomentumBounds(tempMomentum);
+
+                // have to change angle so that the forward movement changes directions
+                int ranNum = rnd.Next(0, 6);
+                Console.WriteLine("RN: " + ranNum);
+
+                List<string> directions = new List<string>();
+                directions.Add("YL");
+                directions.Add("YR");
+                directions.Add("PL");
+                directions.Add("PR");
+                directions.Add("RF");
+                directions.Add("RB");
+
+                angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, directions[ranNum]);
+                updateCount = -1;
+            }
+
+            updateCount++;
+
             base.Update(gameTime);
         }
 
