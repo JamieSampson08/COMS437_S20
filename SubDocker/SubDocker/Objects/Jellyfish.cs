@@ -12,7 +12,11 @@ namespace SpaceDocker
         // Base Requirements
         private Model model;
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
+
+        // helper class
         private Helpers helper;
+
+        // private variables
         private int updateCount;
         private float speed = .05f;
         Random rnd = new Random();
@@ -109,15 +113,11 @@ namespace SpaceDocker
 
                 // have to change angle so that the forward movement changes directions
                 int ranNum = rnd.Next(0, 6);
-                Console.WriteLine("RN: " + ranNum);
 
-                List<string> directions = new List<string>();
-                directions.Add("YL");
-                directions.Add("YR");
-                directions.Add("PL");
-                directions.Add("PR");
-                directions.Add("RF");
-                directions.Add("RB");
+                List<string> directions = new List<string>()
+                {
+                    "YL", "YR", "PL", "PR", "RF", "RB"
+                };
 
                 angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, directions[ranNum]);
                 updateCount = -1;

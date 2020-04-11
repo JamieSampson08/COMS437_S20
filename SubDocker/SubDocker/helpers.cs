@@ -1,42 +1,49 @@
-﻿using System;
-using BEPUphysics;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 
 namespace SpaceDocker
 {
     class Helpers
     {
-        Vector3 maxLinearMomentum = new Vector3(10f, 10f, 10f);
-        Vector3 maxAngularMomentum = new Vector3(10f, 10f, 10f);
-        Vector3 minAngularMomentum = new Vector3(-10f, -10f, -10f);
+        private Vector3 maxLinearMomentum = new Vector3(20f, 20f, 20f);
+        private Vector3 minLinearMomentum = new Vector3(-20f, -20f, -20f);
+
+        private Vector3 maxAngularMomentum = new Vector3(10f, 10f, 10f);
+        private Vector3 minAngularMomentum = new Vector3(-10f, -10f, -10f);
         private float rotationDegree = .5f;
 
-        public Helpers()
-        {
-
-        }
+        public Helpers(){ }
 
         public Vector3 CheckLinearMomentumBounds(Vector3 linearMomentum)
         {
-            Vector3 validLinearMomentum = Vector3.Zero;
+            Vector3 validLinearMomentum = linearMomentum;
 
             if (linearMomentum.X > maxLinearMomentum.X)
             {
                 validLinearMomentum = new Vector3(maxLinearMomentum.X, validLinearMomentum.Y, validLinearMomentum.Z);
             }
+            if (linearMomentum.X < minLinearMomentum.X)
+            {
+                validLinearMomentum = new Vector3(minLinearMomentum.X, validLinearMomentum.Y, validLinearMomentum.Z);
+            }
+
             if (linearMomentum.Y > maxLinearMomentum.Y)
             {
                 validLinearMomentum = new Vector3(validLinearMomentum.X, maxLinearMomentum.Y, validLinearMomentum.Z);
             }
+            if (linearMomentum.Y < minLinearMomentum.Y)
+            {
+                validLinearMomentum = new Vector3(validLinearMomentum.X, minLinearMomentum.Y, validLinearMomentum.Z);
+            }
+
             if (linearMomentum.Z > maxLinearMomentum.Z)
             {
                 validLinearMomentum = new Vector3(validLinearMomentum.X, validLinearMomentum.Y, maxLinearMomentum.Z);
             }
-            else
+            if (linearMomentum.Z < minLinearMomentum.Z)
             {
-                validLinearMomentum = linearMomentum;
+                validLinearMomentum = new Vector3(validLinearMomentum.X, validLinearMomentum.Y, minLinearMomentum.Z);
             }
+
             return validLinearMomentum;
         }
 

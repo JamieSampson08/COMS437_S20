@@ -9,13 +9,12 @@ namespace SpaceDocker
         private GraphicsDevice graphicsDevice;
 
         private Matrix camWorld = Matrix.Identity;
-        private Vector3 offset = new Vector3(0, -.9f, -2f);
 
         public Matrix Projection
         {
             get
             {
-                float fieldOfView = Microsoft.Xna.Framework.MathHelper.PiOver4;
+                float fieldOfView = MathHelper.PiOver4;
                 float nearClipPlane = 1;
                 float farClipPlane = 200;
                 float aspectRatio = graphicsDevice.Viewport.Width / (float)graphicsDevice.Viewport.Height;
@@ -25,30 +24,33 @@ namespace SpaceDocker
             }
         }
 
-        public Matrix View;
+        public Vector3 Position
+        {
+            get { return camWorld.Translation; }
+        }
 
+        public Matrix View;
 
         public Camera(Game game) : base(game)
         {
             game.Components.Add(this);
             this.graphicsDevice = game.GraphicsDevice;
 
-            UpdateWorld();
-        }
-
-        private void UpdateWorld()
-        {
-            camWorld.Translation = Main.ship.modelPosition - offset;
-            camWorld = Matrix.CreateWorld(camWorld.Translation, Vector3.Down, Vector3.Backward);
-            View = Matrix.CreateLookAt(
-            camWorld.Translation - (-3f * camWorld.Down),
-            Vector3.Transform(camWorld.Down, Main.ship.modelOrientation) + new Vector3(0, 0, 3f),
-            Vector3.Transform(camWorld.Backward, Main.ship.modelOrientation));
+            UpdateCamera();
         }
 
         public override void Update(GameTime gameTime)
         {
-            UpdateWorld();
+            UpdateCamera();
+        }
+
+        public void UpdateCamera()
+        {
+            camWorld = Matrix.CreateWorld(Main.ship.shipWorld.Translation, Vector3.Up, Vector3.Forward);
+
+            Vector3 cameraTarget = Vector3.Transform(camWorld.Forward, Main.ship.modelOrientation);
+            Vector3 cameraUpVector = Vector3.Transform(camWorld.Up, Main.ship.modelOrientation);
+            View = Matrix.CreateLookAt(camWorld.Translation, camWorld.Translation + cameraTarget, cameraUpVector);
         }
     }
 }

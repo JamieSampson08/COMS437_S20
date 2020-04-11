@@ -2,6 +2,7 @@
 using BEPUphysics.BroadPhaseEntries.MobileCollidables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 using System;
 
@@ -15,6 +16,16 @@ namespace SpaceDocker
         private float speed = 10f;
 
         public int torpedoID;
+        private Ship ship;
+
+        // torpedo variables
+        private int torpedoDegree = 0;
+        private int torpedoAimSpeed = 2;
+        private Quaternion initalAngle;
+
+        // Input Methods
+        GamePadState currentGamePadState;
+        KeyboardState currentKeyboardState;
 
         public Vector3 modelPosition
         {
@@ -45,16 +56,18 @@ namespace SpaceDocker
             game.Components.Add(this);
         }
 
-        public Torepedo(Game game, Vector3 pos, string id) : this(game)
+        public Torepedo(Game game, Ship ship, string id) : this(game)
         {
-            physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
-            physicsObject.AngularDamping = 0f;
-            physicsObject.LinearDamping = 0f;
+            this.ship = ship;
+            modelPosition = this.ship.modelPosition;
+
+            physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(ship.modelPosition), 1);
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
             physicsObject.Tag = id;
             torpedoID = Int32.Parse(id.Substring(7));
 
             Game.Services.GetService<Space>().Add(physicsObject);
+
         }
 
         private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
@@ -72,7 +85,7 @@ namespace SpaceDocker
             }
         }
 
-        public Torepedo(Game game, Vector3 pos, string id, float mass, Vector3 linMomentum) : this(game, pos, id)
+        public Torepedo(Game game, Ship ship, string id, float mass, Vector3 linMomentum) : this(game, ship, id)
         {
             physicsObject.LinearMomentum = ConversionHelper.MathConverter.Convert(linMomentum);
         }
@@ -118,17 +131,48 @@ namespace SpaceDocker
 
         public override void Update(GameTime gameTime)
         {
+            currentGamePadState = GamePad.GetState(PlayerIndex.One);
+            currentKeyboardState = Keyboard.GetState();
+
             angularVelocity = Vector3.Zero;
+            modelPosition = ship.modelPosition;
 
             Vector3 displacement = Vector3.Up * speed;
             linearVelocity += Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
+  
         }
 
         public void RotateTorpedo(int degree)
         {
+
+            // Aim (20 degree cone)
             Matrix rotation = Matrix.CreateRotationZ(MathHelper.ToRadians(degree));
             Quaternion rot = Quaternion.CreateFromRotationMatrix(rotation);
             modelOrientation *= rot;
+        }
+
+        public void ShootTorpedo()
+        {
+            Vector3 torpedoOffset = Vector3.Up + new Vector3(0, 1f, 0);
+        }
+
+        public void RotateRight()
+        {
+            // TODO - edit angles
+            if (!(torpedoDegree > 90))
+            {
+                torpedoDegree += torpedoAimSpeed;
+                this.RotateTorpedo(torpedoDegree);
+            }
+        }
+        public void RotateLeft()
+        {
+            // TODO - edit angles
+            if (!(torpedoDegree < -90))
+            {
+                torpedoDegree -= torpedoAimSpeed;
+                this.RotateTorpedo(torpedoDegree);
+            }
         }
     }
 }

@@ -58,6 +58,9 @@ namespace SpaceDocker
         public override void Draw(GameTime gameTime)
         {
 
+            // graphicsDevice.RasterizerState.CullMode = CullMode.CullClockwiseFace;
+
+
             // draw model
             foreach (var mesh in model.Meshes)
             {
@@ -73,7 +76,10 @@ namespace SpaceDocker
                 mesh.Draw();
             }
 
+           //  graphicsDevice.RasterizerState.CullMode = CullMode.CullCounterClockwiseFace;
+
             base.Draw(gameTime);
+
         }
 
         public override void Update(GameTime gameTime)

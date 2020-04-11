@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using System;
+using System.Collections.Generic;
 
 namespace SpaceDocker
 {
@@ -26,23 +27,17 @@ namespace SpaceDocker
 
         private float thrustDeduction;
 
-        private float speed = .5f;
+        private float speed = 1f;
         private Vector3 maxVelocityToWin = Vector3.Zero;
-        private Vector3 maxLinearMomentum;
 
         // mode flags
         private bool fireMode = false;
         private String conclusionMessage = null;
 
-        // local variables 
-        private float rotationDegree = .5f;
-        private Vector3 maxAngularMomentum;
-        private Vector3 minAngularMomentum;
 
         // Base Requirements
         private Model model;
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
-        private Game game;
 
         // Input Methods
         GamePadState currentGamePadState;
@@ -60,12 +55,7 @@ namespace SpaceDocker
         Vector2 fireModeTextPos;
         Vector2 goalReachedTextPos;
 
-        // torpedo variables
-        private int torpedoDegree = 0;
-        private Torepedo currentTorepedo;
-        private int torpedoAimSpeed = 2;
-        private Quaternion initalAngle;
-
+        List<Torepedo> allTorpedos;
 
         // helper class
         private Helpers helper;
@@ -75,6 +65,7 @@ namespace SpaceDocker
             get { return ConversionHelper.MathConverter.Convert(physicsObject.Position); }
             set { physicsObject.Position = ConversionHelper.MathConverter.Convert(value); }
         }
+
 
         public Quaternion modelOrientation
         {
@@ -106,6 +97,12 @@ namespace SpaceDocker
             set { physicsObject.AngularMomentum = ConversionHelper.MathConverter.Convert(value); }
         }
 
+        public Matrix shipWorld
+        {
+            get { return ConversionHelper.MathConverter.Convert(physicsObject.WorldTransform); }
+            set { physicsObject.WorldTransform = ConversionHelper.MathConverter.Convert(value); }
+        }
+
         public Ship(Game game) : base(game)
         {
             game.Components.Add(this);
@@ -116,27 +113,39 @@ namespace SpaceDocker
             helper = new Helpers();
 
             physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
+            physicsObject.LinearDamping = .1f;
+            physicsObject.AngularDamping = .2f;
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
             physicsObject.CollisionInformation.Events.CollisionEnded += Events_CollisionEnded;
             physicsObject.Tag = id;
 
-            // orient ship in a way that you can use Vector.x on the camera
-            Matrix rotation = Matrix.CreateRotationX(MathHelper.ToRadians(85));
-            Quaternion rot = Quaternion.CreateFromRotationMatrix(rotation);
-            modelOrientation *= rot;
-            initalAngle = modelOrientation;
+            InitalOrientation();
 
             Game.Services.GetService<Space>().Add(physicsObject);
 
             InitItemDifficulty(this.difficulty); // defaults to 1
-            maxAngularMomentum = new Vector3(10f, 10f, 10f);
-            minAngularMomentum = new Vector3(-10f, -10f, -10f);
+
+            allTorpedos = new List<Torepedo>();
+
+            // initalize max # of torpedos
+            for(int i = 0; i < maxTorpedoCount; i++)
+            {
+                // Torepedo currentTorepedo = new Torepedo(game, this, "torpedo " + i);
+                // allTorpedos.Add(currentTorepedo);
+            }
+        }
+
+        private void InitalOrientation()
+        {
+            // orient ship in a way that you can use Vector.x on the camera
+            Matrix rotation = Matrix.CreateRotationX(MathHelper.ToRadians(85));
+            Quaternion rot = Quaternion.CreateFromRotationMatrix(rotation);
+            modelOrientation *= rot;
         }
 
         public Ship(Game game, Vector3 pos, string id, int mass) : this(game, pos, id)
         {
             physicsObject.Mass = mass;
-            this.game = game;
         }
 
         public Ship(Game game, Vector3 pos, string id, int mass, int difficulty) : this(game, pos, id, mass)
@@ -258,7 +267,7 @@ namespace SpaceDocker
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    // effect.Alpha = 0.7f;
+                    effect.Alpha = 0.7f;
                     effect.EnableDefaultLighting();
                     effect.PreferPerPixelLighting = true;
                     effect.World = ConversionHelper.MathConverter.Convert(physicsObject.WorldTransform);
@@ -272,8 +281,8 @@ namespace SpaceDocker
 
         public override void Update(GameTime gameTime)
         {
-            this.currentGamePadState = GamePad.GetState(PlayerIndex.One);
-            this.currentKeyboardState = Keyboard.GetState();
+            currentGamePadState = GamePad.GetState(PlayerIndex.One);
+            currentKeyboardState = Keyboard.GetState();
 
             // Thrust in direction facing
             if (currentKeyboardState.IsKeyDown(Keys.T) || currentGamePadState.Buttons.Y == ButtonState.Pressed)
@@ -338,37 +347,24 @@ namespace SpaceDocker
                 }
             }
 
-            // shoot torpedo
-            if ((currentKeyboardState.IsKeyDown(Keys.Space) || currentGamePadState.Buttons.B == ButtonState.Pressed) && fireMode)
+            if (currentKeyboardState.IsKeyDown(Keys.Space) && fireMode)
             {
-                fireMode = false;
-                Vector3 torpedoOffset = Vector3.Up + new Vector3(0, 1f, 0);
-                // currentTorepedo = new Torepedo(game, torpedoOffset, "torpedo" + torpedoCount);
-                torpedoCount--;
-            }
-
-            // Aim (20 degree cone)
-            // move aim left
-            if (currentKeyboardState.IsKeyDown(Keys.O) || currentGamePadState.DPad.Left == ButtonState.Pressed)
-            {
-                // TODO - edit angles
-                if (!(torpedoDegree < -90))
-                {
-                    torpedoDegree -= torpedoAimSpeed;
-                    currentTorepedo.RotateTorpedo(torpedoDegree);
-                }
+                allTorpedos[0].ShootTorpedo();
+                allTorpedos.RemoveAt(0);  // remove from list of avalible torpedos
             }
 
             // move aim right
             if (currentKeyboardState.IsKeyDown(Keys.P) || currentGamePadState.DPad.Right == ButtonState.Pressed)
             {
-                // TODO - edit angles
-                if (!(torpedoDegree > 90))
-                {
-                    torpedoDegree += torpedoAimSpeed;
-                    currentTorepedo.RotateTorpedo(torpedoDegree);
-                }
+                allTorpedos[0].RotateRight();
             }
+
+            // move aim left
+            if (currentKeyboardState.IsKeyDown(Keys.O) || currentGamePadState.DPad.Left == ButtonState.Pressed)
+            {
+                allTorpedos[0].RotateLeft();
+            }
+
 
             // exit fire mode
             if (currentKeyboardState.IsKeyDown(Keys.G))
@@ -409,7 +405,7 @@ namespace SpaceDocker
                     maxFuelLevel = fuelLevel = 100;
                     health = maxHealth = 100;
                     duckDamage = 10;
-                    thrustDeduction = .1f;
+                    thrustDeduction = .5f;
                     return;
                 case 2:
                     Console.WriteLine("Level 2 Not Implemented");
@@ -424,7 +420,8 @@ namespace SpaceDocker
         {
             InitItemDifficulty(difficulty);
             modelPosition = Vector3.Zero;
-            modelOrientation = initalAngle;
+            modelOrientation = Quaternion.Identity;
+            InitalOrientation();
             linearMomentum = Vector3.Zero;
             angularMomentum = Vector3.Zero;
             conclusionMessage = null;

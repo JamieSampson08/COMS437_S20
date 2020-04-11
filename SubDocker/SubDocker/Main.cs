@@ -25,13 +25,13 @@ namespace SpaceDocker
         Vector2 jellyfishAnuglarMomentumTextPos;
         Vector2 jellyfishAngularVelocityTextPos;
         Vector2 jellyfishLocationTextPos;
+        Vector2 cameraLocationTextPos;
         SpriteFont shipInfo;
 
         private int difficulty = 1;
         private int numDuckGeneration = 40; // make scale with difficulty
 
-        //public static Camera camera { get; set; }
-        public static Camera2 camera { get; set; }
+        public static Camera camera { get; set; }
         public static Ship ship { get; set; }
         public static Jellyfish jellyfish { get; set; }
 
@@ -59,9 +59,9 @@ namespace SpaceDocker
             ship = new Ship(this, Vector3.Zero, "ship", 2, difficulty);
 
             // camera setup
-            camera = new Camera2(this, ship.modelPosition - new Vector3(0, -.9f, 4f)); // right/left, behind/infront, above/below 
-            // camera = new Camera(this);
-            // new RubberDuck(this, new Vector3(0, 3f, 8f), "duck-0", 2);
+            camera = new Camera(this); // right/left, behind/infront, above/below 
+
+            new RubberDuck(this, new Vector3(0, 3f, 8f), "duck-0", 2);
 
             // jellyfish setup
             Vector3 distanceMultipler = new Vector3(100, 100, 100);
@@ -103,6 +103,8 @@ namespace SpaceDocker
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             shipInfo = Content.Load<SpriteFont>("shipInfo");
+
+            cameraLocationTextPos = new Vector2(50f, (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
 
             shipLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - 100));
             shipLinearMomentumTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - 150)); ;
@@ -149,6 +151,8 @@ namespace SpaceDocker
 
             // debugging
             spriteBatch.Begin();
+
+            spriteBatch.DrawString(shipInfo, "Camera Location: x: " + (int)camera.Position.X + " y: " + (int)camera.Position.Y + " z: " + (int)camera.Position.Z, cameraLocationTextPos, Color.White);
 
             spriteBatch.DrawString(shipInfo, "Ship Location: x: " + (int)ship.modelPosition.X + " y: " + (int)ship.modelPosition.Y + " z: " + (int)ship.modelPosition.Z, shipLocationTextPos, Color.White);
             // spriteBatch.DrawString(shipInfo, "Ship Orientation: x: " + (int)ship.modelOrientation.X+ " y: " + (int)ship.modelOrientation.Y + " z: " + (int)ship.modelOrientation.Z, shipLocationTextPos, Color.White);
