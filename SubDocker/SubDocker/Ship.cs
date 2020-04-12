@@ -194,6 +194,7 @@ namespace SpaceDocker
                 if (!shieldActive)
                 {
                     health -= duckDamage;
+                    generalInfoMessage = "DAMAGE TAKEN";
                 }
             }
             if (tag.Equals("turtle"))
@@ -222,23 +223,24 @@ namespace SpaceDocker
                 {
                     fuelLevel = newValue;
                 }
-                generalInfoMessage = "You picked up a fuel pack worth " + fuelPackValue;
+                generalInfoMessage = "FUEL PACK AQUIRED ";
             }
             if (tag.Contains("torpedoPack"))
             {
                 // TODO - broken
                 // AddTorpedo(); 
-                generalInfoMessage = "You picked up a torpdeo pack!";
+                generalInfoMessage = "TORPEDO PACK AQUIRED";
             }
         }
 
         private void AddTorpedo()
         {
-            if (allTorpedos == null)
+            if (allTorpedos.Count == 0)
             {
                 Console.WriteLine("AllTorpedo List not Initalized");
                 return;
             }
+
             Torpedo currentTorpedo = new Torpedo(game, torpedoSpeed, "torpedo" + currentTorpdoIndex);
             allTorpedos.Add(currentTorpedo);
             currentTorpdoIndex++;
@@ -260,11 +262,12 @@ namespace SpaceDocker
             healthTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 100));
             fuelTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 150));
             torpedoTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 200));
-            fireModeTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 250));
+            
+            fireModeTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 300));
             goalReachedTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 2), (float)(GraphicsDevice.Viewport.Height / 2));
             shiledActiveTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 350));
 
-            generalInfoPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 300));
+            generalInfoPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 400));
 
 
             base.LoadContent();
@@ -311,7 +314,7 @@ namespace SpaceDocker
 
             if (generalInfoMessage != null)
             {
-                spriteBatch.DrawString(shipInfo, generalInfoMessage, generalInfoPos, Color.Yellow);
+                spriteBatch.DrawString(shipInfo, generalInfoMessage, generalInfoPos, Color.Orange);
             }
 
             if (shiledActiveMessage != null)
@@ -399,8 +402,15 @@ namespace SpaceDocker
             // put up shield
             if (currentKeyboardState.IsKeyDown(Keys.S))
             {
-                shieldActive = true;
-                shiledActiveMessage = "SHIELD IS ACTIVE";
+                if((fuelLevel - shieldReduction) < 0)
+                {
+                    shiledActiveMessage = "NOT ENOUGH FUEL";
+                }
+                else
+                {
+                    shieldActive = true;
+                    shiledActiveMessage = "SHIELD IS ACTIVE";
+                }
             }
 
             // remove shield
@@ -416,7 +426,16 @@ namespace SpaceDocker
             if (shieldActive)
             {
                 // use fuel use shield
-                fuelLevel -= shieldReduction;
+                float tempValue = fuelLevel - shieldReduction;
+                if (tempValue < 0)
+                {
+                    shiledActiveMessage = null;
+                    shieldActive = false;
+                }
+                else
+                {
+                    fuelLevel = tempValue;
+                }
             }
 
             // FIREING LOGIC
@@ -516,8 +535,8 @@ namespace SpaceDocker
             angularMomentum = Vector3.Zero;
 
             InitalOrientation();
-            RemoveTorpedos();
-            GenerateTorpedos();
+            // RemoveTorpedos();
+            // GenerateTorpedos();
 
             conclusionMessage = null;
             fireMode = false;

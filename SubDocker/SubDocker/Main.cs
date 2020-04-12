@@ -28,15 +28,18 @@ namespace SpaceDocker
         Vector2 jellyfishLinearVelocityTextPos;
         Vector2 jellyfishAnuglarMomentumTextPos;
         Vector2 jellyfishAngularVelocityTextPos;
-        Vector2 jellyfishLocationTextPos;
+        Vector2 targetLocationTextPos;
         Vector2 cameraLocationTextPos;
         SpriteFont shipInfo;
 
         private int difficulty = 1;
         private int numDuckGeneration;
+        private bool showTargetLocation = false;
         private List<RubberDuck> allRubberducks;
         private List<FuelPack> allFuelPacks;
         private List<TorpedoPack> allTorpedoPacks;
+
+        private Vector3 distanceMultipler = new Vector3(200, 200, 200);
 
         public static Camera camera { get; private set; }
         public static Ship ship { get; private set; }
@@ -59,7 +62,7 @@ namespace SpaceDocker
         {
             // Make our BEPU Physics space a service
             Services.AddService<Space>(new Space());
-
+            distanceMultipler = new Vector3(200, 200, 200);
             InitItemDifficulty(difficulty);
             
             GenerateRubberDucks();
@@ -138,7 +141,6 @@ namespace SpaceDocker
 
             for (int i = 0; i < maxFuelPack; i++)
             {
-                Vector3 distanceMultipler = new Vector3(100, 100, 100);
                 Vector3 position = (new Vector3(
                     (float)rnd.Next(-(int)(distanceMultipler.X), (int)(distanceMultipler.X)),
                     (float)rnd.Next(-(int)(distanceMultipler.Y), (int)(distanceMultipler.Y)),
@@ -162,9 +164,13 @@ namespace SpaceDocker
         {
             allTorpedoPacks = new List<TorpedoPack>();
 
-            Vector3 position = Vector3.One;
             for (int i = 0; i < maxTorpedoPack; i++)
             {
+                Vector3 position = (new Vector3(
+                    (float)rnd.Next(-(int)(distanceMultipler.X), (int)(distanceMultipler.X)),
+                    (float)rnd.Next(-(int)(distanceMultipler.Y), (int)(distanceMultipler.Y)),
+                    (float)rnd.Next(-(int)(distanceMultipler.Z), (int)distanceMultipler.Z))
+                    );
                 TorpedoPack tp = new TorpedoPack(this, position, "torpedoPack-" + i);
                 allTorpedoPacks.Add(tp);
             }
@@ -192,7 +198,7 @@ namespace SpaceDocker
             // shipAngularMomentumTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - 250)); ;
             // shipAngularVelocityTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - 300)); ;
 
-            jellyfishLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
+            targetLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
             // jellyfishLinearMomentumTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 150))); ;
             // jellyfishLinearVelocityTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 200))); ;
             // jellyfishAnuglarMomentumTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 250))); ;
@@ -211,6 +217,16 @@ namespace SpaceDocker
 
             if (currentGamePadState.Buttons.Back == ButtonState.Pressed || currentKeyboardState.IsKeyDown(Keys.Escape))
                 Exit();
+
+            if (currentKeyboardState.IsKeyDown(Keys.H))
+            {
+                showTargetLocation = true;
+            }
+
+            if (currentKeyboardState.IsKeyDown(Keys.B))
+            {
+                showTargetLocation = false;
+            }
 
             // restart game
             if (currentKeyboardState.IsKeyDown(Keys.R))
@@ -240,13 +256,16 @@ namespace SpaceDocker
            // spriteBatch.DrawString(shipInfo, "Camera Location: x: " + (int)camera.Position.X + " y: " + (int)camera.Position.Y + " z: " + (int)camera.Position.Z, cameraLocationTextPos, Color.White);
 
             spriteBatch.DrawString(shipInfo, "Ship Location: x: " + (int)ship.modelPosition.X + " y: " + (int)ship.modelPosition.Y + " z: " + (int)ship.modelPosition.Z, shipLocationTextPos, Color.White);
-           // spriteBatch.DrawString(shipInfo, "Ship Orientation: x: " + (int)ship.modelOrientation.X+ " y: " + (int)ship.modelOrientation.Y + " z: " + (int)ship.modelOrientation.Z, shipLocationTextPos, Color.White);
-           // spriteBatch.DrawString(shipInfo, "Ship Linear Momentum: x: " + (int)ship.linearMomentum.X + " y: " + (int)ship.linearMomentum.Y + " z: " + (int)ship.linearMomentum.Z, shipLinearMomentumTextPos, Color.White);
-           // spriteBatch.DrawString(shipInfo, "Ship Linear Velocity: x: " + (int)ship.linearVelocity.X + " y: " + (int)ship.linearVelocity.Y + " z: " + (int)ship.linearVelocity.Z, shipLinearVelocityTextPos, Color.White);
-           //  spriteBatch.DrawString(shipInfo, "Ship Angular Momentum: x: " + (int)ship.angularMomentum.X + " y: " + (int)ship.angularMomentum.Y + " z: " + (int)ship.angularMomentum.Z, shipAngularMomentumTextPos, Color.White);
-           // spriteBatch.DrawString(shipInfo, "Ship Angular Velocity: x: " + (int)ship.angularVelocity.X + " y: " + (int)ship.angularVelocity.Y + " z: " + (int)ship.angularVelocity.Z, shipAngularVelocityTextPos, Color.White);
+            // spriteBatch.DrawString(shipInfo, "Ship Orientation: x: " + (int)ship.modelOrientation.X+ " y: " + (int)ship.modelOrientation.Y + " z: " + (int)ship.modelOrientation.Z, shipLocationTextPos, Color.White);
+            // spriteBatch.DrawString(shipInfo, "Ship Linear Momentum: x: " + (int)ship.linearMomentum.X + " y: " + (int)ship.linearMomentum.Y + " z: " + (int)ship.linearMomentum.Z, shipLinearMomentumTextPos, Color.White);
+            // spriteBatch.DrawString(shipInfo, "Ship Linear Velocity: x: " + (int)ship.linearVelocity.X + " y: " + (int)ship.linearVelocity.Y + " z: " + (int)ship.linearVelocity.Z, shipLinearVelocityTextPos, Color.White);
+            //  spriteBatch.DrawString(shipInfo, "Ship Angular Momentum: x: " + (int)ship.angularMomentum.X + " y: " + (int)ship.angularMomentum.Y + " z: " + (int)ship.angularMomentum.Z, shipAngularMomentumTextPos, Color.White);
+            // spriteBatch.DrawString(shipInfo, "Ship Angular Velocity: x: " + (int)ship.angularVelocity.X + " y: " + (int)ship.angularVelocity.Y + " z: " + (int)ship.angularVelocity.Z, shipAngularVelocityTextPos, Color.White);
 
-            spriteBatch.DrawString(shipInfo, "Target Location: x: " + (int)turtle.modelPosition.X + " y: " + (int)turtle.modelPosition.Y + " z: " + (int)turtle.modelPosition.Z, jellyfishLocationTextPos, Color.White);
+            if (showTargetLocation)
+            {
+                spriteBatch.DrawString(shipInfo, "Target Location: x: " + (int)turtle.modelPosition.X + " y: " + (int)turtle.modelPosition.Y + " z: " + (int)turtle.modelPosition.Z, targetLocationTextPos, Color.White);
+            }
             //spriteBatch.DrawString(shipInfo, "Target Linear Momentum: x: " + (int)jellyfish.linearMomentum.X + " y: " + (int)jellyfish.linearMomentum.Y + " z: " + (int)jellyfish.linearMomentum.Z, jellyfishLinearMomentumTextPos, Color.White);
             //spriteBatch.DrawString(shipInfo, "Target Linear Velocity: x: " + (int)jellyfish.linearVelocity.X + " y: " + (int)jellyfish.linearVelocity.Y + " z: " + (int)jellyfish.linearVelocity.Z, jellyfishLinearVelocityTextPos, Color.White);
             //spriteBatch.DrawString(shipInfo, "Target Angular Momentum: x: " + (int)jellyfish.angularMomentum.X + " y: " + (int)jellyfish.angularMomentum.Y + " z: " + (int)jellyfish.angularMomentum.Z, jellyfishAnuglarMomentumTextPos, Color.White);

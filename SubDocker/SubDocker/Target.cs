@@ -58,7 +58,7 @@ namespace SpaceDocker
 
         public void Reset()
         {
-            // TODO 
+            modelPosition = GetRandomPosition();
         }
 
         protected override void LoadContent()

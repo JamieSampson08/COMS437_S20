@@ -1,6 +1,13 @@
 # SpaceDocker (WIP)
 
-### Tools
+### **TODO**:
+
+- Skybox
+- torpedo aiming
+
+
+
+### Tools:
 
 - Monogame
 - Bepuphysics v1
@@ -8,12 +15,27 @@
 - Blender
 
 ### Story:
-You're traveling through space to escape the clutches of the Rubber Duck society that has taken power over humans. Equipped only with some fuel
-and torpedo sharks, you venture out in hopes of locating the rare jellyfish that will enable you to take back your world.
+You're traveling through space to escape the clutches of the Rubber Duck society that has taken power over humans. Equipped only with fuel
+and torpedos, you venture out in hopes of locating the rare turtle that will enable you to take back your world.
 
 ### Goal:
 Navigate through space avoiding or destroying the Rubber Ducks who are chasing after you.
-Locate the rare jellyfish before you lose all your fuel and/or health. Claiming this prize will make you the ruler of all Rubber Ducks!
+
+Locate the rare turtle before you lose all your fuel and/or health. Claiming this prize will make you the ruler of all Rubber Ducks!
+
+### **Messages: **
+
+- Torpedo Pack Picked Up
+- Fuel Packs Picked Up
+- No Torpedos Left
+- Shield Active
+- Fire Mode Active
+- Health
+- Fuel Level
+- Torpedo Inventory
+- Current Ship Position
+- Target Position
+- Success/Fail Game
 
 ### Controls:
 
@@ -25,17 +47,30 @@ Locate the rare jellyfish before you lose all your fuel and/or health. Claiming 
 - Pitch: Left/Right (-, +)
 - Roll: Down/Up (backward, forward)
 - Thrust: T key / Y Button
-- Enter Fire Mode: F key / Button
 - Restart: R key
+- Show Target Position : H key
+- Hid Target Position : B key
 
-**FireMode**
+**Shield**
 
-- Exit FireMode : F key / B button
+- Enable Shield : S key
+- Disable Shield : D key
+
+**Fire Mode**
+
+- Enter Fire Mode: F key / Button
+
+- Exit Fire Mode : G key / B button
 - Aim Left : left arrow / left DPad
 - Aim Right : right arrow / right DPad
 - Fire Torpedo : spacebar / B button
 
+*Notes:* 
+
+- After firing a torpedo, game automatically exits fire mode
+
 ### Features:
 
-- Yaw, Pitch, Roll
-- Thrust
+- Turtle (Target) Moves (WIP - bug)
+- Shield Capabilities
+- Fuel & Torpedo Packs (WIP - torpedo pack bug)

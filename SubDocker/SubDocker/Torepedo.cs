@@ -16,6 +16,7 @@ namespace SpaceDocker
         private float speed;
 
         public int torpedoID;
+        private Vector3 offsetFromShip;
 
         // torpedo variables
         private int torpedoDegree = 0;
@@ -74,6 +75,7 @@ namespace SpaceDocker
             torpedoID = Int32.Parse(id.Substring(7));
 
             this.speed = speed;
+            offsetFromShip = new Vector3(0, 0, 10f);
 
             Game.Services.GetService<Space>().Add(physicsObject);
         }
@@ -84,7 +86,7 @@ namespace SpaceDocker
             var otherEntityInformation = other as EntityCollidable;
             string tag = (string)otherEntityInformation.Entity.Tag;
 
-            if (tag.Equals("ship"))
+            if (!tag.Equals("ship"))
             {
                 if (Game.Components.Contains(this))
                 {
@@ -96,6 +98,7 @@ namespace SpaceDocker
         protected override void LoadContent()
         {
             model = Game.Content.Load<Model>("rocket4");
+            // TODO - physicsObject is null when trying to run AddTorpedo() & resetting torpedos
             physicsObject.Radius = model.Meshes[0].BoundingSphere.Radius;
 
             base.LoadContent();
@@ -128,8 +131,11 @@ namespace SpaceDocker
         }
         public void RemoveFromGame()
         {
-            Game.Services.GetService<Space>().Remove(physicsObject);
-            Game.Components.Remove(this);
+            if (Game.Components.Contains(this))
+            {
+                Game.Services.GetService<Space>().Remove(physicsObject);
+                Game.Components.Remove(this);
+            }
         }
 
         public void RotateTorpedo(int degree)
