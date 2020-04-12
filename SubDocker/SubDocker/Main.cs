@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using System;
+using System.Collections.Generic;
 
 namespace SpaceDocker
 {
@@ -14,6 +15,9 @@ namespace SpaceDocker
         SpriteBatch spriteBatch;
         Random rnd = new Random();
 
+        private int maxFuelPack;
+        private int maxTorpedoPack;
+  
         // debugging 
         Vector2 shipLocationTextPos;
         Vector2 shipLinearMomentumTextPos;
@@ -29,11 +33,13 @@ namespace SpaceDocker
         SpriteFont shipInfo;
 
         private int difficulty = 1;
-        private int numDuckGeneration = 40; // make scale with difficulty
+        private int numDuckGeneration;
+        private List<RubberDuck> allRubberducks;
 
-        public static Camera camera { get; set; }
-        public static Ship ship { get; set; }
-        public static Jellyfish jellyfish { get; set; }
+        public static Camera camera { get; private set; }
+        public static Ship ship { get; private set; }
+
+        public static Target jellyfish;
 
         public static Skybox skybox { get; set; }
 
@@ -52,7 +58,7 @@ namespace SpaceDocker
             // Make our BEPU Physics space a service
             Services.AddService<Space>(new Space());
 
-
+            InitItemDifficulty(difficulty);
             GenerateRubberDucks();
 
             // ship setup
@@ -61,40 +67,56 @@ namespace SpaceDocker
             // camera setup
             camera = new Camera(this); // right/left, behind/infront, above/below 
 
-            new RubberDuck(this, new Vector3(0, 3f, 8f), "duck-0", 2);
-
-            // jellyfish setup
-            Vector3 distanceMultipler = new Vector3(100, 100, 100);
-            Vector3 distanceBetween = (new Vector3(
-                (float)rnd.Next(-(int)(distanceMultipler.X), (int)(distanceMultipler.X)),
-                (float)rnd.Next(-(int)(distanceMultipler.Y), (int)(distanceMultipler.Y)),
-                (float)rnd.Next(-(int)(distanceMultipler.Z), (int)distanceMultipler.Z))
-                );
-
-           // jellyfish = new Jellyfish(this, distanceBetween, "jellyfish");
-           jellyfish = new Jellyfish(this, ship.modelPosition + new Vector3(0, 0, 20f), "jellyfish"); // for submition
+            Vector3 angMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2));
+            Vector3 linMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30));
+            jellyfish = new Target(this, "jellyfish", linMomentum, angMomentum);
 
             // skybox setup DOESN'T WORK YET
             // skybox = new Skybox(this, ship.modelPosition, "skybox");
 
             base.Initialize();
         }
+        
+        private void InitItemDifficulty(int difficulty)
+        {
+            switch (difficulty)
+            {
+                case 1:
+                    maxFuelPack = 5;
+                    maxTorpedoPack = 5;
+                    numDuckGeneration = 40;
+                    return;
+                case 2:
+                    Console.WriteLine("Level 2 Not Implemented");
+                    return;
+                case 3:
+                    Console.WriteLine("Level 3 Not Implemented");
+                    return;
+            }
+        }
 
         private void GenerateRubberDucks()
         {
-            Vector3 angMomentum;
-            Vector3 linMomentum;
-            Vector3 pos;
+            allRubberducks = new List<RubberDuck>();
 
             // randomly generates x rubber ducks
             for (int i = 0; i < numDuckGeneration; i++)
             {
                 int minRange = -100;
                 int maxRange = 100;
-                angMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2));
-                linMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-20, 20), (float)rnd.NextDouble() * rnd.Next(-20, 20), (float)rnd.NextDouble() * rnd.Next(-20, 20));
-                pos = new Vector3((float)rnd.NextDouble() * rnd.Next(minRange, maxRange), (float)rnd.NextDouble() * rnd.Next(minRange, maxRange), (float)rnd.NextDouble() * rnd.Next(minRange, maxRange));
-                new RubberDuck(this, pos, "duck-" + i, 2, linMomentum, angMomentum);
+                Vector3 angMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2));
+                Vector3 linMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-20, 20), (float)rnd.NextDouble() * rnd.Next(-20, 20), (float)rnd.NextDouble() * rnd.Next(-20, 20));
+                Vector3 pos = new Vector3((float)rnd.NextDouble() * rnd.Next(minRange, maxRange), (float)rnd.NextDouble() * rnd.Next(minRange, maxRange), (float)rnd.NextDouble() * rnd.Next(minRange, maxRange));
+                RubberDuck r = new RubberDuck(this, pos, "duck-" + i, 2, linMomentum, angMomentum);
+                allRubberducks.Add(r);
+            }
+        }
+
+        private void RemoveRubberDucks()
+        {
+            foreach(RubberDuck rd in allRubberducks)
+            {
+                rd.RemoveFromGame();
             }
         }
 
@@ -136,9 +158,10 @@ namespace SpaceDocker
             if (currentKeyboardState.IsKeyDown(Keys.R))
             {
                 ship.Reset();
-                // remove all ducks from space and re add them
-                // reset location of jellyfish
-                // remove any torpedos
+                // skybox.Reset();
+                jellyfish.Reset();
+                // RemoveRubberDucks();
+                // GenerateRubberDucks();
             }
 
             Services.GetService<Space>().Update((float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -162,10 +185,10 @@ namespace SpaceDocker
             spriteBatch.DrawString(shipInfo, "Ship Angular Velocity: x: " + (int)ship.angularVelocity.X + " y: " + (int)ship.angularVelocity.Y + " z: " + (int)ship.angularVelocity.Z, shipAngularVelocityTextPos, Color.White);
 
             spriteBatch.DrawString(shipInfo, "Target Location: x: " + (int)jellyfish.modelPosition.X + " y: " + (int)jellyfish.modelPosition.Y + " z: " + (int)jellyfish.modelPosition.Z, jellyfishLocationTextPos, Color.White);
-            spriteBatch.DrawString(shipInfo, "Target Linear Momentum: x: " + (int)jellyfish.linearMomentum.X + " y: " + (int)jellyfish.linearMomentum.Y + " z: " + (int)jellyfish.linearMomentum.Z, jellyfishLinearMomentumTextPos, Color.White);
-            spriteBatch.DrawString(shipInfo, "Target Linear Velocity: x: " + (int)jellyfish.linearVelocity.X + " y: " + (int)jellyfish.linearVelocity.Y + " z: " + (int)jellyfish.linearVelocity.Z, jellyfishLinearVelocityTextPos, Color.White);
-            spriteBatch.DrawString(shipInfo, "Target Angular Momentum: x: " + (int)jellyfish.angularMomentum.X + " y: " + (int)jellyfish.angularMomentum.Y + " z: " + (int)jellyfish.angularMomentum.Z, jellyfishAnuglarMomentumTextPos, Color.White);
-            spriteBatch.DrawString(shipInfo, "Target Angular Velocity: x: " + (int)jellyfish.angularVelocity.X + " y: " + (int)jellyfish.angularVelocity.Y + " z: " + (int)jellyfish.angularVelocity.Z, jellyfishAngularVelocityTextPos, Color.White);
+            //spriteBatch.DrawString(shipInfo, "Target Linear Momentum: x: " + (int)jellyfish.linearMomentum.X + " y: " + (int)jellyfish.linearMomentum.Y + " z: " + (int)jellyfish.linearMomentum.Z, jellyfishLinearMomentumTextPos, Color.White);
+            //spriteBatch.DrawString(shipInfo, "Target Linear Velocity: x: " + (int)jellyfish.linearVelocity.X + " y: " + (int)jellyfish.linearVelocity.Y + " z: " + (int)jellyfish.linearVelocity.Z, jellyfishLinearVelocityTextPos, Color.White);
+            //spriteBatch.DrawString(shipInfo, "Target Angular Momentum: x: " + (int)jellyfish.angularMomentum.X + " y: " + (int)jellyfish.angularMomentum.Y + " z: " + (int)jellyfish.angularMomentum.Z, jellyfishAnuglarMomentumTextPos, Color.White);
+            //spriteBatch.DrawString(shipInfo, "Target Angular Velocity: x: " + (int)jellyfish.angularVelocity.X + " y: " + (int)jellyfish.angularVelocity.Y + " z: " + (int)jellyfish.angularVelocity.Z, jellyfishAngularVelocityTextPos, Color.White);
 
             spriteBatch.End();
 

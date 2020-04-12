@@ -14,10 +14,6 @@ namespace SpaceDocker
         private Model model;
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
         private GraphicsDevice graphicsDevice;
-        
-
-        // Sprite Stuff
-        SpriteBatch spriteBatch;
 
 
         public Skybox(Game game) : base(game)
@@ -41,10 +37,8 @@ namespace SpaceDocker
             base.Initialize();
         }
 
-
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
             model = Game.Content.Load<Model>("skybox2");
 
             base.LoadContent();
@@ -76,16 +70,20 @@ namespace SpaceDocker
                 mesh.Draw();
             }
 
-           //  graphicsDevice.RasterizerState.CullMode = CullMode.CullCounterClockwiseFace;
+           // graphicsDevice.RasterizerState.CullMode = CullMode.CullCounterClockwiseFace;
 
             base.Draw(gameTime);
-
         }
 
         public override void Update(GameTime gameTime)
         {
             physicsObject.WorldTransform = ConversionHelper.MathConverter.Convert(scale) * physicsObject.WorldTransform;
             base.Update(gameTime);
+        }
+
+        public void Reset()
+        {
+            // TODO - move so center = ship modelPosition
         }
     }
 }

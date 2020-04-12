@@ -25,6 +25,8 @@ namespace SpaceDocker
         private float fuelLevel;
         private float maxFuelLevel;
 
+        private float fuelPackValue;
+
         private float thrustDeduction;
 
         private float speed = 1f;
@@ -33,7 +35,6 @@ namespace SpaceDocker
         // mode flags
         private bool fireMode = false;
         private String conclusionMessage = null;
-
 
         // Base Requirements
         private Model model;
@@ -48,6 +49,8 @@ namespace SpaceDocker
         SpriteFont annoucement;
         SpriteFont shipInfo;
 
+        private Game game;
+
         // text locations
         Vector2 healthTextPos;
         Vector2 fuelTextPos;
@@ -56,6 +59,7 @@ namespace SpaceDocker
         Vector2 goalReachedTextPos;
 
         List<Torepedo> allTorpedos;
+        public float torpedoSpeed;
 
         // helper class
         private Helpers helper;
@@ -65,7 +69,6 @@ namespace SpaceDocker
             get { return ConversionHelper.MathConverter.Convert(physicsObject.Position); }
             set { physicsObject.Position = ConversionHelper.MathConverter.Convert(value); }
         }
-
 
         public Quaternion modelOrientation
         {
@@ -116,22 +119,35 @@ namespace SpaceDocker
             physicsObject.LinearDamping = .1f;
             physicsObject.AngularDamping = .2f;
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
-            physicsObject.CollisionInformation.Events.CollisionEnded += Events_CollisionEnded;
             physicsObject.Tag = id;
 
+            this.game = game;
+
             InitalOrientation();
+            GenerateTorpedos();
 
             Game.Services.GetService<Space>().Add(physicsObject);
 
             InitItemDifficulty(this.difficulty); // defaults to 1
+        }
 
+        private void GenerateTorpedos()
+        {
             allTorpedos = new List<Torepedo>();
 
             // initalize max # of torpedos
-            for(int i = 0; i < maxTorpedoCount; i++)
+            for (int i = 0; i < maxTorpedoCount; i++)
             {
-                // Torepedo currentTorepedo = new Torepedo(game, this, "torpedo " + i);
-                // allTorpedos.Add(currentTorepedo);
+                Torepedo currentTorepedo = new Torepedo(game, this, "torpedo " + i);
+                allTorpedos.Add(currentTorepedo);
+            }
+        }
+
+        private void RemoveTorepedos()
+        {
+            foreach (Torepedo t in allTorpedos)
+            {
+                t.RemoveFromGame();
             }
         }
 
@@ -153,17 +169,6 @@ namespace SpaceDocker
             this.difficulty = difficulty;
         }
 
-        private void Events_CollisionEnded(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
-        {
-            var otherEntityInformation = other as EntityCollidable;
-            string tag = (string)otherEntityInformation.Entity.Tag;
-
-            if (!tag.Equals("skybox"))
-            {
-                linearMomentum = Vector3.Zero;
-                angularMomentum = Vector3.Zero;
-            }
-        }
         private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
 
@@ -190,12 +195,20 @@ namespace SpaceDocker
                     conclusionMessage = "Your ship was going too fast! Failed to safely aquire the jellyfish.";
                 }
             }
-        }
+            if (tag.Equals("fuelPack"))
+            {
+                float newValue = fuelLevel + fuelPackValue;
 
-
-        public override void Initialize()
-        {
-            base.Initialize();
+                // can't go over 100 fuel
+                if (newValue > 100)
+                {
+                    fuelLevel = 100;
+                }
+                else
+                {
+                    fuelLevel = newValue;
+                }
+            }
         }
 
         protected override void LoadContent()
@@ -219,11 +232,6 @@ namespace SpaceDocker
 
 
             base.LoadContent();
-        }
-
-        protected override void UnloadContent()
-        {
-            base.UnloadContent();
         }
 
 
@@ -406,6 +414,8 @@ namespace SpaceDocker
                     health = maxHealth = 100;
                     duckDamage = 10;
                     thrustDeduction = .5f;
+                    torpedoSpeed = 10f;
+                    fuelPackValue = 40;
                     return;
                 case 2:
                     Console.WriteLine("Level 2 Not Implemented");
@@ -421,9 +431,13 @@ namespace SpaceDocker
             InitItemDifficulty(difficulty);
             modelPosition = Vector3.Zero;
             modelOrientation = Quaternion.Identity;
-            InitalOrientation();
             linearMomentum = Vector3.Zero;
             angularMomentum = Vector3.Zero;
+
+            InitalOrientation();
+            // RemoveTorepedos();
+            // GenerateTorpedos();
+
             conclusionMessage = null;
             fireMode = false;
         }

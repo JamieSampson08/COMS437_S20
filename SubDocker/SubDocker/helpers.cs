@@ -4,8 +4,8 @@ namespace SpaceDocker
 {
     class Helpers
     {
-        private Vector3 maxLinearMomentum = new Vector3(20f, 20f, 20f);
-        private Vector3 minLinearMomentum = new Vector3(-20f, -20f, -20f);
+        private Vector3 maxLinearMomentum = new Vector3(30f, 30f, 30f);
+        private Vector3 minLinearMomentum = new Vector3(-30f, -30f, -30f);
 
         private Vector3 maxAngularMomentum = new Vector3(10f, 10f, 10f);
         private Vector3 minAngularMomentum = new Vector3(-10f, -10f, -10f);
