@@ -71,7 +71,7 @@ namespace SpaceDocker
             physicsObject.LinearDamping = 0f;
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
             physicsObject.Tag = id;
-            torpedoID = Int32.Parse(id.Substring(7));
+            torpedoID = Int32.Parse(id.Substring(10));
 
             Game.Services.GetService<Space>().Add(physicsObject);
         }
@@ -93,17 +93,6 @@ namespace SpaceDocker
             {
                 RemoveFromGame();
             }
-        }
-
-        public Torepedo(Game game, Ship ship, string id, Vector3 linMomentum) : this(game, ship, id)
-        {
-            physicsObject.LinearMomentum = ConversionHelper.MathConverter.Convert(linMomentum);
-        }
-
-
-        public override void Initialize()
-        {
-            base.Initialize();
         }
 
         protected override void LoadContent()
@@ -135,10 +124,10 @@ namespace SpaceDocker
         public override void Update(GameTime gameTime)
         {
             angularVelocity = Vector3.Zero;
-            modelPosition = ship.modelPosition;
+            // modelPosition = ship.modelPosition;
 
-            Vector3 displacement = Vector3.Up * speed;
-            linearMomentum = linearMomentum + Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
+            // Vector3 displacement = Vector3.Up * speed;
+            // linearMomentum = linearMomentum + Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
         }
         public void RemoveFromGame()
         {

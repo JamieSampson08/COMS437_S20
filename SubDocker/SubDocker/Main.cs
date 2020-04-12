@@ -74,7 +74,7 @@ namespace SpaceDocker
 
             // test
             // FuelPack fp = new FuelPack(this, Vector3.One, "fuelPack-99");
-            // Torepedo t = new Torepedo(this);
+            Torepedo t = new Torepedo(this, new Vector3(0, 0, 50f), "torepedo-99");
 
             Vector3 angMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2));
             Vector3 linMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30));

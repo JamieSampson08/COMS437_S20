@@ -45,7 +45,7 @@ namespace SpaceDocker
 
         protected override void LoadContent()
         {
-            model = Game.Content.Load<Model>("soap");
+            model = Game.Content.Load<Model>("fuelTank");
 
             base.LoadContent();
         }

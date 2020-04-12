@@ -49,7 +49,7 @@ namespace SpaceDocker
 
         public Vector3 CheckAngularMomentumBounds(Vector3 angularMomentum, string direction)
         {
-            Vector3 tempMomentum = Vector3.Zero;
+            Vector3 tempMomentum;
             float tempZ = 0;
             float tempY = 0;
             float tempX = 0;
