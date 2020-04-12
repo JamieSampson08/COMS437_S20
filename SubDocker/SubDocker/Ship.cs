@@ -31,6 +31,7 @@ namespace SpaceDocker
 
         private float speed = 1f;
         private Vector3 maxVelocityToWin = Vector3.Zero;
+        private int currentTorepdoIndex;
 
         // mode flags
         private bool fireMode = false;
@@ -127,12 +128,12 @@ namespace SpaceDocker
 
             this.game = game;
 
+            InitItemDifficulty(this.difficulty); // defaults to 1
+
             InitalOrientation();
             GenerateTorpedos();
 
             Game.Services.GetService<Space>().Add(physicsObject);
-
-            InitItemDifficulty(this.difficulty); // defaults to 1
         }
 
         private void GenerateTorpedos()
@@ -142,9 +143,10 @@ namespace SpaceDocker
             // initalize max # of torpedos
             for (int i = 0; i < maxTorpedoCount; i++)
             {
-                Torepedo currentTorepedo = new Torepedo(game, this, "torpedo " + i);
+                Torepedo currentTorepedo = new Torepedo(game, torpedoSpeed, "torepedo" + i);
                 allTorpedos.Add(currentTorepedo);
             }
+            currentTorepdoIndex = maxTorpedoCount;
         }
 
         private void RemoveTorepedos()
@@ -214,6 +216,24 @@ namespace SpaceDocker
                 }
                 generalInfoMessage = "You picked up a fuel pack worth " + fuelPackValue;
             }
+            if (tag.Contains("torepedoPack"))
+            {
+                // TODO - broken
+                // AddTorepedo(); 
+            }
+        }
+
+        private void AddTorepedo()
+        {
+            if (allTorpedos == null)
+            {
+                Console.WriteLine("All Torepedo List not Initalized");
+                return;
+            }
+            torpedoCount++;
+            Torepedo currentTorepedo = new Torepedo(game, torpedoSpeed, "torpedo" + currentTorepdoIndex);
+            allTorpedos.Add(currentTorepedo);
+            currentTorepdoIndex++;
         }
 
         protected override void LoadContent()
@@ -370,8 +390,16 @@ namespace SpaceDocker
 
             if (currentKeyboardState.IsKeyDown(Keys.Space) && fireMode)
             {
-                allTorpedos[0].ShootTorpedo();
-                allTorpedos.RemoveAt(0);  // remove from list of avalible torpedos
+                if (allTorpedos.Count != 0)
+                {
+                    allTorpedos[0].ShootTorpedo();
+                    allTorpedos.RemoveAt(0);  // remove from list of avalible torpedos
+                }
+                else
+                {
+                    generalInfoMessage = "No more torpedos!";
+                }
+                fireMode = false;
             }
 
             // move aim right

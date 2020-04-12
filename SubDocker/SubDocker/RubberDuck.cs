@@ -38,7 +38,7 @@ namespace SpaceDocker
             var otherEntityInformation = other as EntityCollidable;
             string tag = (string)otherEntityInformation.Entity.Tag;
 
-            if (!tag.Contains("fuelPack"))
+            if (!tag.Contains("fuelPack") && !tag.Contains("torepedoPack"))
             {
                 RemoveFromGame();
             }
@@ -46,8 +46,11 @@ namespace SpaceDocker
 
         public void RemoveFromGame()
         {
-            Game.Services.GetService<Space>().Remove(physicsObject);
-            Game.Components.Remove(this);
+            if (Game.Components.Contains(this)) {
+                Game.Components.Remove(this);
+                Game.Services.GetService<Space>().Remove(physicsObject);
+            }
+
         }
 
         public RubberDuck(Game game, Vector3 pos, string id, float mass, Vector3 linMomentum, Vector3 angMomentum) : this(game, pos, id)

@@ -39,7 +39,10 @@ namespace SpaceDocker
 
             if (tag.Equals("ship"))
             {
-                RemoveFromGame();
+                if (Game.Components.Contains(this))
+                {
+                    RemoveFromGame();
+                }
             }
         }
 
