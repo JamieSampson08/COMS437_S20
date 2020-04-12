@@ -38,7 +38,7 @@ namespace SpaceDocker
             var otherEntityInformation = other as EntityCollidable;
             string tag = (string)otherEntityInformation.Entity.Tag;
 
-            if (!tag.Contains("fuelPack") && !tag.Contains("torepedoPack"))
+            if (!tag.Contains("fuelPack") && !tag.Contains("torpedoPack"))
             {
                 RemoveFromGame();
             }

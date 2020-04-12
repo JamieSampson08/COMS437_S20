@@ -8,7 +8,7 @@ using System;
 
 namespace SpaceDocker
 {
-    class Torepedo : DrawableGameComponent
+    class Torpedo : DrawableGameComponent
     {
         private Model model;
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
@@ -58,12 +58,12 @@ namespace SpaceDocker
             set { physicsObject.AngularMomentum = ConversionHelper.MathConverter.Convert(value); }
         }
 
-        public Torepedo(Game game) : base(game)
+        public Torpedo(Game game) : base(game)
         {
             game.Components.Add(this);
         }
 
-        public Torepedo(Game game, float speed, string id) : this(game)
+        public Torpedo(Game game, float speed, string id) : this(game)
         {
             physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(Vector3.Zero), 1);
             physicsObject.AngularDamping = 0f;
@@ -71,7 +71,7 @@ namespace SpaceDocker
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
             physicsObject.Tag = id;
 
-            torpedoID = Int32.Parse(id.Substring(8));
+            torpedoID = Int32.Parse(id.Substring(7));
 
             this.speed = speed;
 

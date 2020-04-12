@@ -9,31 +9,31 @@ using System;
 
 namespace SpaceDocker
 {
-    class TorepedoPack : DrawableGameComponent
+    class TorpedoPack : DrawableGameComponent
     {
         private Model model;
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
 
-        private int torepedoPackID;
+        private int torpedoPackID;
 
-        public TorepedoPack(Game game) : base(game)
+        public TorpedoPack(Game game) : base(game)
         {
             game.Components.Add(this);
         }
 
-        public TorepedoPack(Game game, Vector3 pos, string id) : this(game)
+        public TorpedoPack(Game game, Vector3 pos, string id) : this(game)
         {
             physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
             physicsObject.Tag = id;
-            torepedoPackID = Int32.Parse(id.Substring(13));
+            torpedoPackID = Int32.Parse(id.Substring(12));
 
             Game.Services.GetService<Space>().Add(physicsObject);
         }
 
         private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
-            Console.WriteLine(torepedoPackID + " TorepedoPack Collision");
+            Console.WriteLine(torpedoPackID + " TorpedoPack Collision");
             var otherEntityInformation = other as EntityCollidable;
             string tag = (string)otherEntityInformation.Entity.Tag;
 

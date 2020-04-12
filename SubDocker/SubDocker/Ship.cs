@@ -19,7 +19,6 @@ namespace SpaceDocker
         private int maxHealth;
         private int duckDamage;
 
-        private int torpedoCount;
         private int maxTorpedoCount;
 
         private float fuelLevel;
@@ -31,11 +30,12 @@ namespace SpaceDocker
 
         private float speed = 1f;
         private Vector3 maxVelocityToWin = Vector3.Zero;
-        private int currentTorepdoIndex;
+        private int currentTorpdoIndex;
 
         // mode flags
         private bool fireMode = false;
         private String conclusionMessage = null;
+        private String shiledActiveMessage = null;
 
         // Base Requirements
         private Model model;
@@ -62,8 +62,12 @@ namespace SpaceDocker
         Vector2 fireModeTextPos;
         Vector2 goalReachedTextPos;
         Vector2 generalInfoPos;
+        Vector2 shiledActiveTextPos;
 
-        List<Torepedo> allTorpedos;
+        private bool shieldActive;
+        private float shieldReduction;
+
+        List<Torpedo> allTorpedos;
         public float torpedoSpeed;
 
         // helper class
@@ -132,26 +136,27 @@ namespace SpaceDocker
 
             InitalOrientation();
             GenerateTorpedos();
+            shieldActive = false;
 
             Game.Services.GetService<Space>().Add(physicsObject);
         }
 
         private void GenerateTorpedos()
         {
-            allTorpedos = new List<Torepedo>();
+            allTorpedos = new List<Torpedo>();
 
             // initalize max # of torpedos
             for (int i = 0; i < maxTorpedoCount; i++)
             {
-                Torepedo currentTorepedo = new Torepedo(game, torpedoSpeed, "torepedo" + i);
-                allTorpedos.Add(currentTorepedo);
+                Torpedo currentTorpedo = new Torpedo(game, torpedoSpeed, "torpedo" + i);
+                allTorpedos.Add(currentTorpedo);
             }
-            currentTorepdoIndex = maxTorpedoCount;
+            currentTorpdoIndex = maxTorpedoCount;
         }
 
-        private void RemoveTorepedos()
+        private void RemoveTorpedos()
         {
-            foreach (Torepedo t in allTorpedos)
+            foreach (Torpedo t in allTorpedos)
             {
                 t.RemoveFromGame();
             }
@@ -186,7 +191,10 @@ namespace SpaceDocker
             if (tag.Contains("duck"))
             {
                 Console.WriteLine("Hit DUCK");
-                health -= duckDamage;
+                if (!shieldActive)
+                {
+                    health -= duckDamage;
+                }
             }
             if (tag.Equals("turtle"))
             {
@@ -216,24 +224,24 @@ namespace SpaceDocker
                 }
                 generalInfoMessage = "You picked up a fuel pack worth " + fuelPackValue;
             }
-            if (tag.Contains("torepedoPack"))
+            if (tag.Contains("torpedoPack"))
             {
                 // TODO - broken
-                // AddTorepedo(); 
+                // AddTorpedo(); 
+                generalInfoMessage = "You picked up a torpdeo pack!";
             }
         }
 
-        private void AddTorepedo()
+        private void AddTorpedo()
         {
             if (allTorpedos == null)
             {
-                Console.WriteLine("All Torepedo List not Initalized");
+                Console.WriteLine("AllTorpedo List not Initalized");
                 return;
             }
-            torpedoCount++;
-            Torepedo currentTorepedo = new Torepedo(game, torpedoSpeed, "torpedo" + currentTorepdoIndex);
-            allTorpedos.Add(currentTorepedo);
-            currentTorepdoIndex++;
+            Torpedo currentTorpedo = new Torpedo(game, torpedoSpeed, "torpedo" + currentTorpdoIndex);
+            allTorpedos.Add(currentTorpedo);
+            currentTorpdoIndex++;
         }
 
         protected override void LoadContent()
@@ -254,6 +262,7 @@ namespace SpaceDocker
             torpedoTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 200));
             fireModeTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 250));
             goalReachedTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 2), (float)(GraphicsDevice.Viewport.Height / 2));
+            shiledActiveTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 350));
 
             generalInfoPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 300));
 
@@ -282,9 +291,9 @@ namespace SpaceDocker
             }
 
             // show ship diagnostics
-            if (torpedoCount > 0)
+            if (allTorpedos.Count > 0)
             {
-                spriteBatch.DrawString(shipInfo, "Torpedos Left: " + torpedoCount, torpedoTextPos, LevelStatus(torpedoCount, maxTorpedoCount));
+                spriteBatch.DrawString(shipInfo, "Torpedos Left: " + allTorpedos.Count, torpedoTextPos, LevelStatus(allTorpedos.Count, maxTorpedoCount));
             }
             else
             {
@@ -293,11 +302,21 @@ namespace SpaceDocker
 
             spriteBatch.DrawString(shipInfo, "Health: " + health, healthTextPos, LevelStatus(health, maxHealth));
             spriteBatch.DrawString(shipInfo, "Fuel Level: " + fuelLevel, fuelTextPos, LevelStatus(fuelLevel, maxFuelLevel));
-            spriteBatch.DrawString(shipInfo, "Fire Mode Engaged: " + fireMode, fireModeTextPos, Color.White);
+            
+            if (fireMode)
+            {
+                spriteBatch.DrawString(shipInfo, "FIRE MODE ACTIVE", fireModeTextPos, Color.Yellow);
+            }
+           
 
             if (generalInfoMessage != null)
             {
                 spriteBatch.DrawString(shipInfo, generalInfoMessage, generalInfoPos, Color.Yellow);
+            }
+
+            if (shiledActiveMessage != null)
+            {
+                spriteBatch.DrawString(shipInfo, shiledActiveMessage, shiledActiveTextPos, Color.Yellow);
             }
 
             spriteBatch.End();
@@ -375,13 +394,37 @@ namespace SpaceDocker
                 angularMomentum = helper.CheckAngularMomentumBounds(angularMomentum, "RB");
             }
 
+            // SHIELD LOGIC
+
+            // put up shield
+            if (currentKeyboardState.IsKeyDown(Keys.S))
+            {
+                shieldActive = true;
+                shiledActiveMessage = "SHIELD IS ACTIVE";
+            }
+
+            // remove shield
+            if (currentKeyboardState.IsKeyDown(Keys.D))
+            {
+                if (shieldActive)
+                {
+                    shiledActiveMessage = null;
+                    shieldActive = false;
+                }
+            }
+
+            if (shieldActive)
+            {
+                // use fuel use shield
+                fuelLevel -= shieldReduction;
+            }
 
             // FIREING LOGIC
 
             // enter fire mode
             if (currentKeyboardState.IsKeyDown(Keys.F) || currentGamePadState.Buttons.B == ButtonState.Pressed)
             {
-                if (!fireMode && torpedoCount != 0)
+                if (!fireMode && allTorpedos.Count != 0)
                 {
                     // engage fire mode
                     fireMode = true;
@@ -394,10 +437,6 @@ namespace SpaceDocker
                 {
                     allTorpedos[0].ShootTorpedo();
                     allTorpedos.RemoveAt(0);  // remove from list of avalible torpedos
-                }
-                else
-                {
-                    generalInfoMessage = "No more torpedos!";
                 }
                 fireMode = false;
             }
@@ -450,13 +489,14 @@ namespace SpaceDocker
             switch (difficulty)
             {
                 case 1:
-                    torpedoCount = maxTorpedoCount = 5;
+                    maxTorpedoCount = 5;
                     maxFuelLevel = fuelLevel = 100;
                     health = maxHealth = 100;
                     duckDamage = 10;
                     thrustDeduction = .5f;
                     torpedoSpeed = 10f;
                     fuelPackValue = 40;
+                    shieldReduction = .005f;
                     return;
                 case 2:
                     Console.WriteLine("Level 2 Not Implemented");
@@ -476,8 +516,8 @@ namespace SpaceDocker
             angularMomentum = Vector3.Zero;
 
             InitalOrientation();
-            // RemoveTorepedos();
-            // GenerateTorpedos();
+            RemoveTorpedos();
+            GenerateTorpedos();
 
             conclusionMessage = null;
             fireMode = false;
