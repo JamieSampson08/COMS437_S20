@@ -6,34 +6,34 @@ using Microsoft.Xna.Framework.Graphics;
 
 using System;
 
+
 namespace SpaceDocker
 {
-    class FuelPack : DrawableGameComponent
+    class TorepedoPack : DrawableGameComponent
     {
-
         private Model model;
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
 
-        private int fuelPackID;
+        private int torepedoPackID;
 
-        public FuelPack(Game game) : base(game)
+        public TorepedoPack(Game game) : base(game)
         {
             game.Components.Add(this);
         }
 
-        public FuelPack(Game game, Vector3 pos, string id) : this(game)
+        public TorepedoPack(Game game, Vector3 pos, string id) : this(game)
         {
             physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
             physicsObject.Tag = id;
-            fuelPackID = Int32.Parse(id.Substring(9));
+            torepedoPackID = Int32.Parse(id.Substring(13));
 
             Game.Services.GetService<Space>().Add(physicsObject);
         }
 
         private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
-            Console.WriteLine(fuelPackID + " FuellPack Collision");
+            Console.WriteLine(torepedoPackID + " TorepedoPack Collision");
             var otherEntityInformation = other as EntityCollidable;
             string tag = (string)otherEntityInformation.Entity.Tag;
 
@@ -45,11 +45,10 @@ namespace SpaceDocker
 
         protected override void LoadContent()
         {
-            model = Game.Content.Load<Model>("soap");
+            // model = Game.Content.Load<Model>("amo");
 
             base.LoadContent();
         }
-
         public void RemoveFromGame()
         {
             Game.Services.GetService<Space>().Remove(physicsObject);
@@ -74,6 +73,7 @@ namespace SpaceDocker
             }
             base.Draw(gameTime);
         }
+
 
     }
 }

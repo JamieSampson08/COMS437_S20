@@ -1,4 +1,6 @@
 ﻿using BEPUphysics;
+using BEPUphysics.BroadPhaseEntries.MobileCollidables;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -32,9 +34,14 @@ namespace SpaceDocker
 
         private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
-            Console.WriteLine(duckID + " Collision");
+            Console.WriteLine(duckID + " Duck Collision");
+            var otherEntityInformation = other as EntityCollidable;
+            string tag = (string)otherEntityInformation.Entity.Tag;
 
-            RemoveFromGame();
+            if (!tag.Contains("fuelPack"))
+            {
+                RemoveFromGame();
+            }
         }
 
         public void RemoveFromGame()

@@ -1,4 +1,6 @@
 ﻿using BEPUphysics;
+using BEPUphysics.BroadPhaseEntries.MobileCollidables;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -62,13 +64,9 @@ namespace SpaceDocker
             game.Components.Add(this);
         }
 
-        public Torepedo(Game game, Ship ship, string id) : this(game)
+        public Torepedo(Game game, Vector3 pos, string id) : this(game)
         {
-            this.ship = ship;
-            modelPosition = this.ship.modelPosition;
-            speed = ship.torpedoSpeed;
-
-            physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(ship.modelPosition), 1);
+            physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
             physicsObject.AngularDamping = 0f;
             physicsObject.LinearDamping = 0f;
             physicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
@@ -78,11 +76,23 @@ namespace SpaceDocker
             Game.Services.GetService<Space>().Add(physicsObject);
         }
 
+        public Torepedo(Game game, Ship ship, string id) : this(game, ship.modelPosition, id)
+        {
+            this.ship = ship;
+            modelPosition = this.ship.modelPosition;
+            speed = ship.torpedoSpeed;
+        }
+
         private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
             Console.WriteLine(torpedoID + " Collision");
+            var otherEntityInformation = other as EntityCollidable;
+            string tag = (string)otherEntityInformation.Entity.Tag;
 
-            RemoveFromGame();
+            if (tag.Equals("ship"))
+            {
+                RemoveFromGame();
+            }
         }
 
         public Torepedo(Game game, Ship ship, string id, Vector3 linMomentum) : this(game, ship, id)
@@ -98,7 +108,7 @@ namespace SpaceDocker
 
         protected override void LoadContent()
         {
-            model = Game.Content.Load<Model>("shark");
+            model = Game.Content.Load<Model>("rocket2");
             physicsObject.Radius = model.Meshes[0].BoundingSphere.Radius;
 
             base.LoadContent();

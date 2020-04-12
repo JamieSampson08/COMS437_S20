@@ -49,6 +49,9 @@ namespace SpaceDocker
         SpriteFont annoucement;
         SpriteFont shipInfo;
 
+        private string generalInfoMessage;
+
+
         private Game game;
 
         // text locations
@@ -57,6 +60,7 @@ namespace SpaceDocker
         Vector2 torpedoTextPos;
         Vector2 fireModeTextPos;
         Vector2 goalReachedTextPos;
+        Vector2 generalInfoPos;
 
         List<Torepedo> allTorpedos;
         public float torpedoSpeed;
@@ -182,20 +186,20 @@ namespace SpaceDocker
                 Console.WriteLine("Hit DUCK");
                 health -= duckDamage;
             }
-            if (tag.Equals("jellyfish"))
+            if (tag.Equals("turtle"))
             {
-                Console.WriteLine("Hit Jellyfish");
+                Console.WriteLine("Hit Turtle");
                 if (Vector3.Distance(linearVelocity, maxVelocityToWin) <= 2f)
 
                 {
-                    conclusionMessage = "You successfully claimed the sacred Jellyfish!";
+                    conclusionMessage = "You successfully claimed the sacred Turtle!";
                 }
                 else
                 {
-                    conclusionMessage = "Your ship was going too fast! Failed to safely aquire the jellyfish.";
+                    conclusionMessage = "Your ship was going too fast! Failed to safely aquire the Turtle.";
                 }
             }
-            if (tag.Equals("fuelPack"))
+            if (tag.Contains("fuelPack"))
             {
                 float newValue = fuelLevel + fuelPackValue;
 
@@ -208,6 +212,7 @@ namespace SpaceDocker
                 {
                     fuelLevel = newValue;
                 }
+                generalInfoMessage = "You picked up a fuel pack worth " + fuelPackValue;
             }
         }
 
@@ -230,6 +235,8 @@ namespace SpaceDocker
             fireModeTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 250));
             goalReachedTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 2), (float)(GraphicsDevice.Viewport.Height / 2));
 
+            generalInfoPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 300));
+
 
             base.LoadContent();
         }
@@ -242,11 +249,11 @@ namespace SpaceDocker
             // handle notificatons of game ending states
             if (health <= 0)
             {
-                conclusionMessage = "Failed to aquire the jellyfish! You ran out of health. The Rubber Ducks captured you!";
+                conclusionMessage = "Failed to aquire the turtle! You ran out of health. The Rubber Ducks captured you!";
             }
             else if ((float)Math.Floor(fuelLevel) <= 0)
             {
-                conclusionMessage = "Failed to aquire the jellyfish! You ran out of fuel. The Rubber Ducks captured you!";
+                conclusionMessage = "Failed to aquire the turtle! You ran out of fuel. The Rubber Ducks captured you!";
             }
 
             if (conclusionMessage != null)
@@ -267,6 +274,11 @@ namespace SpaceDocker
             spriteBatch.DrawString(shipInfo, "Health: " + health, healthTextPos, LevelStatus(health, maxHealth));
             spriteBatch.DrawString(shipInfo, "Fuel Level: " + fuelLevel, fuelTextPos, LevelStatus(fuelLevel, maxFuelLevel));
             spriteBatch.DrawString(shipInfo, "Fire Mode Engaged: " + fireMode, fireModeTextPos, Color.White);
+
+            if (generalInfoMessage != null)
+            {
+                spriteBatch.DrawString(shipInfo, generalInfoMessage, generalInfoPos, Color.Yellow);
+            }
 
             spriteBatch.End();
 
@@ -301,6 +313,7 @@ namespace SpaceDocker
                     Vector3 tempMomentum =  linearMomentum + Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
                     linearMomentum = helper.CheckLinearMomentumBounds(tempMomentum);
                     fuelLevel -= thrustDeduction;
+                    generalInfoMessage = null;
                 }
             }
 

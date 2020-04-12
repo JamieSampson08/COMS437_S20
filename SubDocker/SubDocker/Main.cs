@@ -35,11 +35,13 @@ namespace SpaceDocker
         private int difficulty = 1;
         private int numDuckGeneration;
         private List<RubberDuck> allRubberducks;
+        private List<FuelPack> allFuelPacks;
+        private List<TorepedoPack> allTorpedoPacks;
 
         public static Camera camera { get; private set; }
         public static Ship ship { get; private set; }
 
-        public static Target jellyfish;
+        public static Target turtle;
 
         public static Skybox skybox { get; set; }
 
@@ -59,7 +61,10 @@ namespace SpaceDocker
             Services.AddService<Space>(new Space());
 
             InitItemDifficulty(difficulty);
+            
             GenerateRubberDucks();
+            GenerateFuelPacks();
+            GenerateTorepedoPacks();
 
             // ship setup
             ship = new Ship(this, Vector3.Zero, "ship", 2, difficulty);
@@ -67,9 +72,13 @@ namespace SpaceDocker
             // camera setup
             camera = new Camera(this); // right/left, behind/infront, above/below 
 
+            // test
+            // FuelPack fp = new FuelPack(this, Vector3.One, "fuelPack-99");
+            // Torepedo t = new Torepedo(this);
+
             Vector3 angMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2), (float)rnd.NextDouble() * rnd.Next(-2, 2));
             Vector3 linMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30));
-            jellyfish = new Target(this, "jellyfish", linMomentum, angMomentum);
+            turtle = new Target(this, "turtle", linMomentum, angMomentum);
 
             // skybox setup DOESN'T WORK YET
             // skybox = new Skybox(this, ship.modelPosition, "skybox");
@@ -112,11 +121,58 @@ namespace SpaceDocker
             }
         }
 
+        private void RemoveFuelPacks()
+        {
+            foreach (FuelPack fp in allFuelPacks)
+            {
+                fp.RemoveFromGame();
+            }
+        }
+
+        private void GenerateFuelPacks()
+        {
+
+            allFuelPacks = new List<FuelPack>();
+
+            for (int i = 0; i < maxFuelPack; i++)
+            {
+                Vector3 distanceMultipler = new Vector3(100, 100, 100);
+                Vector3 position = (new Vector3(
+                    (float)rnd.Next(-(int)(distanceMultipler.X), (int)(distanceMultipler.X)),
+                    (float)rnd.Next(-(int)(distanceMultipler.Y), (int)(distanceMultipler.Y)),
+                    (float)rnd.Next(-(int)(distanceMultipler.Z), (int)distanceMultipler.Z))
+                    );
+
+                FuelPack fp = new FuelPack(this, position, "fuelPack-" + i);
+                allFuelPacks.Add(fp);
+            }
+        }
+
         private void RemoveRubberDucks()
         {
             foreach(RubberDuck rd in allRubberducks)
             {
                 rd.RemoveFromGame();
+            }
+        }
+
+        private void GenerateTorepedoPacks()
+        {
+            allTorpedoPacks = new List<TorepedoPack>();
+
+            Vector3 position = Vector3.One;
+            for (int i = 0; i < maxTorpedoPack; i++)
+            {
+                TorepedoPack tp = new TorepedoPack(this, position, "torepedoPack-" + i);
+                allTorpedoPacks.Add(tp);
+            }
+        }
+
+        private void RemoveTorepdeoPacks()
+        {
+            foreach (TorepedoPack tp in allTorpedoPacks)
+            {
+                tp.RemoveFromGame();
             }
         }
 
@@ -159,9 +215,13 @@ namespace SpaceDocker
             {
                 ship.Reset();
                 // skybox.Reset();
-                jellyfish.Reset();
+                turtle.Reset();
                 // RemoveRubberDucks();
                 // GenerateRubberDucks();
+                // RemoveFuelPacks();
+                // GenerateFuelPacks();
+                // RemoveTorepdoPacks();
+                // GenerateTorepedoPacks();
             }
 
             Services.GetService<Space>().Update((float)gameTime.ElapsedGameTime.TotalSeconds);
@@ -184,7 +244,7 @@ namespace SpaceDocker
             spriteBatch.DrawString(shipInfo, "Ship Angular Momentum: x: " + (int)ship.angularMomentum.X + " y: " + (int)ship.angularMomentum.Y + " z: " + (int)ship.angularMomentum.Z, shipAngularMomentumTextPos, Color.White);
             spriteBatch.DrawString(shipInfo, "Ship Angular Velocity: x: " + (int)ship.angularVelocity.X + " y: " + (int)ship.angularVelocity.Y + " z: " + (int)ship.angularVelocity.Z, shipAngularVelocityTextPos, Color.White);
 
-            spriteBatch.DrawString(shipInfo, "Target Location: x: " + (int)jellyfish.modelPosition.X + " y: " + (int)jellyfish.modelPosition.Y + " z: " + (int)jellyfish.modelPosition.Z, jellyfishLocationTextPos, Color.White);
+            spriteBatch.DrawString(shipInfo, "Target Location: x: " + (int)turtle.modelPosition.X + " y: " + (int)turtle.modelPosition.Y + " z: " + (int)turtle.modelPosition.Z, jellyfishLocationTextPos, Color.White);
             //spriteBatch.DrawString(shipInfo, "Target Linear Momentum: x: " + (int)jellyfish.linearMomentum.X + " y: " + (int)jellyfish.linearMomentum.Y + " z: " + (int)jellyfish.linearMomentum.Z, jellyfishLinearMomentumTextPos, Color.White);
             //spriteBatch.DrawString(shipInfo, "Target Linear Velocity: x: " + (int)jellyfish.linearVelocity.X + " y: " + (int)jellyfish.linearVelocity.Y + " z: " + (int)jellyfish.linearVelocity.Z, jellyfishLinearVelocityTextPos, Color.White);
             //spriteBatch.DrawString(shipInfo, "Target Angular Momentum: x: " + (int)jellyfish.angularMomentum.X + " y: " + (int)jellyfish.angularMomentum.Y + " z: " + (int)jellyfish.angularMomentum.Z, jellyfishAnuglarMomentumTextPos, Color.White);
