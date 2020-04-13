@@ -37,6 +37,7 @@ namespace SpaceDocker
             var otherEntityInformation = other as EntityCollidable;
             string tag = (string)otherEntityInformation.Entity.Tag;
 
+            // only remove object if comes in contact with the ship
             if (tag.Equals("ship"))
             {
                 if (Game.Components.Contains(this))

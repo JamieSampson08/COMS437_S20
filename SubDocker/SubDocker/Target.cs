@@ -1,4 +1,5 @@
 ﻿using BEPUphysics;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -43,6 +44,10 @@ namespace SpaceDocker
             physicsObject.AngularMomentum = ConversionHelper.MathConverter.Convert(angMomentum);
         }
         
+        /// <summary>
+        /// Randomly returns a location of the target within a specific range from 0,0,0
+        /// </summary>
+        /// <returns></returns>
         private Vector3 GetRandomPosition()
         {
             Vector3 distanceMultipler = new Vector3(100, 100, 100);
@@ -56,6 +61,7 @@ namespace SpaceDocker
             return distanceBetween;
         }
 
+        // resetting moves the target to a different random position
         public void Reset()
         {
             modelPosition = GetRandomPosition();

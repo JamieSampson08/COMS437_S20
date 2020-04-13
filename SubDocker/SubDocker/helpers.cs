@@ -13,6 +13,11 @@ namespace SpaceDocker
 
         public Helpers(){ }
 
+        /// <summary>
+        /// Used to enforce linear momentum bounds for moving objects (ship and target)
+        /// </summary>
+        /// <param name="linearMomentum">momentum you are wanting to change to</param>
+        /// <returns></returns>
         public Vector3 CheckLinearMomentumBounds(Vector3 linearMomentum)
         {
             Vector3 validLinearMomentum = linearMomentum;
@@ -47,6 +52,12 @@ namespace SpaceDocker
             return validLinearMomentum;
         }
 
+        /// <summary>
+        /// Used to enforce angular momentum bounds for moving objects (ship and target)
+        /// </summary>
+        /// <param name="angularMomentum">momentum you are wanting to change to</param>
+        /// <param name="direction">string - the angle you are turning in</param>
+        /// <returns></returns>
         public Vector3 CheckAngularMomentumBounds(Vector3 angularMomentum, string direction)
         {
             Vector3 tempMomentum;

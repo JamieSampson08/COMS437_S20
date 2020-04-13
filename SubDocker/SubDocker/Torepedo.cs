@@ -86,6 +86,7 @@ namespace SpaceDocker
             var otherEntityInformation = other as EntityCollidable;
             string tag = (string)otherEntityInformation.Entity.Tag;
 
+            // hitting the ship doesn't remove the torpedo (would interfer with firing logic
             if (!tag.Equals("ship"))
             {
                 if (Game.Components.Contains(this))
@@ -106,7 +107,6 @@ namespace SpaceDocker
 
         public override void Draw(GameTime gameTime)
         {
-
             foreach (var mesh in model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
@@ -138,6 +138,10 @@ namespace SpaceDocker
             }
         }
 
+        /// <summary>
+        /// Applies rotation on the torpedo
+        /// </summary>
+        /// <param name="degree"></param>
         public void RotateTorpedo(int degree)
         {
             // Aim (20 degree cone)
@@ -146,12 +150,18 @@ namespace SpaceDocker
             modelOrientation *= rot;
         }
 
+        /// <summary>
+        /// Shoots the torpedo in the directioin it is facing
+        /// </summary>
         public void ShootTorpedo()
         {
             Vector3 torpedoOffset = Vector3.Up + new Vector3(0, 1f, 0);
             // TODO - give torpedo x linear momentum
         }
 
+        /// <summary>
+        /// Rotate the torpedo to the right
+        /// </summary>
         public void RotateRight()
         {
             // TODO - edit angles
@@ -161,6 +171,10 @@ namespace SpaceDocker
                 this.RotateTorpedo(torpedoDegree);
             }
         }
+
+        /// <summary>
+        /// Rotate the torpedo to the left
+        /// </summary>
         public void RotateLeft()
         {
             // TODO - edit angles

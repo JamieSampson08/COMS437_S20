@@ -15,6 +15,13 @@ namespace SpaceDocker
         private BEPUphysics.Entities.Prefabs.Sphere physicsObject;
         private GraphicsDevice graphicsDevice;
 
+        private Texture2D waterTexture;
+
+        public Vector3 modelPosition
+        {
+            get { return ConversionHelper.MathConverter.Convert(physicsObject.Position); }
+            set { physicsObject.Position = ConversionHelper.MathConverter.Convert(value); }
+        }
 
         public Skybox(Game game) : base(game)
         {
@@ -24,7 +31,7 @@ namespace SpaceDocker
 
         public Skybox(Game game, Vector3 pos, string id) : this(game)
         {
-            physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 1);
+            physicsObject = new BEPUphysics.Entities.Prefabs.Sphere(ConversionHelper.MathConverter.Convert(pos), 100);
             physicsObject.AngularDamping = 0f;
             physicsObject.LinearDamping = 0f;
             physicsObject.Tag = id;
@@ -32,35 +39,23 @@ namespace SpaceDocker
             Game.Services.GetService<Space>().Add(physicsObject);
         }
 
-        public override void Initialize()
-        {
-            base.Initialize();
-        }
-
         protected override void LoadContent()
         {
-            model = Game.Content.Load<Model>("skybox2");
-
+            waterTexture = Game.Content.Load<Texture2D>("skybox_water");
+            model = Game.Content.Load<Model>("skyWater");
+            modelPosition = Vector3.Transform(modelPosition, Matrix.CreateScale(200f));
+            physicsObject.Radius = model.Meshes[0].BoundingSphere.Radius;
             base.LoadContent();
         }
 
-        protected override void UnloadContent()
-        {
-            base.UnloadContent();
-        }
-
         public override void Draw(GameTime gameTime)
-        {
-
-            // graphicsDevice.RasterizerState.CullMode = CullMode.CullClockwiseFace;
-
-
+        {     
             // draw model
             foreach (var mesh in model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    effect.Alpha = .05f;
+                    effect.Alpha = 1f;
                     effect.EnableDefaultLighting();
                     effect.PreferPerPixelLighting = true;
                     effect.World = scale * ConversionHelper.MathConverter.Convert(physicsObject.WorldTransform);
@@ -70,20 +65,20 @@ namespace SpaceDocker
                 mesh.Draw();
             }
 
-           // graphicsDevice.RasterizerState.CullMode = CullMode.CullCounterClockwiseFace;
-
             base.Draw(gameTime);
         }
 
         public override void Update(GameTime gameTime)
         {
-            physicsObject.WorldTransform = ConversionHelper.MathConverter.Convert(scale) * physicsObject.WorldTransform;
+            // TODO - doesn't follow the ship yet
+            // physicsObject.WorldTransform = ConversionHelper.MathConverter.Convert(scale) * physicsObject.WorldTransform;
             base.Update(gameTime);
         }
 
         public void Reset()
         {
-            // TODO - move so center = ship modelPosition
+            // TODO - set the location of the skybox to that of the ship
+            // physicsObject.WorldTransform = ConversionHelper.MathConverter.Convert(scale) * physicsObject.WorldTransform;
         }
     }
 }

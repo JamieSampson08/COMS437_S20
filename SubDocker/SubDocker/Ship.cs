@@ -50,9 +50,6 @@ namespace SpaceDocker
         SpriteFont annoucement;
         SpriteFont shipInfo;
 
-        private string generalInfoMessage;
-
-
         private Game game;
 
         // text locations
@@ -63,6 +60,7 @@ namespace SpaceDocker
         Vector2 goalReachedTextPos;
         Vector2 generalInfoPos;
         Vector2 shiledActiveTextPos;
+        private string generalInfoMessage;
 
         private bool shieldActive;
         private float shieldReduction;
@@ -141,6 +139,9 @@ namespace SpaceDocker
             Game.Services.GetService<Space>().Add(physicsObject);
         }
 
+        /// <summary>
+        /// Generates all the torpedos that the ship has stored on the ship
+        /// </summary>
         private void GenerateTorpedos()
         {
             allTorpedos = new List<Torpedo>();
@@ -154,6 +155,9 @@ namespace SpaceDocker
             currentTorpdoIndex = maxTorpedoCount;
         }
 
+        /// <summary>
+        /// Remove any leftover torpeods from the ship
+        /// </summary>
         private void RemoveTorpedos()
         {
             foreach (Torpedo t in allTorpedos)
@@ -162,6 +166,9 @@ namespace SpaceDocker
             }
         }
 
+        /// <summary>
+        /// have to change the orientation of the ship, as the model isn't facing in the right direction
+        /// </summary>
         private void InitalOrientation()
         {
             // orient ship in a way that you can use Vector.x on the camera
@@ -233,6 +240,9 @@ namespace SpaceDocker
             }
         }
 
+        /// <summary>
+        /// Add another torpedos to the list of torpedos that the ship has
+        /// </summary>
         private void AddTorpedo()
         {
             if (allTorpedos.Count == 0)
@@ -268,7 +278,6 @@ namespace SpaceDocker
             shiledActiveTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 350));
 
             generalInfoPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 400));
-
 
             base.LoadContent();
         }
@@ -306,17 +315,19 @@ namespace SpaceDocker
             spriteBatch.DrawString(shipInfo, "Health: " + health, healthTextPos, LevelStatus(health, maxHealth));
             spriteBatch.DrawString(shipInfo, "Fuel Level: " + fuelLevel, fuelTextPos, LevelStatus(fuelLevel, maxFuelLevel));
             
+            // show fire mode identifier
             if (fireMode)
             {
                 spriteBatch.DrawString(shipInfo, "FIRE MODE ACTIVE", fireModeTextPos, Color.Yellow);
             }
            
-
+            // show gneral information if avialble
             if (generalInfoMessage != null)
             {
                 spriteBatch.DrawString(shipInfo, generalInfoMessage, generalInfoPos, Color.Orange);
             }
 
+            // show active shield message if active
             if (shiledActiveMessage != null)
             {
                 spriteBatch.DrawString(shipInfo, shiledActiveMessage, shiledActiveTextPos, Color.Yellow);
@@ -472,7 +483,6 @@ namespace SpaceDocker
                 allTorpedos[0].RotateLeft();
             }
 
-
             // exit fire mode
             if (currentKeyboardState.IsKeyDown(Keys.G))
             {
@@ -486,6 +496,12 @@ namespace SpaceDocker
         }
 
 
+        /// <summary>
+        /// Helper function that changes the color of text based on the value left scaled to the total possible
+        /// </summary>
+        /// <param name="objMeasuring"></param>
+        /// <param name="maxLevel"></param>
+        /// <returns></returns>
         private Color LevelStatus(float objMeasuring, float maxLevel)
         {
             if (objMeasuring >= (maxLevel / 2))
@@ -502,6 +518,10 @@ namespace SpaceDocker
             }
         }
 
+        /// <summary>
+        ///  Determines the game scaling of items based on requested difficulty
+        /// </summary>
+        /// <param name="difficulty"></param>
         private void InitItemDifficulty(int difficulty)
         {
             // level choser
@@ -526,6 +546,9 @@ namespace SpaceDocker
             }
         }
 
+        /// <summary>
+        /// Removes all objects from the game, resets position of the ship and skybox, and re randomizes target location
+        /// </summary>
         public void Reset()
         {
             InitItemDifficulty(difficulty);
@@ -535,6 +558,7 @@ namespace SpaceDocker
             angularMomentum = Vector3.Zero;
 
             InitalOrientation();
+            // TODO - having issues with a bug where the physics object is nulll
             // RemoveTorpedos();
             // GenerateTorpedos();
 
