@@ -2,10 +2,7 @@
 
 ### **TODO**:
 
-- Skybox
-- torpedo aiming
-
-
+- Torpedo Aiming & Shooting
 
 ### Tools:
 
@@ -15,11 +12,10 @@
 - Blender
 
 ### Story:
-You're traveling through space to escape the clutches of the Rubber Duck society that has taken power over humans. Equipped only with fuel
-and torpedos, you venture out in hopes of locating the rare turtle that will enable you to take back your world.
+You're traveling into the depths of the water to escape the clutches of the Rubber Duck society that has taken power over humans. Equipped only with fuel and torpedos, you venture out in hopes of locating the rare turtle that will enable you to take back your world.
 
 ### Goal:
-Navigate through space avoiding or destroying the Rubber Ducks who are chasing after you.
+Navigate through deep waters avoiding or destroying the Rubber Ducks who are chasing after you.
 
 Locate the rare turtle before you lose all your fuel and/or health. Claiming this prize will make you the ruler of all Rubber Ducks!
 

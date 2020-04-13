@@ -4,11 +4,11 @@ namespace SpaceDocker
 {
     class Helpers
     {
-        private Vector3 maxLinearMomentum = new Vector3(30f, 30f, 30f);
-        private Vector3 minLinearMomentum = new Vector3(-30f, -30f, -30f);
+        private Vector3 maxLinearMomentum = new Vector3(50f, 50f, 50f);
+        private Vector3 minLinearMomentum = new Vector3(-50f, -50f, -50f);
 
-        private Vector3 maxAngularMomentum = new Vector3(10f, 10f, 10f);
-        private Vector3 minAngularMomentum = new Vector3(-10f, -10f, -10f);
+        private Vector3 maxAngularMomentum = new Vector3(4f, 4f, 4f);
+        private Vector3 minAngularMomentum = new Vector3(-4f, -4f, -4f);
         private float rotationDegree = .5f;
 
         public Helpers(){ }

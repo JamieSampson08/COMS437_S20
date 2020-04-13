@@ -53,8 +53,11 @@ namespace SpaceDocker
             Services.AddService<Space>(new Space());
 
             // range that items will be placed from 0,0,0
-            distanceMultipler = new Vector3(200, 200, 200);
-            
+            distanceMultipler = new Vector3(400, 400, 400);
+
+            // skybox setup
+            skybox = new Skybox(this, Vector3.Zero, "skybox");
+
             // set up scaling game variables
             InitItemDifficulty(difficulty);
             
@@ -76,8 +79,7 @@ namespace SpaceDocker
             Vector3 linMomentum = new Vector3((float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30), (float)rnd.NextDouble() * rnd.Next(-30, 30));
             turtle = new Target(this, "turtle", linMomentum, angMomentum);
 
-            // skybox setup
-            skybox = new Skybox(this, ship.modelPosition, "skybox");
+           
 
             base.Initialize();
         }
@@ -91,9 +93,9 @@ namespace SpaceDocker
             switch (difficulty)
             {
                 case 1:
-                    maxFuelPack = 5;
-                    maxTorpedoPack = 5;
-                    numDuckGeneration = 40;
+                    maxFuelPack = 10;
+                    maxTorpedoPack = 10;
+                    numDuckGeneration = 60;
                     return;
                 case 2:
                     Console.WriteLine("Level 2 Not Implemented");
@@ -201,8 +203,8 @@ namespace SpaceDocker
             spriteBatch = new SpriteBatch(GraphicsDevice);
             shipInfo = Content.Load<SpriteFont>("shipInfo");
 
-            shipLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - 100));
-            targetLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 500), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
+            shipLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 800), (float)(GraphicsDevice.Viewport.Height - 100));
+            targetLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 800), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
         }
 
         protected override void UnloadContent()
@@ -234,7 +236,6 @@ namespace SpaceDocker
             if (currentKeyboardState.IsKeyDown(Keys.R))
             {
                 ship.Reset();
-                skybox.Reset();
                 turtle.Reset();
                 // RemoveRubberDucks();
                 // GenerateRubberDucks();
@@ -252,18 +253,18 @@ namespace SpaceDocker
         {
             GraphicsDevice.Clear(Color.Black);
 
+            base.Draw(gameTime);
+
             // debugging
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(shipInfo, "Ship Location: x: " + (int)ship.modelPosition.X + " y: " + (int)ship.modelPosition.Y + " z: " + (int)ship.modelPosition.Z, shipLocationTextPos, Color.White);    
+            spriteBatch.DrawString(shipInfo, "ShipLocation: x: " + (int)ship.modelPosition.X + " y: " + (int)ship.modelPosition.Y + " z: " + (int)ship.modelPosition.Z, shipLocationTextPos, Color.Orange);
 
             if (showTargetLocation)
             {
-                spriteBatch.DrawString(shipInfo, "Target Location: x: " + (int)turtle.modelPosition.X + " y: " + (int)turtle.modelPosition.Y + " z: " + (int)turtle.modelPosition.Z, targetLocationTextPos, Color.White);
+                spriteBatch.DrawString(shipInfo, "TargetLocation: x: " + (int)turtle.modelPosition.X + " y: " + (int)turtle.modelPosition.Y + " z: " + (int)turtle.modelPosition.Z, targetLocationTextPos, Color.Orange);
             }
             spriteBatch.End();
-
-            base.Draw(gameTime);
         }
     }
 }

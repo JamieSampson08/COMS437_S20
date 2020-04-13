@@ -28,7 +28,7 @@ namespace SpaceDocker
 
         private float thrustDeduction;
 
-        private float speed = 1f;
+        private float speed = 20f;
         private Vector3 maxVelocityToWin = Vector3.Zero;
         private int currentTorpdoIndex;
 
@@ -61,6 +61,9 @@ namespace SpaceDocker
         Vector2 generalInfoPos;
         Vector2 shiledActiveTextPos;
         private string generalInfoMessage;
+
+        Vector2 boundsTextPos;
+        private string boundsMessage;
 
         private bool shieldActive;
         private float shieldReduction;
@@ -274,10 +277,11 @@ namespace SpaceDocker
             torpedoTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 200));
             
             fireModeTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 300));
-            goalReachedTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 2), (float)(GraphicsDevice.Viewport.Height / 2));
+            goalReachedTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
             shiledActiveTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 350));
 
             generalInfoPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 24), (float)(GraphicsDevice.Viewport.Height - 400));
+            boundsTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 800), (float)(GraphicsDevice.Viewport.Height - 200));
 
             base.LoadContent();
         }
@@ -299,7 +303,7 @@ namespace SpaceDocker
 
             if (conclusionMessage != null)
             {
-                spriteBatch.DrawString(annoucement, conclusionMessage, goalReachedTextPos, Color.White);
+                spriteBatch.DrawString(annoucement, conclusionMessage, goalReachedTextPos, Color.Orange);
             }
 
             // show ship diagnostics
@@ -318,7 +322,7 @@ namespace SpaceDocker
             // show fire mode identifier
             if (fireMode)
             {
-                spriteBatch.DrawString(shipInfo, "FIRE MODE ACTIVE", fireModeTextPos, Color.Yellow);
+                spriteBatch.DrawString(shipInfo, "FIRE MODE ACTIVE", fireModeTextPos, Color.DarkMagenta);
             }
            
             // show gneral information if avialble
@@ -330,7 +334,12 @@ namespace SpaceDocker
             // show active shield message if active
             if (shiledActiveMessage != null)
             {
-                spriteBatch.DrawString(shipInfo, shiledActiveMessage, shiledActiveTextPos, Color.Yellow);
+                spriteBatch.DrawString(shipInfo, shiledActiveMessage, shiledActiveTextPos, Color.DarkMagenta);
+            }
+
+            if(boundsMessage != null)
+            {
+                spriteBatch.DrawString(shipInfo, boundsMessage, boundsTextPos, Color.Red);
             }
 
             spriteBatch.End();
@@ -352,21 +361,60 @@ namespace SpaceDocker
             base.Draw(gameTime);
         }
 
+        private void CheckBounds()
+        {
+            if (modelPosition.X > 400)
+            {
+                modelPosition = new Vector3(400, modelPosition.Y, modelPosition.Z);
+                boundsMessage = "HIT X BOUND";
+            }
+            if (modelPosition.X < -400)
+            {
+                modelPosition = new Vector3(-400, modelPosition.Y, modelPosition.Z);
+                boundsMessage = "HIT -X BOUND";
+            }
+
+            if (modelPosition.Y > 400)
+            {
+                modelPosition = new Vector3(modelPosition.X, 400, modelPosition.Z);
+                boundsMessage = "HIT Y BOUND";
+            }
+            if (modelPosition.Y < -400)
+            {
+                modelPosition = new Vector3(modelPosition.X, - 400, modelPosition.Z);
+                boundsMessage = "HIT -Y BOUND";
+            }
+
+            if (modelPosition.Z > 400)
+            {
+                modelPosition = new Vector3(modelPosition.X, modelPosition.Y, 400);
+                boundsMessage = "HIT Z BOUND";
+            }
+            if (modelPosition.Z < -400)
+            {
+                modelPosition = new Vector3(modelPosition.X, modelPosition.Y , - 400);
+                boundsMessage = "HIT -Z BOUND";
+            }
+        }
+
         public override void Update(GameTime gameTime)
         {
             currentGamePadState = GamePad.GetState(PlayerIndex.One);
             currentKeyboardState = Keyboard.GetState();
 
+            CheckBounds();
+
             // Thrust in direction facing
             if (currentKeyboardState.IsKeyDown(Keys.T) || currentGamePadState.Buttons.Y == ButtonState.Pressed)
             {
-                if (fuelLevel >= thrustDeduction)
+                if(fuelLevel > 0)
                 {
                     Vector3 displacement = Vector3.Up * speed;
-                    Vector3 tempMomentum =  linearMomentum + Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
+                    Vector3 tempMomentum = linearMomentum + Vector3.Transform(displacement, Matrix.CreateFromQuaternion(modelOrientation));
                     linearMomentum = helper.CheckLinearMomentumBounds(tempMomentum);
                     fuelLevel -= thrustDeduction;
                     generalInfoMessage = null;
+                    boundsMessage = null;
                 }
             }
 
