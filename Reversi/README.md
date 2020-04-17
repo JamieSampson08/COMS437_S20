@@ -1,23 +1,25 @@
-Reversi (WIP)
-	- TurnBased : C# AI
+# Reversi (WIP)
 
-Tools: 
+### Tools: 
 - Unity
 - Rider (IDE)
+- Unity Asset: Behavior Bricks
+- Mixamo (Characters & Animations)
 
-Implmented:
-- currently only works for depth of 1
-- handles incorrect inputs 
-- handles invalid moves
+### TurnBased: C# Terminal Game
+- colored terminal game
+- error handling for incorrect inputs (difficulty, turn position, moves)
 - 'W' is always the computer (thus, player = 'B') 
-    - planning on making these customizable in the future since it's just a const var change
 - shows all the possible moves as "?"
-- lists the possible moves
-- shows board coordinates to enter moves
+- lists the possible moves for the player
+- AI searchs ahead x many times, where x = difficulty level
 
-Incomplete:
-- the correct move isn't being returned even though it correctly min/maxs values
-- alpha beta purning (decided it wasn't a good idea to try to implement this before I got ^ fixed first)
-- remove debugging lines (too many to fix upon this submission, but will for final)
-- uncomment out the more sophisticated evalutation logic (easier to debug with staright up # of pieces on the board)
+### Reversi: C# Unity Project
+- game deploys a character that reacts to plays made
+- behviors generated using Behviors Bricks
+- 3 different behaviors (animations) for three different scenarios
+1. THING 1
+2. THING 2
+3. THING 3
+- incorporate the logic constructed in "TurnBased" for gameplay
 
