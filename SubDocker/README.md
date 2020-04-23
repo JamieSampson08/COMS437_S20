@@ -1,6 +1,6 @@
 # SpaceDocker (WIP)
 
-### **TODO**:
+### **TODO/BUGS**:
 
 - Torpedo Aiming & Shooting
 
@@ -19,7 +19,7 @@ Navigate through deep waters avoiding or destroying the Rubber Ducks who are cha
 
 Locate the rare turtle before you lose all your fuel and/or health. Claiming this prize will make you the ruler of all Rubber Ducks!
 
-### **Messages: **
+### Messages:
 
 - Torpedo Pack Picked Up
 - Fuel Packs Picked Up
@@ -35,7 +35,7 @@ Locate the rare turtle before you lose all your fuel and/or health. Claiming thi
 
 ### Controls:
 
-*Note*: controls listed as <keyboard>/<game controller>
+*Note*: controls listed as keyboard/game controller
 
 **General**
 
