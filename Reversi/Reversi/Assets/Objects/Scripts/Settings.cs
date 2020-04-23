@@ -13,5 +13,11 @@ namespace Objects.Scripts
         static public int turnOrder = 0; // defaults to player going first
         static public int maxDepth = 1; // defaults to level 1
         static public string currentPlayer;
+
+        static public bool playerLosesDiscs;
+        static public bool playerGainsDiscs;
+        static public bool opponentWaiting;
+
+        static public bool makeComputerMove;
     }
 }

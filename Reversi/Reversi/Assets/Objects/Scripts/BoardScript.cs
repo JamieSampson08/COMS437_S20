@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using Objects.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,13 +29,12 @@ public class BoardScript : MonoBehaviour
         board = new Board(8, ROOT_PLAYER);
         InitBoard();
     }
-
     private void Update()
     {
-        if (board.CurrentPlayer == Settings.ComputerName)
-        {
+        if(Settings.makeComputerMove){
             simulateHelper();
-            // MakeComputerMove(); // TODO - need to figure out how to get AI to wait
+            MakeComputerMove(); // TODO - need to figure out how to get AI to wait
+            Settings.makeComputerMove = false;
         }
     }
 
@@ -106,6 +104,7 @@ public class BoardScript : MonoBehaviour
 
     private void MakePlayerMove()
     {
+        int previousComputerScore = board.NumWhite;
         playerTookTurn = true;
         
         // if no moves exist, set skip = true, else false
@@ -142,6 +141,11 @@ public class BoardScript : MonoBehaviour
         }
 
         CreateDisc(newMove.Row, newMove.Col, true);
+        
+        if (previousComputerScore - board.NumWhite > 2)
+        {
+            Settings.playerGainsDiscs = true;
+        }
     }
 
     private void EndGame()
@@ -151,6 +155,7 @@ public class BoardScript : MonoBehaviour
     
     private void MakeComputerMove()
     {
+        int previousPlayerScore = board.NumBlack;
         computerTookTurn = true;
 
         int bestScore = 0;
@@ -171,6 +176,11 @@ public class BoardScript : MonoBehaviour
         
         board.MakeMove(bestMove, true);
         CreateDisc(bestMove.Row, bestMove.Col);
+        
+        if (previousPlayerScore - board.NumBlack > 2)
+        {
+            Settings.playerLosesDiscs = true;
+        }
     }
     
     private static (int, Move) Minimax(Board board, string rootPlayer, int maxDepth, int currentDepth, int alpha,

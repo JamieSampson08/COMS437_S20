@@ -20,23 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684defcb-1096-49c0-963f-f2d61023e739" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/Resources/Behaviors/DoneEnemyBehavior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/Resources/Behaviors/DoneEnemyBehavior.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/QuickStartGuide/Done/Resources/Behaviors/DoneClickAndGo.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/QuickStartGuide/Done/Resources/Behaviors/DoneClickAndGo.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/QuickStartGuide/Done/Resources/Behaviors/DoneEnemyBehavior.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/QuickStartGuide/Done/Resources/Behaviors/DoneEnemyBehavior.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/QuickStartGuide/Done/Resources/Behaviors/DoneWander.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BehaviorBricks/Samples/QuickStartGuide/Done/Resources/Behaviors/DoneWander.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/DancingRunningMan.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/DancingRunningMan.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/Idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/KnockedOut.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/KnockedOut.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/SwingDancing.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/Animations/SwingDancing.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/aj.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Characters/AJ/aj.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Move.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentMaximizeLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp-Editor.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/0d5faf-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/0d5faf-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/AI/AI.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/AI/Board.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/AI/Errors.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/AI/Exceptions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/AI/Move.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/AI/ReversiAi.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../StripTurnBased/TurnBased.sln" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameBoard.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,64 +53,43 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/LevelDropdown.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/ButtonManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Conditions/System/Basic/CheckBool.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/TurnOrderToggle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/00/f3e1d093/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/FinalScoreText.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Basic/WaitForSeconds.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DDC58135-15EC-4363-A418-AFBDB497BD69/26/4c523211/NavMesh.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3E5B618A-479D-450D-9629-81F98615C324/ca/51d8c2c0/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Move.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/IsComputerTurn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/e8/a2687c51/RenderPipelineManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/01/f280aec4/ScriptableRuntimeReflectionSystemWrapper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Animation/PlayAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/B9AAA543-B70C-42D3-9A03-B0367C4FD1A4/88/8eaed4f8/02000008pdb.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EDB08A87-1119-48C7-81CC-B8840A6E46F1/ae/d1498d8b/Event.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18296D29-697F-423C-917B-EC027CBA889E/d7/3bb0589a/SendMouseEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/Downloads/Reversi2/Reversi2/Assets/Objects/Scripts/PieceScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/SkipAlertPanel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DDC58135-15EC-4363-A418-AFBDB497BD69/26/4c523211/NavMesh.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/DoneIsNight.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18296D29-697F-423C-917B-EC027CBA889E/d7/3bb0589a/SendMouseEvents.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/MakeComputerMove.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/DoneDayNightCycle.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/SkipAlertPanel.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/DiscScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/BehaviorExecutor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/TriggerAnimations.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -141,9 +119,15 @@
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/DiscScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Disc.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Move.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/IsLossingPoints.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/MakeMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Helpers.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/MakeComputerMove.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/TriggerAnimations.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/IsComputerTurn.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" />
       </list>
     </option>
@@ -161,6 +145,7 @@
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.23991798" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.37320575" />
     <property name="Rider.SolutionExplorerActivator" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -169,10 +154,10 @@
     <property name="threadsIsVisibleKey" value="false" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="99662">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="21916">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="99662" />
+      <option name="pid" value="21916" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -205,6 +190,7 @@
       <workItem from="1587433304278" duration="4555000" />
       <workItem from="1587509315431" duration="7874000" />
       <workItem from="1587571046797" duration="17421000" />
+      <workItem from="1587667882221" duration="7189000" />
     </task>
     <servers />
   </component>
@@ -235,82 +221,82 @@
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state x="147" y="141" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.960@0.0.1536.960" timestamp="1587327678220" />
-    <state x="1003" y="383" key="#xdebugger.evaluate" timestamp="1587609220294">
+    <state x="1003" y="383" key="#xdebugger.evaluate" timestamp="1587670388530">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="1003" y="383" key="#xdebugger.evaluate/0.0.1536.960@0.0.1536.960" timestamp="1587609220294" />
+    <state x="1003" y="383" key="#xdebugger.evaluate/0.0.1536.960@0.0.1536.960" timestamp="1587670388530" />
     <state width="457" height="464" key="DebuggerActiveHint" timestamp="1587605251190">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state width="457" height="464" key="DebuggerActiveHint/0.0.1536.960@0.0.1536.960" timestamp="1587605251190" />
-    <state x="100" y="100" width="1336" height="760" key="DiffContextDialog" timestamp="1587611967957">
+    <state x="100" y="100" width="1336" height="760" key="DiffContextDialog" timestamp="1587681492592">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="100" y="100" width="1336" height="760" key="DiffContextDialog/0.0.1536.960@0.0.1536.960" timestamp="1587611967957" />
-    <state width="720" height="337" key="GridCell.Tab.0.bottom" timestamp="1587613027833">
+    <state x="100" y="100" width="1336" height="760" key="DiffContextDialog/0.0.1536.960@0.0.1536.960" timestamp="1587681492592" />
+    <state width="1494" height="337" key="GridCell.Tab.0.bottom" timestamp="1587670711604">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.0.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587613027833" />
-    <state width="720" height="337" key="GridCell.Tab.0.center" timestamp="1587613027832">
+    <state width="1494" height="337" key="GridCell.Tab.0.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587670711604" />
+    <state width="1494" height="337" key="GridCell.Tab.0.center" timestamp="1587670711603">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.0.center/0.0.1536.960@0.0.1536.960" timestamp="1587613027832" />
-    <state width="720" height="337" key="GridCell.Tab.0.left" timestamp="1587613027831">
+    <state width="1494" height="337" key="GridCell.Tab.0.center/0.0.1536.960@0.0.1536.960" timestamp="1587670711603" />
+    <state width="1494" height="337" key="GridCell.Tab.0.left" timestamp="1587670711603">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.0.left/0.0.1536.960@0.0.1536.960" timestamp="1587613027831" />
-    <state width="720" height="337" key="GridCell.Tab.0.right" timestamp="1587613027832">
+    <state width="1494" height="337" key="GridCell.Tab.0.left/0.0.1536.960@0.0.1536.960" timestamp="1587670711603" />
+    <state width="1494" height="337" key="GridCell.Tab.0.right" timestamp="1587670711604">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.0.right/0.0.1536.960@0.0.1536.960" timestamp="1587613027832" />
-    <state width="720" height="337" key="GridCell.Tab.1.bottom" timestamp="1587613027835">
+    <state width="1494" height="337" key="GridCell.Tab.0.right/0.0.1536.960@0.0.1536.960" timestamp="1587670711604" />
+    <state width="1494" height="337" key="GridCell.Tab.1.bottom" timestamp="1587670721548">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.1.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587613027835" />
-    <state width="720" height="337" key="GridCell.Tab.1.center" timestamp="1587613027834">
+    <state width="1494" height="337" key="GridCell.Tab.1.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587670721548" />
+    <state width="1494" height="337" key="GridCell.Tab.1.center" timestamp="1587670721547">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.1.center/0.0.1536.960@0.0.1536.960" timestamp="1587613027834" />
-    <state width="720" height="337" key="GridCell.Tab.1.left" timestamp="1587613027833">
+    <state width="1494" height="337" key="GridCell.Tab.1.center/0.0.1536.960@0.0.1536.960" timestamp="1587670721547" />
+    <state width="1494" height="337" key="GridCell.Tab.1.left" timestamp="1587670721546">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.1.left/0.0.1536.960@0.0.1536.960" timestamp="1587613027833" />
-    <state width="720" height="337" key="GridCell.Tab.1.right" timestamp="1587613027834">
+    <state width="1494" height="337" key="GridCell.Tab.1.left/0.0.1536.960@0.0.1536.960" timestamp="1587670721546" />
+    <state width="1494" height="337" key="GridCell.Tab.1.right" timestamp="1587670721547">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.1.right/0.0.1536.960@0.0.1536.960" timestamp="1587613027834" />
-    <state width="720" height="337" key="GridCell.Tab.2.bottom" timestamp="1587613027837">
+    <state width="1494" height="337" key="GridCell.Tab.1.right/0.0.1536.960@0.0.1536.960" timestamp="1587670721547" />
+    <state width="1494" height="337" key="GridCell.Tab.2.bottom" timestamp="1587670711513">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.2.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587613027837" />
-    <state width="720" height="337" key="GridCell.Tab.2.center" timestamp="1587613027836">
+    <state width="1494" height="337" key="GridCell.Tab.2.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587670711513" />
+    <state width="1494" height="337" key="GridCell.Tab.2.center" timestamp="1587670711512">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.2.center/0.0.1536.960@0.0.1536.960" timestamp="1587613027836" />
-    <state width="720" height="337" key="GridCell.Tab.2.left" timestamp="1587613027836">
+    <state width="1494" height="337" key="GridCell.Tab.2.center/0.0.1536.960@0.0.1536.960" timestamp="1587670711512" />
+    <state width="1494" height="337" key="GridCell.Tab.2.left" timestamp="1587670711512">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.2.left/0.0.1536.960@0.0.1536.960" timestamp="1587613027836" />
-    <state width="720" height="337" key="GridCell.Tab.2.right" timestamp="1587613027837">
+    <state width="1494" height="337" key="GridCell.Tab.2.left/0.0.1536.960@0.0.1536.960" timestamp="1587670711512" />
+    <state width="1494" height="337" key="GridCell.Tab.2.right" timestamp="1587670711513">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.2.right/0.0.1536.960@0.0.1536.960" timestamp="1587613027837" />
-    <state width="720" height="337" key="GridCell.Tab.3.bottom" timestamp="1587613027840">
+    <state width="1494" height="337" key="GridCell.Tab.2.right/0.0.1536.960@0.0.1536.960" timestamp="1587670711513" />
+    <state width="1494" height="337" key="GridCell.Tab.3.bottom" timestamp="1587670711514">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.3.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587613027840" />
-    <state width="720" height="337" key="GridCell.Tab.3.center" timestamp="1587613027839">
+    <state width="1494" height="337" key="GridCell.Tab.3.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587670711514" />
+    <state width="1494" height="337" key="GridCell.Tab.3.center" timestamp="1587670711513">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.3.center/0.0.1536.960@0.0.1536.960" timestamp="1587613027839" />
-    <state width="720" height="337" key="GridCell.Tab.3.left" timestamp="1587613027838">
+    <state width="1494" height="337" key="GridCell.Tab.3.center/0.0.1536.960@0.0.1536.960" timestamp="1587670711513" />
+    <state width="1494" height="337" key="GridCell.Tab.3.left" timestamp="1587670711513">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.3.left/0.0.1536.960@0.0.1536.960" timestamp="1587613027838" />
-    <state width="720" height="337" key="GridCell.Tab.3.right" timestamp="1587613027840">
+    <state width="1494" height="337" key="GridCell.Tab.3.left/0.0.1536.960@0.0.1536.960" timestamp="1587670711513" />
+    <state width="1494" height="337" key="GridCell.Tab.3.right" timestamp="1587670711514">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="720" height="337" key="GridCell.Tab.3.right/0.0.1536.960@0.0.1536.960" timestamp="1587613027840" />
+    <state width="1494" height="337" key="GridCell.Tab.3.right/0.0.1536.960@0.0.1536.960" timestamp="1587670711514" />
     <state x="368" y="219" key="Rider.ProjectTemplateDialog.Size" timestamp="1587332870897">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
@@ -343,10 +329,10 @@
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state x="432" y="224" key="run.anything.popup/0.0.1536.960@0.0.1536.960" timestamp="1587327554318" />
-    <state x="837" y="209" width="672" height="678" key="search.everywhere.popup" timestamp="1587595499187">
+    <state x="837" y="209" width="672" height="678" key="search.everywhere.popup" timestamp="1587678995774">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="837" y="209" width="672" height="678" key="search.everywhere.popup/0.0.1536.960@0.0.1536.960" timestamp="1587595499187" />
+    <state x="837" y="209" width="672" height="678" key="search.everywhere.popup/0.0.1536.960@0.0.1536.960" timestamp="1587678995774" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
