@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Threading;
-
+using System.Collections;
 using Objects.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,8 +29,6 @@ public class BoardScript : MonoBehaviour
         Settings.currentPlayer = ROOT_PLAYER;
         board = new Board(8, ROOT_PLAYER);
         InitBoard();
-        
-
     }
 
     private void Update()
@@ -39,7 +36,7 @@ public class BoardScript : MonoBehaviour
         if (board.CurrentPlayer == Settings.ComputerName)
         {
             simulateHelper();
-            // MakeComputerMove();
+            // MakeComputerMove(); // TODO - need to figure out how to get AI to wait
         }
     }
 
@@ -65,33 +62,23 @@ public class BoardScript : MonoBehaviour
     private GameObject CreateDisc(int gridRow, int gridCol, bool flip = false)
     {
         GameObject gamePiece = Instantiate(GamePiece);
-
-        Move newDisc = new Move(gridRow, gridCol);
-        newDisc.SetRenderedPosition(gridRow * -1, gridCol);
-        newDisc.Color = DiscScript.PieceColor.BLACK;
-        
         gamePiece.name = gridRow + "," + gridCol; // so we can query later to flip
 
         if (flip)
         {
-            print("Flipped New Disc");
             gamePiece.GetComponent<DiscScript>().Flip(DiscScript.PieceColor.WHITE);
-            newDisc.Color = DiscScript.PieceColor.WHITE;
         }
         
         gamePiece.GetComponent<Rigidbody>().position =
-            new Vector3(newDisc.RenderedCol, 8, newDisc.RenderedRow);
-
-        print(newDisc.Color);
+            new Vector3(gridCol, 8, gridRow * -1);
+        
         return gamePiece;
     }
 
     private void simulateHelper()
     {
-        print("SIMULATE HELPER");
         if (board.IsTerminal())
         {
-            print("IS TERMINAL");
             EndGame();
         }
         
@@ -107,7 +94,6 @@ public class BoardScript : MonoBehaviour
     private void OnMouseDown()
     {
         simulateHelper();
-        print("SHOULD PRINT");
         board.ShowBoard();
         
         if (board.CurrentPlayer != Settings.PlayerName)
@@ -147,29 +133,26 @@ public class BoardScript : MonoBehaviour
         
         // create a new move
         Move newMove = new Move( renderedRow * -1, renderedCol);
-        newMove.SetRenderedPosition(renderedRow, renderedCol);
+
         string errorMessage = board.MakeMove(newMove);
         if (errorMessage != null)
         {
             // TODO - Post Error Message: "Invalid Move"
+            return;
         }
-        
-        print("ADD PLAYER PIECE");
-        
+
         CreateDisc(newMove.Row, newMove.Col, true);
     }
 
     private void EndGame()
     {
-        print("GAME OVER");
         SceneManager.LoadScene("GameOver"); // TODO - doesn't work???
     }
     
     private void MakeComputerMove()
     {
         computerTookTurn = true;
-        print("Computer's Turn");
-        
+
         int bestScore = 0;
         Move bestMove = null;
         
@@ -186,8 +169,6 @@ public class BoardScript : MonoBehaviour
             return;
         }
         
-        // mimic thinking for AI
-        Thread.Sleep(3000);
         board.MakeMove(bestMove, true);
         CreateDisc(bestMove.Row, bestMove.Col);
     }

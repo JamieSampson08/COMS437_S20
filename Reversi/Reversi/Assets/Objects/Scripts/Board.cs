@@ -270,7 +270,6 @@ namespace Objects.Scripts
             }
 
             // flip pieces
-            print("FLIPPING PIECES");
             FlipPieces(move);
 
             SetupForNewTurn();
@@ -281,6 +280,7 @@ namespace Objects.Scripts
 
         public void SetupForNewTurn()
         {
+            print("Previous Turn: " + Settings.currentPlayer);
             // switch players
             CurrentPlayer = CurrentPlayer == Settings.PlayerName ? Settings.ComputerName : Settings.PlayerName;
             Settings.currentPlayer = CurrentPlayer;
@@ -352,7 +352,6 @@ namespace Objects.Scripts
 
                     // make a move out of player's piece location
                     Move currentMove = new Move(r, c);
-                    currentMove.SetRenderedPosition(r * -1, c);
 
                     // look in all 8 directions for a valid move
                     foreach (var item in _checkDirections)
@@ -452,10 +451,7 @@ namespace Objects.Scripts
                     // if we will eventually be flipping pieces, add to list
                     if (flip)
                     {
-                        Move newMove = new Move(tempRow, tempCol);
-                        newMove.SetRenderedPosition(tempRow * -1, tempCol);
-                        movesToFlip.Add(newMove);
-                        
+                        movesToFlip.Add(new Move(tempRow, tempCol));
                     }
 
                     // increment Row Col 
@@ -484,7 +480,6 @@ namespace Objects.Scripts
                 if (!moveExists)
                 {
                     possibleMove = new Move(tempRow, tempCol);
-                    possibleMove.SetRenderedPosition(tempRow * -1, tempCol);
                 }
             }
 

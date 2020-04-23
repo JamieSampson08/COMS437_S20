@@ -7,21 +7,10 @@ namespace Objects.Scripts
         public int Col { get; }
         public int Row { get; }
 
-        public int RenderedRow { get; set; }
-        public int RenderedCol { get; set; }
-        
-        public DiscScript.PieceColor Color;
-        
         public Move(int newRow, int newCol)
         {
             Col = newCol;
             Row = newRow;
-        }
-
-        public void SetRenderedPosition(int renRow, int renCol)
-        {
-            RenderedCol = renCol;
-            RenderedRow = renRow;
         }
 
         /// <summary>
