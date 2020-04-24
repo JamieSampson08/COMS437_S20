@@ -97,10 +97,12 @@
             <e p="Board.cs" t="Include" />
             <e p="BoardScript.cs" t="Include" />
             <e p="Components" t="Include">
+              <e p="AlertText.cs" t="Include" />
               <e p="ButtonManager.cs" t="Include" />
               <e p="CurrentTurnText.cs" t="Include" />
               <e p="FinalScoreText.cs" t="Include" />
               <e p="LevelDropdown.cs" t="Include" />
+              <e p="PossibleMovesText.cs" t="Include" />
               <e p="ScoreboardText.cs" t="Include" />
               <e p="SkipAlertPanel.cs" t="Include" />
               <e p="TurnOrderToggle.cs" t="Include" />

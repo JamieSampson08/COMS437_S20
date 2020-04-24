@@ -147,8 +147,9 @@ public class BoardScript : MonoBehaviour
             // TODO - Post Error Message: "Invalid Move"
             return;
         }
-
+        
         CreateDisc(newMove.Row, newMove.Col, true);
+        board.UpdateUnityBoard();
         
         if (previousComputerScore - board.NumWhite > 2)
         {
@@ -184,6 +185,8 @@ public class BoardScript : MonoBehaviour
         
         board.MakeMove(bestMove, true);
         CreateDisc(bestMove.Row, bestMove.Col);
+        board.UpdateUnityBoard();
+        simulateHelper();
         
         if (previousPlayerScore - board.NumBlack > 2)
         {

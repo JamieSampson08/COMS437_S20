@@ -30,6 +30,7 @@ namespace Objects.Scripts
 
         // possible moves to be played on board
         private ArrayList _moves;
+        private ArrayList movesFlipped;
 
         // key, value = Row, Col
         // used to check all directions from x position
@@ -79,6 +80,7 @@ namespace Objects.Scripts
             InitBoard();
             CurrentPlayer = player;
             _moves = GetPossibleMoves();
+            movesFlipped = new ArrayList();
         }
 
         /// <summary>
@@ -157,6 +159,34 @@ namespace Objects.Scripts
                 boardRepresentation += "\n";
             }
             Debug.Log(boardRepresentation);
+        }
+
+        public void UpdateUnityBoard()
+        {
+            foreach (Move m in movesFlipped)
+            {
+                string discName = m.Row + "," + m.Col;
+                GameObject disc = GameObject.Find(discName);
+                if (!disc)
+                {
+                    print(discName + "NOT FOUND");
+                    continue;
+                }
+                
+                DiscScript discScript = disc.GetComponent<DiscScript>();
+                            
+                // backwards because issues with putting this in other functions due to recursion of minmax
+                // can't place after setUpforNewTurn, so it will always be opposite
+                if (Settings.currentPlayer == Settings.ComputerName)
+                {
+                    discScript.Flip(DiscScript.PieceColor.BLACK); 
+                }
+                else
+                {
+                    discScript.Flip(DiscScript.PieceColor.WHITE);
+                }
+            }
+            movesFlipped = new ArrayList();
         }
 
         /// <summary>
@@ -476,17 +506,7 @@ namespace Objects.Scripts
                         foreach (Move m in movesToFlip)
                         {
                             _board[m.Row, m.Col] = GetPlayerPiece(CurrentPlayer);
-                            string discName = m.Row + "," + m.Col;
-                            DiscScript discScript = GameObject.Find(discName).GetComponent<DiscScript>();
-                            
-                            if (CurrentPlayer == Settings.PlayerName)
-                            {
-                                discScript.Flip(DiscScript.PieceColor.BLACK);
-                            }
-                            else
-                            {
-                                discScript.Flip(DiscScript.PieceColor.WHITE);
-                            }
+                            movesFlipped.Add(m);
                         }
 
                         // handle num pieces on board changes

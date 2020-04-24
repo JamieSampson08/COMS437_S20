@@ -19,5 +19,8 @@ namespace Objects.Scripts
         static public bool opponentWaiting;
 
         static public bool makeComputerMove;
+        static public bool playerSkippedTurn;
+        static public bool computerSkippedTurn;
+        static public bool isInvalidMove;
     }
 }
