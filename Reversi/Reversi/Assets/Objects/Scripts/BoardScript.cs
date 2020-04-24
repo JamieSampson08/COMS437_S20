@@ -28,13 +28,18 @@ public class BoardScript : MonoBehaviour
         Settings.currentPlayer = ROOT_PLAYER;
         board = new Board(8, ROOT_PLAYER);
         InitBoard();
+        board.ShowBoard();
     }
     private void Update()
     {
         if(Settings.makeComputerMove){
+            print("Before Computer Move");
+            board.ShowBoard();
             simulateHelper();
-            MakeComputerMove(); // TODO - need to figure out how to get AI to wait
+            MakeComputerMove();
             Settings.makeComputerMove = false;
+            print("After Computer Move");
+            board.ShowBoard();
         }
     }
 
@@ -92,14 +97,17 @@ public class BoardScript : MonoBehaviour
     private void OnMouseDown()
     {
         simulateHelper();
-        board.ShowBoard();
-        
+
         if (board.CurrentPlayer != Settings.PlayerName)
         {
             return;  // clicking doesn't do anything
         }
-
+        
+        print("Before Player Movve");
+        board.ShowBoard();
         MakePlayerMove();
+        print("After Player Move");
+        board.ShowBoard();
     }
 
     private void MakePlayerMove()

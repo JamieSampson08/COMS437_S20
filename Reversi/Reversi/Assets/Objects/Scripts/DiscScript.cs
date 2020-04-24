@@ -15,9 +15,9 @@ public class DiscScript : MonoBehaviour
         Color = PieceColor.BLACK;
     }
 
-    public void Flip(PieceColor color)
+    public void Flip(PieceColor newColor)
     {
-        if (Color == color)
+        if (newColor == PieceColor.BLACK) 
         {
             gameObject.GetComponentInChildren<Animator>().SetTrigger("W2B");
             Color = PieceColor.BLACK;
@@ -25,7 +25,7 @@ public class DiscScript : MonoBehaviour
         else
         {
             gameObject.GetComponentInChildren<Animator>().SetTrigger("B2W");
-            Color = color;
+            Color = PieceColor.WHITE;
         }
     }
 }

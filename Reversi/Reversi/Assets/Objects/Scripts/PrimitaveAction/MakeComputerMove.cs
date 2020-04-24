@@ -10,7 +10,7 @@ namespace Objects.Scripts
         public override TaskStatus OnUpdate()
         {
             Settings.makeComputerMove = true;
-            return TaskStatus.FAILED;
+            return TaskStatus.COMPLETED;
         }
     }
 }

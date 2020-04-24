@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 5184482494220338470}
   - component: {fileID: 6522972253169382861}
   - component: {fileID: 6094590650946481394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Disc
   m_TagString: DiscGamePiece
   m_Icon: {fileID: 0}
@@ -86,6 +86,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 1d4b72efc366c4296aa2d15fae55e862, type: 3}
       propertyPath: m_Name
       value: ModelPiece
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 1d4b72efc366c4296aa2d15fae55e862, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1d4b72efc366c4296aa2d15fae55e862, type: 3}
       propertyPath: m_LocalPosition.x

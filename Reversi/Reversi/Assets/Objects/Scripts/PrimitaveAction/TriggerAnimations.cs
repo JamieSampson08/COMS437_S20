@@ -37,7 +37,6 @@ namespace Objects.Scripts
                     Settings.playerLosesDiscs = false;
                 }
             }
-
             return TaskStatus.COMPLETED;
         } 
 

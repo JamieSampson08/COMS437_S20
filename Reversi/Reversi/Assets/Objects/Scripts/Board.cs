@@ -45,6 +45,11 @@ namespace Objects.Scripts
             {"botLeft", new[] {1, -1}}, // botLeft
         };
 
+        /// <summary>
+        /// Given a player, returns the number of pieces on the board for that player
+        /// </summary>
+        /// <param name="player">player to get piece of</param>
+        /// <returns>string const - associated with given player</returns>
         private string GetPlayerPiece(string player)
         {
             if (player == Settings.ComputerName)
@@ -76,7 +81,9 @@ namespace Objects.Scripts
             _moves = GetPossibleMoves();
         }
 
-
+        /// <summary>
+        /// Sets up the starting game pieces
+        /// </summary>
         private void InitBoard()
         {
             _board = new string[_size, _size];
@@ -99,13 +106,14 @@ namespace Objects.Scripts
                     }
                 }
             }
-        }// CONVERTED
+        }
 
-
+        /// <summary>
+        /// Prints the pieces on the board
+        /// </summary>
         public void ShowBoard()
         {
-            print("\n");
-            
+            Console.WriteLine();
             // adds the possible move "?" icons
             ApplyPossibleMoves();
 
@@ -119,18 +127,22 @@ namespace Objects.Scripts
                     // some super wonky code to add numbers to the rows and columns
                     if (r == 0 && c == 0)
                     {
+                        Console.Write("  ");
                         boardRepresentation += "  ";
                     }
                     else if (r == 0 && c != _size)
                     {
+                        Console.Write(numbers[c - 1] + " ");
                         boardRepresentation += numbers[c - 1] + " ";
                     }
                     else if (c == 0)
                     {
+                        Console.Write(numbers[r - 1] + " ");
                         boardRepresentation += numbers[r - 1] + " ";
                     }
                     else if (r == 0)
                     {
+                        Console.Write(numbers[c - 1] + " ");
                         boardRepresentation += numbers[c - 1] + " ";
                     }
                     else
@@ -138,15 +150,19 @@ namespace Objects.Scripts
                         // print the actual value of the board
                         string piece = _board[r - 1, c - 1];
                         boardRepresentation += piece + " ";
+                        Console.Write(piece + " ");
                     }
                 }
-
+                Console.WriteLine();
                 boardRepresentation += "\n";
             }
             Debug.Log(boardRepresentation);
         }
 
-
+        /// <summary>
+        /// Deep copies the values of the board into a new board
+        /// </summary>
+        /// <returns>Board - copy of this board</returns>
         public Board Copy()
         {
             Board newBoard = new Board(_size, CurrentPlayer);
@@ -157,6 +173,13 @@ namespace Objects.Scripts
             return newBoard;
         }
 
+        /// <summary>
+        /// Determines if the board is in a state of end game
+        /// - all locations on the board is filled
+        /// - there are no possible moves left
+        /// - all of the black or white pieces have been removed
+        /// </summary>
+        /// <returns>bool - if terminal or not</returns>
         public bool IsTerminal()
         {
             // max number of pieces OR no possible moves left
@@ -169,7 +192,11 @@ namespace Objects.Scripts
             return false;
         }
 
-
+        /// <summary>
+        /// Prints to the board '?' in the found possible move locations
+        /// Passing "true" in, reverts the '?' back to '.' 
+        /// </summary>
+        /// <param name="remove">bool - replace possiblePiece with blacnkPiece</param>
         private void ApplyPossibleMoves(bool remove = false)
         {
             foreach (Move m in _moves)
@@ -188,7 +215,13 @@ namespace Objects.Scripts
             }
         }
 
-
+        /// <summary>
+        /// Calculates a "score" for the current state of the board for the desired player based on:
+        /// - if on a corner
+        /// - if on a edge
+        /// </summary>
+        /// <param name="player">the player to calculate</param>
+        /// <returns>int - calculated score</returns>
         public int Evaluate(string player)
         {
             string playerPiece = GetPlayerPiece(player);
@@ -226,6 +259,10 @@ namespace Objects.Scripts
             return weightedScore - opponentScore;
         }
 
+        /// <summary>
+        /// Lists off valid moves the player could play
+        /// <returns>bool - if any moves exist or not to print </returns>
+        /// </summary>
         public bool PrintPossibleMoves()
         {
             // if no moves are possible
@@ -242,7 +279,14 @@ namespace Objects.Scripts
             return false;
         }
 
-
+        /// <summary>
+        /// Makes the given move, and optionally skip validation (ie. the computer doesn't need to be
+        /// validated since it finds possible moves and only picks from those)
+        /// 
+        /// </summary>
+        /// <param name="move">move to make</param>
+        /// <param name="skipValidation">bool - if computer is attempting to make a move, don't need to check</param>
+        /// <returns>string - produced errors or not in attempting to make the move</returns>
         public string MakeMove(Move move, bool skipValidation = false)
         {
             // don't need to validate if computer is attempting to make move
@@ -278,14 +322,14 @@ namespace Objects.Scripts
             return null;
         }
 
+        /// <summary>
+        /// Switch player, remove possible moves from board, get new possible moves
+        /// </summary>
         public void SetupForNewTurn()
         {
-            print("Previous Turn: " + Settings.currentPlayer);
             // switch players
             CurrentPlayer = CurrentPlayer == Settings.PlayerName ? Settings.ComputerName : Settings.PlayerName;
             Settings.currentPlayer = CurrentPlayer;
-            print("Switching Turn To: " + Settings.currentPlayer);
-            
             // remove possible moves
             ApplyPossibleMoves(true);
 
@@ -293,6 +337,12 @@ namespace Objects.Scripts
             _moves = GetPossibleMoves();
         }
 
+        /// <summary>
+        /// Ensures that the given move is within the Col Row range and that there isn't already a Piece there
+        /// It then checks if that given move is on the list of possible moves
+        /// </summary>
+        /// <param name="move">to check is valid for board state</param>
+        /// <returns>string - error message if anything</returns>
         private string IsValidMove(Move move)
         {
             // check out of bounds
@@ -320,6 +370,10 @@ namespace Objects.Scripts
             return "Invalid Move.";
         }
 
+        /// <summary>
+        /// Logic to handle flipping pieces based on a given move
+        /// </summary>
+        /// <param name="move">move played, so find pieces to flip from that position</param>
         private void FlipPieces(Move move)
         {
             // grossly duplicate logic, but atm it works...
@@ -333,7 +387,11 @@ namespace Objects.Scripts
             }
         }
 
-
+        /// <summary>
+        /// Finds all the possible moves for the current layout of the board
+        /// - find CurrentPlayer's pieces and look in all 8 directions for the opponent's Piece
+        /// </summary>
+        /// <returns>list - of possible moves for current board state</returns>
         public ArrayList GetPossibleMoves()
         {
             ArrayList boardMoves = new ArrayList();
@@ -374,7 +432,14 @@ namespace Objects.Scripts
             return boardMoves;
         }
 
-
+        /// <summary>
+        /// Determines if the given coordinates for a direction applied to the inital move location
+        /// results in a possible move (ie. have to find the opponent's Piece and a blank space in that order)
+        /// </summary>
+        /// <param name="move">current move to evaluate</param>
+        /// <param name="rowDir">int - movement direction for row</param>
+        /// <param name="colDir">int - movement direction for col</param>
+        /// <returns>Move - if the move in that direction is possible</returns>
         private Move GetMovesInDirection(Move move, int rowDir, int colDir, ArrayList foundMoves, bool flip = false)
         {
             Move possibleMove = null;

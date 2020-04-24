@@ -44,7 +44,7 @@ MonoBehaviour:
     <ActionNode id=\"3\" />\n          <SequenceNode id=\"5\" />\n          <ActionNode
     id=\"6\" />\n          <ActionNode id=\"7\" />\n        </nodes>\n      </_nodes>\n   
     </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n      <_data>\n        <data
-    breakpoint=\"0\" selected=\"False\" position=\"403 36\" name=\"Repeat\" description=\"Repeats
+    breakpoint=\"0\" selected=\"True\" position=\"403 37\" name=\"Repeat\" description=\"Repeats
     the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
     </_data>\n    </RepeatDecorator>\n    <SequenceNode id=\"5\">\n      <_data>\n       
@@ -53,11 +53,11 @@ MonoBehaviour:
     cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <SequenceNode id=\"5\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
     </_data>\n    </SequenceNode>\n    <ActionNode id=\"6\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"112 322\" name=\"IsComputerTurn\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"111 322\" name=\"IsComputerTurn\"
     description=\"\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"6\" />\n          <SequenceNode id=\"5\"
     />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"3\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"357 320\"
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"357 320\"
     name=\"Basic/WaitForSeconds\" description=\"Action that success after a period
     of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\"
     />\n          <ActionNode id=\"3\" />\n          <SequenceNode id=\"5\" />\n       
