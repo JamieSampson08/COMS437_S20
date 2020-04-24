@@ -144,7 +144,7 @@ public class BoardScript : MonoBehaviour
         string errorMessage = board.MakeMove(newMove);
         if (errorMessage != null)
         {
-            // TODO - Post Error Message: "Invalid Move"
+            Settings.isInvalidMove = true;
             return;
         }
         
