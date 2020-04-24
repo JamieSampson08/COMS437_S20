@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Objects.Scripts
 {
-    public class Settings
+    public static class Settings
     {
         static public string ComputerName = "COMPUTER"; // white pieces
         static public string PlayerName = "PLAYER"; // black pieces
@@ -14,13 +14,17 @@ namespace Objects.Scripts
         static public int maxDepth = 1; // defaults to level 1
         static public string currentPlayer;
 
+        // trigger character animations
         static public bool playerLosesDiscs;
         static public bool playerGainsDiscs;
         static public bool opponentWaiting;
 
+        
         static public bool makeComputerMove;
+
+        // needed for alert panel
+        static public bool isInvalidMove;
         static public bool playerSkippedTurn;
         static public bool computerSkippedTurn;
-        static public bool isInvalidMove;
     }
 }

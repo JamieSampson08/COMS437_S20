@@ -107,11 +107,13 @@
               <e p="TurnOrderToggle.cs" t="Include" />
             </e>
             <e p="DiscScript.cs" t="Include" />
+            <e p="Helpers.cs" t="Include" />
             <e p="Move.cs" t="Include" />
             <e p="PrimitaveAction" t="Include">
               <e p="IsComputerTurn.cs" t="Include" />
+              <e p="IsRequirementsMet.cs" t="Include" />
               <e p="MakeComputerMove.cs" t="Include" />
-              <e p="TriggerAnimations.cs" t="Include" />
+              <e p="TriggerAnimation.cs" t="Include" />
             </e>
             <e p="Settings.cs" t="Include" />
           </e>

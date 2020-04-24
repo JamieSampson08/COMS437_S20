@@ -1,7 +1,7 @@
-﻿using System;
-using Objects.Scripts;
+﻿using Objects.Scripts;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
+// #define DEBUG
 
 public class BoardScript : MonoBehaviour
 {
@@ -9,11 +9,9 @@ public class BoardScript : MonoBehaviour
 
     // ported variables
     private Board board;
-    private String ROOT_PLAYER;
-    int intPlayerTurn;
-    bool playerTookTurn = false;
-    bool computerTookTurn = false;
-    private int maxDepth;
+            
+    private bool playerTookTurn = false;
+    private bool computerTookTurn = false;
 
     // required row position values go from 0:-7, but read values go from 7:0
     private readonly int[] _invertNegateRow = {-7, -6, -5, -4, -3, -2, -1, 0};
@@ -21,97 +19,52 @@ public class BoardScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxDepth = Settings.maxDepth;
-        intPlayerTurn = Settings.turnOrder;
-
-        ROOT_PLAYER = intPlayerTurn == 0 ? Settings.PlayerName : Settings.ComputerName;
-        Settings.currentPlayer = ROOT_PLAYER;
-        board = new Board(8, ROOT_PLAYER);
-        InitBoard();
+        Settings.currentPlayer = Settings.turnOrder == 0 ? Settings.PlayerName : Settings.ComputerName;
+        board = new Board(8, Settings.currentPlayer);
+        Helpers.InitBoard(GamePiece);
+#if DEBUG
         board.ShowBoard();
+#endif
     }
     private void Update()
     {
         if(Settings.makeComputerMove){
+#if DEBUG
             print("Before Computer Move");
             board.ShowBoard();
-            simulateHelper();
+#endif
             MakeComputerMove();
             Settings.makeComputerMove = false;
+            
+#if DEBUG
             print("After Computer Move");
             board.ShowBoard();
+#endif
         }
     }
 
-    private void InitBoard()
-    {
-        for (var r = 1; r <= 8; r++)
-        {
-            for (var c = 1; c <= 8; c++)
-            {
-                // logic to setup init Piece locations
-                if ((r == 4 && c == 4) || (r == 5 && c == 5))
-                {
-                    CreateDisc(r - 1, c - 1, true);
-                }
-                else if ((r == 4 && c == 5) || (r == 5 && c == 4))
-                {
-                    CreateDisc(r - 1, c - 1);
-                }
-            }
-        }
-    }
-
-    private GameObject CreateDisc(int gridRow, int gridCol, bool flip = false)
-    {
-        GameObject gamePiece = Instantiate(GamePiece);
-        gamePiece.name = gridRow + "," + gridCol; // so we can query later to flip
-
-        if (flip)
-        {
-            gamePiece.GetComponent<DiscScript>().Flip(DiscScript.PieceColor.WHITE);
-        }
-        
-        gamePiece.GetComponent<Rigidbody>().position =
-            new Vector3(gridCol, 8, gridRow * -1);
-        
-        return gamePiece;
-    }
-
-    private void simulateHelper()
-    {
-        if (board.IsTerminal())
-        {
-            EndGame();
-        }
-        
-        if (playerTookTurn && computerTookTurn)
-        {
-            playerTookTurn = false;
-            computerTookTurn = false;
-            board.PlayerSkippedTurn = false;
-            board.ComputerSkippedTurn = false;
-        }
-    }
-    
     private void OnMouseDown()
     {
-        simulateHelper();
-
+        
         if (board.CurrentPlayer != Settings.PlayerName)
         {
             return;  // clicking doesn't do anything
         }
-        
+#if DEBUG
         print("Before Player Movve");
         board.ShowBoard();
+#endif
         MakePlayerMove();
+#if DEBUG
         print("After Player Move");
         board.ShowBoard();
+#endif
     }
 
     private void MakePlayerMove()
     {
+        ResetSkipping();
+        
         int previousComputerScore = board.NumWhite;
         playerTookTurn = true;
         
@@ -128,15 +81,16 @@ public class BoardScript : MonoBehaviour
         
         Vector3 mouse = Input.mousePosition;
         Ray castPoint = Camera.main.ScreenPointToRay(mouse);
-        RaycastHit h;
-        Physics.Raycast(castPoint, out h);
+        Physics.Raycast(castPoint, out RaycastHit h);
         
         int tempRow = (int)(h.point.z-transform.position.z + 4);
         int renderedRow = _invertNegateRow[tempRow];
         int renderedCol = (int)(h.point.x-transform.position.x + 4);
         
+#if DEBUG
         print("renderedRow: " + renderedRow + " renderedCol: " + renderedCol);
         print("gridRow: " + renderedRow * -1 + " gridCol: " + renderedCol);
+#endif
         
         // create a new move
         Move newMove = new Move( renderedRow * -1, renderedCol);
@@ -148,8 +102,13 @@ public class BoardScript : MonoBehaviour
             return;
         }
         
-        CreateDisc(newMove.Row, newMove.Col, true);
+        Helpers.CreateDisc(GamePiece, newMove.Row, newMove.Col, true);
         board.UpdateUnityBoard();
+        
+        if (board.IsTerminal())
+        {
+            Helpers.EndGame();
+        }
         
         if (previousComputerScore - board.NumWhite > 2)
         {
@@ -157,13 +116,21 @@ public class BoardScript : MonoBehaviour
         }
     }
 
-    private void EndGame()
+    private void ResetSkipping()
     {
-        SceneManager.LoadScene("GameOver"); // TODO - doesn't work???
+        if (playerTookTurn && computerTookTurn)
+        {
+            playerTookTurn = false;
+            computerTookTurn = false;
+            board.PlayerSkippedTurn = false;
+            board.ComputerSkippedTurn = false;
+        }
     }
-    
+
     private void MakeComputerMove()
     {
+        ResetSkipping();
+        
         int previousPlayerScore = board.NumBlack;
         computerTookTurn = true;
 
@@ -171,7 +138,7 @@ public class BoardScript : MonoBehaviour
         Move bestMove = null;
         
         // recursively call MinMax algorithm
-        (bestScore, bestMove) = Minimax(board, Settings.ComputerName, maxDepth, 0, 
+        (bestScore, bestMove) = Helpers.Minimax(board, Settings.ComputerName, Settings.maxDepth, 0, 
             int.MinValue, int.MaxValue);
 
         if (bestMove == null || bestMove.Col == -1 || bestMove.Row == -1)
@@ -184,71 +151,17 @@ public class BoardScript : MonoBehaviour
         }
         
         board.MakeMove(bestMove, true);
-        CreateDisc(bestMove.Row, bestMove.Col);
+        Helpers.CreateDisc(GamePiece, bestMove.Row, bestMove.Col);
         board.UpdateUnityBoard();
-        simulateHelper();
+        
+        if (board.IsTerminal())
+        {
+            Helpers.EndGame();
+        }
         
         if (previousPlayerScore - board.NumBlack > 2)
         {
             Settings.playerLosesDiscs = true;
         }
-    }
-    
-    private static (int, Move) Minimax(Board board, string rootPlayer, int maxDepth, int currentDepth, int alpha,
-        int beta)
-    {
-        Move bestMove = new Move(-1, -1);
-        int currentScore = 0;
-        Move currentMove = null;
-
-        // check terminal state
-        if (board.IsTerminal() || currentDepth == maxDepth)
-        {
-            return (board.Evaluate(rootPlayer), null);
-        }
-
-        // decide if minimizing or maximizing
-        int bestScore = (board.CurrentPlayer == rootPlayer) ? int.MinValue : int.MaxValue;
-
-        foreach (Move m in board.GetPossibleMoves())
-        {
-            // copy board so we can change values
-            Board newBoard = board.Copy();
-            newBoard.MakeMove(m, true);
-
-            (currentScore, currentMove) = Minimax(newBoard, rootPlayer, maxDepth, currentDepth + 1, alpha, beta);
-
-            // check for the player to see if should be maximizing or minimizing
-            if (board.CurrentPlayer == rootPlayer)
-            {
-                // maximizing
-                if (currentScore > bestScore)
-                {
-                    bestMove = m;
-                }
-
-                bestScore = Math.Max(bestScore, currentScore);
-                alpha = Math.Max(alpha, bestScore);
-            }
-            else
-            {
-                // minimizing
-                if (currentScore < bestScore)
-                {
-                    bestMove = m;
-                }
-
-                bestScore = Math.Min(bestScore, currentScore);
-                beta = Math.Min(beta, bestScore);
-            }
-
-            // prune branches
-            if (beta <= alpha)
-            {
-                break;
-            }
-        }
-
-        return (bestScore, bestMove);
     }
 }

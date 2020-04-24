@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Objects.Scripts
 {
-    public class Board : BoardScript
+    public class Board
     {
         private const string BlackPiece = "B"; // player pieces
         private const string WhitePiece = "W"; // computer pieces
@@ -169,7 +169,6 @@ namespace Objects.Scripts
                 GameObject disc = GameObject.Find(discName);
                 if (!disc)
                 {
-                    print(discName + "NOT FOUND");
                     continue;
                 }
                 

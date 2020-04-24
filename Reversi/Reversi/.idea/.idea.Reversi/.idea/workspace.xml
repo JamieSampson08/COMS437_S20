@@ -4,10 +4,6 @@
     <expand>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
       <path>
@@ -16,21 +12,31 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="684defcb-1096-49c0-963f-f2d61023e739" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Helpers.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Helpers.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/IsRequirementsMet.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/IsRequirementsMet.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Behaviors/AnimationController.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Behaviors/AnimationController.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Behaviors/OpponentController.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Behaviors/OpponentController.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertText.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertText.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/SkipAlertPanel.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/SkipAlertPanel.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameBoard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimations.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimations.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,89 +54,65 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Settings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/LevelDropdown.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/ButtonManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/TurnOrderToggle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/00/f3e1d093/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/FinalScoreText.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Samples/QuickStartGuide/Done/Resources/Spawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/3E5B618A-479D-450D-9629-81F98615C324/ca/51d8c2c0/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Board.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Move.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/e8/a2687c51/RenderPipelineManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/01/f280aec4/ScriptableRuntimeReflectionSystemWrapper.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///OpponentController.asset" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/B9AAA543-B70C-42D3-9A03-B0367C4FD1A4/88/8eaed4f8/02000008pdb.il" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Settings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Behaviors/AJAnimatorController.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EDB08A87-1119-48C7-81CC-B8840A6E46F1/ae/d1498d8b/Event.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Board.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///DiscScript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/DoneIsNight.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Board.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/DoneShoot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/DoneShootOnce.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/18296D29-697F-423C-917B-EC027CBA889E/d7/3bb0589a/SendMouseEvents.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/IsRequirementsMet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Samples/ProgrammersQuickStartGuide/Done/DoneDayNightCycle.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///DiscScript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Helpers.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Settings.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Settings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/BehaviorExecutor.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Settings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Conditions/System/Basic/CheckBool.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Basic/WaitForSeconds.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ED6C4020-915A-41E1-B5EB-5E4C6A560E95/28/c5b6394c/ConditionBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/DDC58135-15EC-4363-A418-AFBDB497BD69/26/4c523211/NavMesh.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimations.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/IsComputerTurn.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Conditions/System/Perception/IsTargetClose.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/MakeComputerMove.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Animation/PlayAnimation.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Physics/FromMouseToWorld.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Board.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Vector3/GetRandomInArea.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Animation/PlayAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Behaviors/AnimationController.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Behaviors/OpponentController.asset" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/ButtonManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Settings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Settings.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/5f/596792a2/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Navigation/MoveToPosition.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/590B07A0-8EBF-4FFE-9290-BF1366C3C513/45/ec624a0a/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/PossibleMovesText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/BehaviorBricks/Actions/System/Navigation/MoveToGameObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/87B049DE-38F8-4303-83A7-A4B0CD5E7991/d7/83139b2e/NativeInputSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/DiscScript.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF-Surface.shader" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///BoardScript.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Board.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -161,21 +143,28 @@
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Move.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/IsLossingPoints.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/MakeMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Helpers.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/MakeComputerMove.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/TriggerAnimations.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/IsComputerTurn.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/MakeComputerMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimations.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/DiscScript.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/PossibleMovesText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimations.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Behaviors/CharacterAnimatorController.asset" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Behaviors/AJAnimatorController.asset" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/IsRequirementsMet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/UtilityHelper.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/GameController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Helpers.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/DiscScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/BoardScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Behaviors/OpponentController.asset" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" />
       </list>
     </option>
   </component>
@@ -189,8 +178,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.15878023" />
-    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.45846477" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.15857826" />
+    <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.45864663" />
     <property name="Rider.SolutionExplorerActivator" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -201,10 +190,10 @@
     <property name="threadsIsVisibleKey" value="false" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8200">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="13839">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="8200" />
+      <option name="pid" value="13839" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -237,7 +226,8 @@
       <workItem from="1587433304278" duration="4555000" />
       <workItem from="1587509315431" duration="7874000" />
       <workItem from="1587571046797" duration="17421000" />
-      <workItem from="1587667882221" duration="18710000" />
+      <workItem from="1587667882221" duration="20180000" />
+      <workItem from="1587751211006" duration="8033000" />
     </task>
     <servers />
   </component>
@@ -276,74 +266,78 @@
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state width="457" height="464" key="DebuggerActiveHint/0.0.1536.960@0.0.1536.960" timestamp="1587605251190" />
-    <state x="88" y="86" width="1336" height="760" key="DiffContextDialog" timestamp="1587699950965">
+    <state width="796" height="440" key="Diff.GoToChangePopup" timestamp="1587761246629">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="88" y="86" width="1336" height="760" key="DiffContextDialog/0.0.1536.960@0.0.1536.960" timestamp="1587699950965" />
-    <state width="982" height="337" key="GridCell.Tab.0.bottom" timestamp="1587740238732">
+    <state width="796" height="440" key="Diff.GoToChangePopup/0.0.1536.960@0.0.1536.960" timestamp="1587761246629" />
+    <state x="88" y="86" width="1336" height="760" key="DiffContextDialog" timestamp="1587762902416">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.0.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587740238732" />
-    <state width="982" height="337" key="GridCell.Tab.0.center" timestamp="1587740238731">
+    <state x="88" y="86" width="1336" height="760" key="DiffContextDialog/0.0.1536.960@0.0.1536.960" timestamp="1587762902416" />
+    <state width="1494" height="337" key="GridCell.Tab.0.bottom" timestamp="1587761269514">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.0.center/0.0.1536.960@0.0.1536.960" timestamp="1587740238731" />
-    <state width="982" height="337" key="GridCell.Tab.0.left" timestamp="1587740238731">
+    <state width="1494" height="337" key="GridCell.Tab.0.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587761269514" />
+    <state width="1494" height="337" key="GridCell.Tab.0.center" timestamp="1587761269513">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.0.left/0.0.1536.960@0.0.1536.960" timestamp="1587740238731" />
-    <state width="982" height="337" key="GridCell.Tab.0.right" timestamp="1587740238732">
+    <state width="1494" height="337" key="GridCell.Tab.0.center/0.0.1536.960@0.0.1536.960" timestamp="1587761269513" />
+    <state width="1494" height="337" key="GridCell.Tab.0.left" timestamp="1587761269513">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.0.right/0.0.1536.960@0.0.1536.960" timestamp="1587740238732" />
-    <state width="982" height="337" key="GridCell.Tab.1.bottom" timestamp="1587740250526">
+    <state width="1494" height="337" key="GridCell.Tab.0.left/0.0.1536.960@0.0.1536.960" timestamp="1587761269513" />
+    <state width="1494" height="337" key="GridCell.Tab.0.right" timestamp="1587761269513">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.1.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587740250526" />
-    <state width="982" height="337" key="GridCell.Tab.1.center" timestamp="1587740250525">
+    <state width="1494" height="337" key="GridCell.Tab.0.right/0.0.1536.960@0.0.1536.960" timestamp="1587761269513" />
+    <state width="1494" height="337" key="GridCell.Tab.1.bottom" timestamp="1587761269515">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.1.center/0.0.1536.960@0.0.1536.960" timestamp="1587740250525" />
-    <state width="982" height="337" key="GridCell.Tab.1.left" timestamp="1587740250525">
+    <state width="1494" height="337" key="GridCell.Tab.1.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587761269515" />
+    <state width="1494" height="337" key="GridCell.Tab.1.center" timestamp="1587761269514">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.1.left/0.0.1536.960@0.0.1536.960" timestamp="1587740250525" />
-    <state width="982" height="337" key="GridCell.Tab.1.right" timestamp="1587740250526">
+    <state width="1494" height="337" key="GridCell.Tab.1.center/0.0.1536.960@0.0.1536.960" timestamp="1587761269514" />
+    <state width="1494" height="337" key="GridCell.Tab.1.left" timestamp="1587761269514">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.1.right/0.0.1536.960@0.0.1536.960" timestamp="1587740250526" />
-    <state width="982" height="337" key="GridCell.Tab.2.bottom" timestamp="1587740238647">
+    <state width="1494" height="337" key="GridCell.Tab.1.left/0.0.1536.960@0.0.1536.960" timestamp="1587761269514" />
+    <state width="1494" height="337" key="GridCell.Tab.1.right" timestamp="1587761269515">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.2.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587740238647" />
-    <state width="982" height="337" key="GridCell.Tab.2.center" timestamp="1587740238646">
+    <state width="1494" height="337" key="GridCell.Tab.1.right/0.0.1536.960@0.0.1536.960" timestamp="1587761269515" />
+    <state width="1494" height="337" key="GridCell.Tab.2.bottom" timestamp="1587761269516">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.2.center/0.0.1536.960@0.0.1536.960" timestamp="1587740238646" />
-    <state width="982" height="337" key="GridCell.Tab.2.left" timestamp="1587740238646">
+    <state width="1494" height="337" key="GridCell.Tab.2.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587761269516" />
+    <state width="1494" height="337" key="GridCell.Tab.2.center" timestamp="1587761269516">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.2.left/0.0.1536.960@0.0.1536.960" timestamp="1587740238646" />
-    <state width="982" height="337" key="GridCell.Tab.2.right" timestamp="1587740238646">
+    <state width="1494" height="337" key="GridCell.Tab.2.center/0.0.1536.960@0.0.1536.960" timestamp="1587761269516" />
+    <state width="1494" height="337" key="GridCell.Tab.2.left" timestamp="1587761269515">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.2.right/0.0.1536.960@0.0.1536.960" timestamp="1587740238646" />
-    <state width="982" height="337" key="GridCell.Tab.3.bottom" timestamp="1587740238648">
+    <state width="1494" height="337" key="GridCell.Tab.2.left/0.0.1536.960@0.0.1536.960" timestamp="1587761269515" />
+    <state width="1494" height="337" key="GridCell.Tab.2.right" timestamp="1587761269516">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.3.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587740238648" />
-    <state width="982" height="337" key="GridCell.Tab.3.center" timestamp="1587740238647">
+    <state width="1494" height="337" key="GridCell.Tab.2.right/0.0.1536.960@0.0.1536.960" timestamp="1587761269516" />
+    <state width="1494" height="337" key="GridCell.Tab.3.bottom" timestamp="1587761269518">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.3.center/0.0.1536.960@0.0.1536.960" timestamp="1587740238647" />
-    <state width="982" height="337" key="GridCell.Tab.3.left" timestamp="1587740238647">
+    <state width="1494" height="337" key="GridCell.Tab.3.bottom/0.0.1536.960@0.0.1536.960" timestamp="1587761269518" />
+    <state width="1494" height="337" key="GridCell.Tab.3.center" timestamp="1587761269517">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.3.left/0.0.1536.960@0.0.1536.960" timestamp="1587740238647" />
-    <state width="982" height="337" key="GridCell.Tab.3.right" timestamp="1587740238648">
+    <state width="1494" height="337" key="GridCell.Tab.3.center/0.0.1536.960@0.0.1536.960" timestamp="1587761269517" />
+    <state width="1494" height="337" key="GridCell.Tab.3.left" timestamp="1587761269517">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state width="982" height="337" key="GridCell.Tab.3.right/0.0.1536.960@0.0.1536.960" timestamp="1587740238648" />
+    <state width="1494" height="337" key="GridCell.Tab.3.left/0.0.1536.960@0.0.1536.960" timestamp="1587761269517" />
+    <state width="1494" height="337" key="GridCell.Tab.3.right" timestamp="1587761269518">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state width="1494" height="337" key="GridCell.Tab.3.right/0.0.1536.960@0.0.1536.960" timestamp="1587761269518" />
     <state x="368" y="219" key="Rider.ProjectTemplateDialog.Size" timestamp="1587332870897">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
@@ -356,26 +350,34 @@
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state x="269" y="119" key="SettingsEditor/0.0.1536.960@0.0.1536.960" timestamp="1587330294609" />
-    <state x="100" y="100" width="1336" height="760" key="VCS.FileHistoryDialog" timestamp="1587739553505">
+    <state x="100" y="100" width="1336" height="760" key="VCS.FileHistoryDialog" timestamp="1587760854991">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="100" y="100" width="1336" height="760" key="VCS.FileHistoryDialog/0.0.1536.960@0.0.1536.960" timestamp="1587739553505" />
+    <state x="100" y="100" width="1336" height="760" key="VCS.FileHistoryDialog/0.0.1536.960@0.0.1536.960" timestamp="1587760854991" />
+    <state x="393" y="222" key="VcsDiffUtil.ChangesDialog" timestamp="1587761271571">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="393" y="222" key="VcsDiffUtil.ChangesDialog/0.0.1536.960@0.0.1536.960" timestamp="1587761271571" />
     <state width="768" height="480" key="XDebugger.FullValuePopup" timestamp="1587695267044">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state width="768" height="480" key="XDebugger.FullValuePopup/0.0.1536.960@0.0.1536.960" timestamp="1587695267044" />
-    <state x="100" y="100" width="1336" height="760" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587611335343">
+    <state x="100" y="100" width="1336" height="760" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1587761473495">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="100" y="100" width="1336" height="760" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.960@0.0.1536.960" timestamp="1587611335343" />
+    <state x="100" y="100" width="1336" height="760" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1536.960@0.0.1536.960" timestamp="1587761473495" />
+    <state x="100" y="100" width="1336" height="760" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1587761473495">
+      <screen x="0" y="0" width="1536" height="960" />
+    </state>
+    <state x="100" y="100" width="1336" height="760" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1536.960@0.0.1536.960" timestamp="1587761473495" />
     <state x="300" y="401" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587741149609">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state x="300" y="401" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.960@0.0.1536.960" timestamp="1587741149609" />
-    <state x="402" y="115" width="732" height="729" key="find.popup" timestamp="1587612642881">
+    <state x="402" y="115" width="738" height="729" key="find.popup" timestamp="1587761050295">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="402" y="115" width="732" height="729" key="find.popup/0.0.1536.960@0.0.1536.960" timestamp="1587612642881" />
+    <state x="402" y="115" width="738" height="729" key="find.popup/0.0.1536.960@0.0.1536.960" timestamp="1587761050295" />
     <state x="432" y="224" key="run.anything.popup" timestamp="1587327554318">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
@@ -393,12 +395,9 @@
     </pin-to-top-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
-        <watch expression="discScript.Color" language="C#" />
-        <watch expression="Settings.currentPlayer" language="C#" />
-        <watch expression="_board" language="C#" />
-        <watch expression="board" language="C#" />
-        <watch expression="movesFlipped" language="C#" />
-        <watch expression="alertText.text" language="C#" />
+        <watch expression="Settings.playerLosesDiscs" language="C#" />
+        <watch expression="Settings.playerGainsDiscs" language="C#" />
+        <watch expression="Settings.opponentWaiting" language="C#" />
       </configuration>
     </watches-manager>
   </component>
