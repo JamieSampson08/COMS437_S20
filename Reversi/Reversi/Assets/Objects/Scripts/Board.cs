@@ -80,6 +80,7 @@ namespace Objects.Scripts
             InitBoard();
             CurrentPlayer = player;
             _moves = GetPossibleMoves();
+            Settings.possibleMoves = _moves;
             movesFlipped = new ArrayList();
         }
 
@@ -364,6 +365,7 @@ namespace Objects.Scripts
 
             // get new possible moves
             _moves = GetPossibleMoves();
+            Settings.possibleMoves = _moves;
         }
 
         /// <summary>

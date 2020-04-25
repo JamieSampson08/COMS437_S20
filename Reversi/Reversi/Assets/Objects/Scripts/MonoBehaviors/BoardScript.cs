@@ -45,6 +45,8 @@ public class BoardScript : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Settings.playerLosesDiscs = true;
+        
         if (board.CurrentPlayer != Settings.PlayerName)
         {
             return;

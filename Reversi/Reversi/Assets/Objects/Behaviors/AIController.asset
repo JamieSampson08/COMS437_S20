@@ -44,54 +44,55 @@ MonoBehaviour:
     <outputParams />\n      <localParams />\n    </ActionNode>\n    <ActionNode id=\"11\"
     action=\"TriggerAnimation\">\n      <inputParams>\n        <inputValues>\n         
     <entry name=\"character\" type=\"UnityEngine.GameObject\" isBlackboard=\"True\"
-    />\n          <entry name=\"Trigger Name\" type=\"System.String\" isBlackboard=\"False\"
-    value=\"madeMove\" />\n        </inputValues>\n      </inputParams>\n      <outputParams
-    />\n      <localParams />\n    </ActionNode>\n  </runtimeInfo>\n  <editorInfo>\n   
-    <BehaviorTree id=\"0\" _name=\"AIController\" _description=\"\" _removeIfClosed=\"False\">\n     
-    <_rootList>\n        <elem>\n          <RepeatDecorator id=\"1\" />\n       
-    </elem>\n        <elem>\n          <ActionNode id=\"3\" />\n        </elem>\n       
-    <elem>\n          <SequenceNode id=\"5\" />\n        </elem>\n        <elem>\n         
-    <ActionNode id=\"6\" />\n        </elem>\n        <elem>\n          <ActionNode
-    id=\"7\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"10\"
-    />\n        </elem>\n        <elem>\n          <ActionNode id=\"11\" />\n       
-    </elem>\n      </_rootList>\n      <_nodes>\n        <nodes>\n          <RepeatDecorator
-    id=\"1\" />\n          <ActionNode id=\"3\" />\n          <SequenceNode id=\"5\"
-    />\n          <ActionNode id=\"6\" />\n          <ActionNode id=\"7\" />\n         
-    <ActionNode id=\"10\" />\n          <ActionNode id=\"11\" />\n        </nodes>\n     
-    </_nodes>\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"587.7145 458.9643\" name=\"Repeat\"
-    description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\n         
-    <BehaviorTree id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
-    </_data>\n    </RepeatDecorator>\n    <SequenceNode id=\"5\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"572.7145 575.9642\" name=\"Sequence\"
+    blackboard=\"character\" />\n          <entry name=\"Trigger Name\" type=\"System.String\"
+    isBlackboard=\"False\" value=\"madeMove\" />\n        </inputValues>\n      </inputParams>\n     
+    <outputParams />\n      <localParams />\n    </ActionNode>\n  </runtimeInfo>\n 
+    <editorInfo>\n    <BehaviorTree id=\"0\" _name=\"AIController\" _description=\"\"
+    _removeIfClosed=\"False\">\n      <_rootList>\n        <elem>\n          <RepeatDecorator
+    id=\"1\" />\n        </elem>\n        <elem>\n          <ActionNode id=\"3\"
+    />\n        </elem>\n        <elem>\n          <SequenceNode id=\"5\" />\n       
+    </elem>\n        <elem>\n          <ActionNode id=\"6\" />\n        </elem>\n       
+    <elem>\n          <ActionNode id=\"7\" />\n        </elem>\n        <elem>\n         
+    <ActionNode id=\"10\" />\n        </elem>\n        <elem>\n          <ActionNode
+    id=\"11\" />\n        </elem>\n      </_rootList>\n      <_nodes>\n        <nodes>\n         
+    <RepeatDecorator id=\"1\" />\n          <ActionNode id=\"3\" />\n          <SequenceNode
+    id=\"5\" />\n          <ActionNode id=\"6\" />\n          <ActionNode id=\"7\"
+    />\n          <ActionNode id=\"10\" />\n          <ActionNode id=\"11\" />\n       
+    </nodes>\n      </_nodes>\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n     
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"358.1786
+    -228.6786\" name=\"Repeat\" description=\"Repeats the execution of its child
+    node\" cardinality=\"1\" hasParent=\"False\">\n          <BehaviorTree id=\"0\"
+    />\n          <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n   
+    </RepeatDecorator>\n    <SequenceNode id=\"5\">\n      <_data>\n        <data
+    breakpoint=\"0\" selected=\"False\" position=\"343.1786 -111.6786\" name=\"Sequence\"
     description=\"Executes all its children in sequence until all of them are successful\"
     cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <SequenceNode id=\"5\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
     </_data>\n    </SequenceNode>\n    <ActionNode id=\"6\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"46.714 759.9642\" name=\"IsComputerTurn\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"-182.8217 72.32135\" name=\"IsComputerTurn\"
     description=\"\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"6\" />\n          <SequenceNode id=\"5\"
     />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"10\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"268.881
-    757.7974\" name=\"TriggerAnimation\" description=\"Given a character and a trigger
+    <_data>\n        <data breakpoint=\"0\" selected=\"True\" position=\"39.34525
+    70.1546\" name=\"TriggerAnimation\" description=\"Given a character and a trigger
     name, set that trigger on thecharacter's animator to true.\" cardinality=\"0\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
     id=\"10\" />\n          <SequenceNode id=\"5\" />\n        </data>\n      </_data>\n   
     </ActionNode>\n    <ActionNode id=\"3\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"505.7145 755.9642\" name=\"Basic/WaitForSeconds\"
+    selected=\"False\" position=\"276.1786 68.32135\" name=\"Basic/WaitForSeconds\"
     description=\"Action that success after a period of time.\" cardinality=\"0\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
     id=\"3\" />\n          <SequenceNode id=\"5\" />\n        </data>\n      </_data>\n   
     </ActionNode>\n    <ActionNode id=\"7\">\n      <_data>\n        <data breakpoint=\"0\"
-    selected=\"False\" position=\"717.7145 754.9642\" name=\"MakeComputerMove\" description=\"\"
+    selected=\"False\" position=\"488.1786 67.32135\" name=\"MakeComputerMove\" description=\"\"
     cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <ActionNode id=\"7\" />\n          <SequenceNode id=\"5\" />\n        </data>\n     
     </_data>\n    </ActionNode>\n    <ActionNode id=\"11\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"963.4993 752.3098\" name=\"TriggerAnimation\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"733.9636 64.66699\" name=\"TriggerAnimation\"
     description=\"Given a character and a trigger name, set that trigger on thecharacter's
     animator to true.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"11\" />\n          <SequenceNode id=\"5\"
     />\n        </data>\n      </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
-  zoom: 0.5
+  zoom: 0.9
   subslist: []
   _guid: ac45f6ed7b4774ed28c4cc7ebb6d6020

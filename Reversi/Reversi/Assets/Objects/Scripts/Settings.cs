@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 
 namespace Objects.Scripts
@@ -17,13 +18,14 @@ namespace Objects.Scripts
         // trigger character animations
         static public bool playerLosesDiscs;
         static public bool playerGainsDiscs;
-
-
+        
         static public bool makeComputerMove;
 
         // needed for alert panel
         static public bool isInvalidMove;
         static public bool playerSkippedTurn;
         static public bool computerSkippedTurn;
+
+        static public ArrayList possibleMoves;
     }
 }
