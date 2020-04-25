@@ -95,7 +95,6 @@
         <e p="Objects" t="Include">
           <e p="Scripts" t="Include">
             <e p="Board.cs" t="Include" />
-            <e p="BoardScript.cs" t="Include" />
             <e p="Components" t="Include">
               <e p="AlertPanelController.cs" t="Include" />
               <e p="ButtonManager.cs" t="Include" />
@@ -106,12 +105,17 @@
               <e p="ScoreboardText.cs" t="Include" />
               <e p="TurnOrderToggle.cs" t="Include" />
             </e>
-            <e p="DiscScript.cs" t="Include" />
+            <e p="Condition" t="Include">
+              <e p="IsRequirementsMet.cs" t="Include" />
+            </e>
             <e p="Helpers.cs" t="Include" />
+            <e p="MonoBehaviors" t="Include">
+              <e p="BoardScript.cs" t="Include" />
+              <e p="DiscScript.cs" t="Include" />
+            </e>
             <e p="Move.cs" t="Include" />
             <e p="PrimitaveAction" t="Include">
               <e p="IsComputerTurn.cs" t="Include" />
-              <e p="IsRequirementsMet.cs" t="Include" />
               <e p="MakeComputerMove.cs" t="Include" />
               <e p="TriggerAnimation.cs" t="Include" />
             </e>

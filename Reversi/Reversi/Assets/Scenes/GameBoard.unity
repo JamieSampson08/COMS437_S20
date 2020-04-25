@@ -206,9 +206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: 6ccc75860567841a6897df27343f0487, type: 2}
+  behavior: {fileID: 11400000, guid: ae732c601e3084597bbb8d4e902ea61b, type: 2}
   paused: 0
-  restartWhenFinished: 0
+  restartWhenFinished: 1
   blackboard:
     intParams: 
     intParamsNames: []
@@ -228,13 +228,12 @@ MonoBehaviour:
     objectParams:
     - {fileID: 287034918}
     objectParamsNames:
-    - opponentAI
+    - character
     objectParamsLostDefaultValue: 
     layerMaskParams: []
     layerMaskParamsNames: []
     layerMaskParamsLostDefaultValue: 
-    enumParamsNames:
-    - trigger
+    enumParamsNames: []
     enumParamsLostDefaultValue: 
     vector2Params: []
     vector2ParamsNames: []
@@ -419,6 +418,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: de7d6b2d17e2f4798930c0ca77463864, type: 2}
+    - target: {fileID: -6057140222963153312, guid: ee464a610df544290b3fee1740a29791,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ee464a610df544290b3fee1740a29791,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1186,6 +1190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GamePiece: {fileID: 7071447985455357492, guid: c12bd3d214c31434594616f5fe8c1551,
     type: 3}
+  OpponentAI: {fileID: 287034918}
 --- !u!1 &1918957482
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1280,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 18.25
+  m_fontSize: 18
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1292,7 +1297,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1321,7 +1326,7 @@ MonoBehaviour:
     spaceCount: 6
     wordCount: 6
     linkCount: 0
-    lineCount: 3
+    lineCount: 31
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1461,7 +1466,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -1490,7 +1495,7 @@ MonoBehaviour:
     spaceCount: 0
     wordCount: 1
     linkCount: 0
-    lineCount: 1
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0

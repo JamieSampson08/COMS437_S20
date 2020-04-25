@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Objects.Scripts
 {
-    public static class Settings
+    public class Settings
     {
         static public string ComputerName = "COMPUTER"; // white pieces
         static public string PlayerName = "PLAYER"; // black pieces

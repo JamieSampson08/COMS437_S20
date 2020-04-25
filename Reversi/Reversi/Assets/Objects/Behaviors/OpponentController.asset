@@ -15,7 +15,7 @@ MonoBehaviour:
   brickName: Assets/Objects/Behaviors/OpponentController.asset
   xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
     version=\"1.0\">\n  <BehaviorTree id=\"0\" />\n  <runtimeInfo>\n    <BehaviorTree
-    id=\"0\" guid=\"ac45f6ed7b4774ed28c4cc7ebb6d6020\" nextId=\"8\">\n      <root>\n       
+    id=\"0\" guid=\"ac45f6ed7b4774ed28c4cc7ebb6d6020\" nextId=\"10\">\n      <root>\n       
     <RepeatDecorator id=\"1\" />\n      </root>\n      <inputParams>\n        <inputValues>\n         
     <entry name=\"waitTime\" type=\"System.Single\" isBlackboard=\"False\" value=\"0\"
     />\n        </inputValues>\n      </inputParams>\n      <outputParams />\n     
@@ -44,26 +44,26 @@ MonoBehaviour:
     <ActionNode id=\"3\" />\n          <SequenceNode id=\"5\" />\n          <ActionNode
     id=\"6\" />\n          <ActionNode id=\"7\" />\n        </nodes>\n      </_nodes>\n   
     </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n      <_data>\n        <data
-    breakpoint=\"0\" selected=\"True\" position=\"403 37\" name=\"Repeat\" description=\"Repeats
-    the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\n         
+    breakpoint=\"0\" selected=\"False\" position=\"495.8334 44.16666\" name=\"Repeat\"
+    description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
     </_data>\n    </RepeatDecorator>\n    <SequenceNode id=\"5\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"388 154\" name=\"Sequence\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"480.8334 161.1667\" name=\"Sequence\"
     description=\"Executes all its children in sequence until all of them are successful\"
     cardinality=\"-1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <SequenceNode id=\"5\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
     </_data>\n    </SequenceNode>\n    <ActionNode id=\"6\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"111 322\" name=\"IsComputerTurn\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"203.8331 329.1668\" name=\"IsComputerTurn\"
     description=\"\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"6\" />\n          <SequenceNode id=\"5\"
     />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"3\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"357 320\"
-    name=\"Basic/WaitForSeconds\" description=\"Action that success after a period
-    of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree id=\"0\"
-    />\n          <ActionNode id=\"3\" />\n          <SequenceNode id=\"5\" />\n       
-    </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"7\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"568 329\"
-    name=\"MakeComputerMove\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"414.8334
+    334.1668\" name=\"Basic/WaitForSeconds\" description=\"Action that success after
+    a period of time.\" cardinality=\"0\" hasParent=\"True\">\n          <BehaviorTree
+    id=\"0\" />\n          <ActionNode id=\"3\" />\n          <SequenceNode id=\"5\"
+    />\n        </data>\n      </_data>\n    </ActionNode>\n    <ActionNode id=\"7\">\n     
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"622.8334
+    333.1668\" name=\"MakeComputerMove\" description=\"\" cardinality=\"0\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <ActionNode id=\"7\" />\n          <SequenceNode
     id=\"5\" />\n        </data>\n      </_data>\n    </ActionNode>\n  </editorInfo>\n</BehaviorBricks>"
   zoom: 1
