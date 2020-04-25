@@ -23,25 +23,16 @@ namespace Objects.Scripts
             int count = 1;
             foreach (Move m in Settings.possibleMoves)
             {
-                if (count == 12)
+                if (count > 7)
                 {
-                    listOfMoves += ".......";
+                    // TODO - make a "show more" button, store index in possibleMoves to start at that point
+                    listOfMoves += "..........";
                     break;
                 }
-                
-                string move = "(" + m.Row + "," + m.Col + ")";
-                listOfMoves += move;
-                
-                if (count % 2 == 0)
-                {
-                    listOfMoves += "\n";
-                }
-                else
-                {
-                    listOfMoves += "\r\r";
-                }
+                listOfMoves += "(" + m.Row + "," + m.Col + ")\n";
                 count++;
             }
+            
             possibleMovesText.text += listOfMoves;
             print(possibleMovesText.text);
         }
