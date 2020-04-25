@@ -1,6 +1,7 @@
 using Pada1.BBCore;
 using Pada1.BBCore.Framework;
 using Pada1.BBCore.Tasks;
+using TMPro;
 using UnityEngine;
 
 namespace Objects.Scripts
@@ -27,6 +28,16 @@ namespace Objects.Scripts
             ResetAllTriggers();
             
             _animator.SetTrigger(triggerName);
+            if (triggerName == "lostDiscs")
+            {
+                Settings.playerLosesDiscs = false;
+            }
+
+            if (triggerName == "gainDiscs")
+            {
+                Settings.playerGainsDiscs = false;
+            }
+            
             return TaskStatus.COMPLETED;
         }
         

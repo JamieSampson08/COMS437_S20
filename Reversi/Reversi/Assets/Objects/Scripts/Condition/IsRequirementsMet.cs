@@ -7,7 +7,7 @@ namespace Objects.Scripts
     [Help("Given a Setting's static variable, check to see it's true")]
     public class IsRequirementsMet : ConditionBase
     {
-        public enum Requirements { WAITING_TO_LONG, LOST_DISCS, GAINED_DISCS, MADE_MOVE };
+        public enum Requirements { LOST_DISCS, GAINED_DISCS };
         
         [InParam("Requirement")]
         [Help("What Setting's static variable are you wanting to check")]
@@ -24,17 +24,7 @@ namespace Objects.Scripts
             {
                 if (Settings.playerGainsDiscs) { return true; }
             }
-
-            if (givenRequirement == Requirements.WAITING_TO_LONG)
-            {
-                if (Settings.opponentWaiting) { return true; }
-            }
-
-            if (givenRequirement == Requirements.MADE_MOVE)
-            {
-                if (!Settings.opponentWaiting) { return true; }
-            }
-
+            
             return false;
         }
     }

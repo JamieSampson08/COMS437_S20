@@ -23,10 +23,6 @@ public class BoardScript : MonoBehaviour
         Settings.currentPlayer = Settings.turnOrder == 0 ? Settings.PlayerName : Settings.ComputerName;
         board = new Board(8, Settings.currentPlayer);
         Helpers.InitBoard(GamePiece);
-        if (Settings.currentPlayer == Settings.PlayerName)
-        {
-            Settings.opponentWaiting = true;
-        }
 #if DEBUG
         board.ShowBoard();
 #endif
@@ -40,7 +36,6 @@ public class BoardScript : MonoBehaviour
 #endif
             MakeComputerMove();
             Settings.makeComputerMove = false;
-            Settings.opponentWaiting = true;
 #if DEBUG
             print("After Computer Move");
             board.ShowBoard();
@@ -48,19 +43,11 @@ public class BoardScript : MonoBehaviour
         }
     }
 
-    private void ResetAnimationRequirements()
-    {
-        Settings.playerGainsDiscs = false;
-        Settings.playerLosesDiscs = false;
-    }
-
     private void OnMouseDown()
     {
-        ResetAnimationRequirements();
-        
         if (board.CurrentPlayer != Settings.PlayerName)
         {
-            return;  // clicking doesn't do anything
+            return;
         }
 #if DEBUG
         print("Before Player Movve");
@@ -113,9 +100,7 @@ public class BoardScript : MonoBehaviour
             Settings.isInvalidMove = true;
             return;
         }
-        
-        Settings.opponentWaiting = false;
-        
+
         Helpers.CreateDisc(GamePiece, newMove.Row, newMove.Col, true);
         board.UpdateUnityBoard();
         
@@ -124,7 +109,7 @@ public class BoardScript : MonoBehaviour
             Helpers.EndGame();
         }
         
-        if (previousComputerScore - board.NumWhite > 2)
+        if ((previousComputerScore - board.NumWhite) > 2)
         {
             Settings.playerGainsDiscs = true;
         }
@@ -173,7 +158,7 @@ public class BoardScript : MonoBehaviour
             Helpers.EndGame();
         }
         
-        if (previousPlayerScore - board.NumBlack > 2)
+        if ((previousPlayerScore - board.NumBlack) > 2)
         {
             Settings.playerLosesDiscs = true;
         }

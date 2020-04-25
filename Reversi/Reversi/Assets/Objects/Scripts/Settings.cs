@@ -17,9 +17,8 @@ namespace Objects.Scripts
         // trigger character animations
         static public bool playerLosesDiscs;
         static public bool playerGainsDiscs;
-        static public bool opponentWaiting;
 
-        
+
         static public bool makeComputerMove;
 
         // needed for alert panel
