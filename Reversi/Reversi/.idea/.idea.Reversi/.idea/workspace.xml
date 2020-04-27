@@ -22,12 +22,21 @@
   <component name="ChangeListManager">
     <list default="true" id="684defcb-1096-49c0-963f-f2d61023e739" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Reversi/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Behaviors/SideLineController.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Behaviors/SideLineController.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Characters/Michelle/michelle.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Characters/Michelle/michelle.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Controller/DiscFlip.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Controller/DiscFlip.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/MonoBehaviors/BoardScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/MonoBehaviors/BoardScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/MonoBehaviors/DiscScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/MonoBehaviors/DiscScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameBoard.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameBoard.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,11 +96,15 @@
     <setting file="mock:///IsRequirementsMet.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/FinalScoreText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/TurnOrderToggle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/ButtonManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/LevelDropdown.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2019.3.6f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Layout/CanvasScaler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Shaders/TMP_SDF.shader" root0="FORCE_HIGHLIGHTING" />
@@ -107,7 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Scripts/PieceController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BoardPieceClick.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PieceScript.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Discs.cs" />
@@ -125,7 +137,6 @@
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/FinalScoreText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/ScoreboardText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/SkipAlertPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Disc.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Move.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/IsLossingPoints.cs" />
@@ -134,10 +145,8 @@
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/TriggerAnimations.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/IsComputerTurn.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/MakeComputerMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertText.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanel.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimations.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Behaviors/CharacterAnimatorController.asset" />
         <option value="$PROJECT_DIR$/Assets/Objects/Behaviors/AJAnimatorController.asset" />
@@ -152,11 +161,15 @@
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/SetWaitingTooLong.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/Testing.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/IsComputerTurn.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Condition/IsRequirementsMet.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Board.cs" />
-        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/PossibleMovesText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/ScoreboardText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/CurrentTurnText.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/MonoBehaviors/DiscScript.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Components/AlertPanelController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/Settings.cs" />
+        <option value="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" />
         <option value="$PROJECT_DIR$/Assets/Objects/Scripts/MonoBehaviors/BoardScript.cs" />
       </list>
     </option>
@@ -221,7 +234,7 @@
       <workItem from="1587571046797" duration="17421000" />
       <workItem from="1587667882221" duration="20180000" />
       <workItem from="1587751211006" duration="13043000" />
-      <workItem from="1587841149865" duration="5678000" />
+      <workItem from="1587841149865" duration="8167000" />
     </task>
     <servers />
   </component>
@@ -368,10 +381,10 @@
       <screen x="0" y="0" width="1536" height="960" />
     </state>
     <state x="300" y="401" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.960@0.0.1536.960" timestamp="1587829210584" />
-    <state x="402" y="115" width="738" height="729" key="find.popup" timestamp="1587766568162">
+    <state x="402" y="115" width="738" height="729" key="find.popup" timestamp="1587950819869">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
-    <state x="402" y="115" width="738" height="729" key="find.popup/0.0.1536.960@0.0.1536.960" timestamp="1587766568162" />
+    <state x="402" y="115" width="738" height="729" key="find.popup/0.0.1536.960@0.0.1536.960" timestamp="1587950819869" />
     <state x="432" y="224" key="run.anything.popup" timestamp="1587327554318">
       <screen x="0" y="0" width="1536" height="960" />
     </state>
@@ -386,13 +399,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs</url>
-          <line>26</line>
+          <line>25</line>
           <properties documentPath="$PROJECT_DIR$/Assets/Objects/Scripts/PrimitaveAction/TriggerAnimation.cs" initialLine="26">
             <startOffsets>
-              <option value="732" />
+              <option value="719" />
             </startOffsets>
             <endOffsets>
-              <option value="790" />
+              <option value="777" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="1" />

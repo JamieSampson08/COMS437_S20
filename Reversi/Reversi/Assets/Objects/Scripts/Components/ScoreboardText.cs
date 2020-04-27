@@ -19,7 +19,7 @@ namespace Objects.Scripts
         private void SetScoreText()
         {
             // current Scoreboard
-            scoreText.text = "Player Score: " + Settings.PlayerScore + "\n\nComputer Score: " + Settings.ComputerScore;
+            scoreText.text = "Player Score: " + Settings.PlayerScore + "\nComputer Score: " + Settings.ComputerScore;
         }
 
         private void Update()

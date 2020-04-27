@@ -62,30 +62,30 @@ MonoBehaviour:
     <ActionNode id=\"3\" />\n          <ConditionEvalNode id=\"4\" />\n         
     <ActionNode id=\"5\" />\n          <ConditionEvalNode id=\"6\" />\n        </nodes>\n     
     </_nodes>\n    </BehaviorTree>\n    <RepeatDecorator id=\"1\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"504.1588 -76.63901\" name=\"Repeat\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"760.8253 232.2499\" name=\"Repeat\"
     description=\"Repeats the execution of its child node\" cardinality=\"1\" hasParent=\"False\">\n         
     <BehaviorTree id=\"0\" />\n          <RepeatDecorator id=\"1\" />\n        </data>\n     
     </_data>\n    </RepeatDecorator>\n    <PrioritySelectorNode id=\"2\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"449.1585
-    45.36127\" name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\n         
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"705.825
+    354.2504\" name=\"Priority Selector\" description=\"\" cardinality=\"1\" hasParent=\"True\">\n         
     <BehaviorTree id=\"0\" />\n          <PrioritySelectorNode id=\"2\" />\n         
     <RepeatDecorator id=\"1\" />\n        </data>\n      </_data>\n    </PrioritySelectorNode>\n   
-    <ConditionEvalNode id=\"4\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"True\"
-    position=\"326.1587 241.3613\" name=\"IsRequirementsMet\" description=\"Eval\"
+    <ConditionEvalNode id=\"4\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"582.8254 550.2501\" name=\"IsRequirementsMet\" description=\"Eval\"
     cardinality=\"1\" hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n         
     <ConditionEvalNode id=\"4\" />\n          <PrioritySelectorNode id=\"2\" />\n       
     </data>\n      </_data>\n    </ConditionEvalNode>\n    <ActionNode id=\"3\">\n     
-    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"326.1587
-    241.3613\" name=\"TriggerAnimation\" description=\"Given a character and a trigger
+    <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"582.8254
+    550.2501\" name=\"TriggerAnimation\" description=\"Given a character and a trigger
     name, set that trigger on thecharacter's animator to true.\" cardinality=\"0\"
     hasParent=\"False\">\n          <BehaviorTree id=\"0\" />\n          <ActionNode
     id=\"3\" />\n        </data>\n      </_data>\n    </ActionNode>\n    <ConditionEvalNode
-    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"620.6588
-    241.8613\" name=\"IsRequirementsMet\" description=\"Eval\" cardinality=\"1\"
+    id=\"6\">\n      <_data>\n        <data breakpoint=\"0\" selected=\"False\" position=\"877.3252
+    550.7501\" name=\"IsRequirementsMet\" description=\"Eval\" cardinality=\"1\"
     hasParent=\"True\">\n          <BehaviorTree id=\"0\" />\n          <ConditionEvalNode
     id=\"6\" />\n          <PrioritySelectorNode id=\"2\" />\n        </data>\n     
     </_data>\n    </ConditionEvalNode>\n    <ActionNode id=\"5\">\n      <_data>\n       
-    <data breakpoint=\"0\" selected=\"False\" position=\"620.6588 241.8613\" name=\"TriggerAnimation\"
+    <data breakpoint=\"0\" selected=\"False\" position=\"877.3252 550.7501\" name=\"TriggerAnimation\"
     description=\"Given a character and a trigger name, set that trigger on thecharacter's
     animator to true.\" cardinality=\"0\" hasParent=\"False\">\n          <BehaviorTree
     id=\"0\" />\n          <ActionNode id=\"5\" />\n        </data>\n      </_data>\n   

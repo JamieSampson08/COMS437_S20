@@ -63,7 +63,6 @@ public class BoardScript : MonoBehaviour
     private void MakePlayerMove()
     {
         ResetSkipping();
-
         int previousComputerScore = board.NumWhite;
         playerTookTurn = true;
         
@@ -72,6 +71,7 @@ public class BoardScript : MonoBehaviour
         
         if (board.PlayerSkippedTurn)
         {
+            Settings.playerSkippedTurn = true;
             print("No Moves Available. Skipping Turn.");
             board.SetupForNewTurn();
             computerTookTurn = false;
@@ -109,7 +109,7 @@ public class BoardScript : MonoBehaviour
             Helpers.EndGame();
         }
         
-        if ((previousComputerScore - board.NumWhite) > 2)
+        if ((previousComputerScore - board.NumWhite) > 3)
         {
             Settings.playerGainsDiscs = true;
         }
@@ -144,6 +144,7 @@ public class BoardScript : MonoBehaviour
         {
             print("No Moves Available. Skipping Turn.");
             board.ComputerSkippedTurn = true;
+            Settings.computerSkippedTurn = true;
             playerTookTurn = false;
             board.SetupForNewTurn();
             return;
@@ -158,7 +159,7 @@ public class BoardScript : MonoBehaviour
             Helpers.EndGame();
         }
         
-        if ((previousPlayerScore - board.NumBlack) > 2)
+        if ((previousPlayerScore - board.NumBlack) > 3)
         {
             Settings.playerLosesDiscs = true;
         }

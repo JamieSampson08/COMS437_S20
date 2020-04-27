@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Objects.Scripts
 {

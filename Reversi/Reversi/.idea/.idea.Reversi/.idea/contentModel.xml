@@ -92,13 +92,6 @@
             </e>
           </e>
         </e>
-        <e p="Catgear Games" t="Include">
-          <e p="Model Pack 1" t="Include">
-            <e p="Chili" t="Include">
-              <e p="readme.txt" t="Include" />
-            </e>
-          </e>
-        </e>
         <e p="Jammo-Character" t="Include">
           <e p="Scripts" t="Include">
             <e p="CharacterSkinController.cs" t="Include" />

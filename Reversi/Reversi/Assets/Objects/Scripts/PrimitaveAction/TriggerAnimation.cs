@@ -1,7 +1,6 @@
 using Pada1.BBCore;
 using Pada1.BBCore.Framework;
 using Pada1.BBCore.Tasks;
-using TMPro;
 using UnityEngine;
 
 namespace Objects.Scripts

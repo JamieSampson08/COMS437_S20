@@ -1,16 +1,16 @@
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Objects.Scripts
 {
     public class CurrentTurnText : MonoBehaviour
     {
-        private Text scoreText;
+        private TMP_Text scoreText;
 
         void Start()
         {
             //Fetch the Text component from the GameObject
-            scoreText = GetComponent<Text>();
+            scoreText = GetComponent<TMP_Text>();
         }
 
         private void Update()
@@ -22,7 +22,7 @@ namespace Objects.Scripts
             }
             else
             {
-                scoreText.text = "<-------";
+                scoreText.text = "<-------\n ";
             }
         }
     }
