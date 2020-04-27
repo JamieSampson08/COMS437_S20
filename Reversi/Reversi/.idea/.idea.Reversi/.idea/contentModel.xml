@@ -71,26 +71,6 @@
             <e p="BehaviorExecutorEditor.cs" t="Include" />
           </e>
           <e p="readme.txt" t="Include" />
-          <e p="Samples" t="Include">
-            <e p="ProgrammersQuickStartGuide" t="Include">
-              <e p="Done" t="Include">
-                <e p="DoneBulletScript.cs" t="Include" />
-                <e p="DoneDayNightCycle.cs" t="Include" />
-                <e p="DoneIsNight.cs" t="Include" />
-                <e p="DoneShoot.cs" t="Include" />
-                <e p="DoneShootOnce.cs" t="Include" />
-                <e p="DoneSleepForever.cs" t="Include" />
-              </e>
-            </e>
-            <e p="QuickStartGuide" t="Include">
-              <e p="Done" t="Include">
-                <e p="Resources" t="Include">
-                  <e p="MassSpawner.cs" t="Include" />
-                  <e p="Spawner.cs" t="Include" />
-                </e>
-              </e>
-            </e>
-          </e>
         </e>
         <e p="Jammo-Character" t="Include">
           <e p="Scripts" t="Include">
@@ -105,6 +85,7 @@
               <e p="AlertPanelController.cs" t="Include" />
               <e p="ButtonManager.cs" t="Include" />
               <e p="CurrentTurnText.cs" t="Include" />
+              <e p="DisableObject.cs" t="Include" />
               <e p="FinalScoreText.cs" t="Include" />
               <e p="LevelDropdown.cs" t="Include" />
               <e p="PossibleMovesText.cs" t="Include" />
@@ -193,9 +174,6 @@
               <e p="TMPro_Properties.cginc" t="Include" />
               <e p="TMPro_Surface.cginc" t="Include" />
             </e>
-          </e>
-          <e p="Sprites" t="Include">
-            <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
       </e>

@@ -45,7 +45,7 @@ public class BoardScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (board.CurrentPlayer != Settings.PlayerName)
+        if (board.CurrentPlayer != Settings.PlayerName || Settings.isInvalidMove)
         {
             return;
         }

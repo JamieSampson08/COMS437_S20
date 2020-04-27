@@ -23,7 +23,7 @@ namespace Objects.Scripts
             int count = 1;
             foreach (Move m in Settings.possibleMoves)
             {
-                if (count > 7)
+                if (count > 6)
                 {
                     // TODO - make a "show more" button, store index in possibleMoves to start at that point
                     listOfMoves += "..........";

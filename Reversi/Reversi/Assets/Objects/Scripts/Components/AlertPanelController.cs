@@ -35,7 +35,7 @@ namespace Objects.Scripts
         private void Update()
         {
             // coroutine is destroyed after every frame
-            coroutine = WaitAndClear(3.0f);
+            coroutine = WaitAndClear(2.0f);
             
             if (Settings.playerSkippedTurn)
             {
