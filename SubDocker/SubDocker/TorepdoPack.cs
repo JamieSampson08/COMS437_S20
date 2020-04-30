@@ -77,7 +77,5 @@ namespace SpaceDocker
             }
             base.Draw(gameTime);
         }
-
-
     }
 }

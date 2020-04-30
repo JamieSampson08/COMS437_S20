@@ -2,7 +2,16 @@
 
 ### **TODO/BUGS**:
 
+- Picking up a torpedoPack doesn't add a torpedo object to the ship's list
+- Target's Momentum's won't change
 - Torpedo Aiming & Shooting
+- When calling "AddTorepdo()", it says the physicsObject is null
+
+**Note**
+Thou these bugs do exist, surrounding code is implementd:
+- torepdoPack's model exists and randomly populates the scene. Picking one up increases the number of torpedos you have "visual count wise" along with a notfication saying you have picked one up. 
+- Storing and handling collisions for torpedos is programmed. The class exists with some of the functions completed. 
+- Target's momentum code is copied and pasted from the RubberDUcks code to enable floating like movement, it just for some reason doesn't work for the target
 
 ### Tools:
 
@@ -44,8 +53,8 @@ Locate the rare turtle before you lose all your fuel and/or health. Claiming thi
 - Roll: Down/Up (backward, forward)
 - Thrust: T key / Y Button
 - Restart: R key
-- Show Target Position : H key
-- Hid Target Position : B key
+- Show Target Position and Game Commands : H key
+- Hid Target Position and Game Commands : B key
 
 **Shield**
 
@@ -67,6 +76,6 @@ Locate the rare turtle before you lose all your fuel and/or health. Claiming thi
 
 ### Features:
 
-- Turtle (Target) Moves (WIP - bug)
+- Turtle (Target) Moves
 - Shield Capabilities
-- Fuel & Torpedo Packs (WIP - torpedo pack bug)
+- Fuel & Torpedo Packs

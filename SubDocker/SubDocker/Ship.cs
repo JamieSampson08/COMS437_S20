@@ -363,36 +363,37 @@ namespace SpaceDocker
 
         private void CheckBounds()
         {
-            if (modelPosition.X > 400)
+            int boundValue = 500;
+            if (modelPosition.X > boundValue)
             {
-                modelPosition = new Vector3(400, modelPosition.Y, modelPosition.Z);
+                modelPosition = new Vector3(boundValue, modelPosition.Y, modelPosition.Z);
                 boundsMessage = "HIT X BOUND";
             }
-            if (modelPosition.X < -400)
+            if (modelPosition.X < -boundValue)
             {
-                modelPosition = new Vector3(-400, modelPosition.Y, modelPosition.Z);
+                modelPosition = new Vector3(-boundValue, modelPosition.Y, modelPosition.Z);
                 boundsMessage = "HIT -X BOUND";
             }
 
-            if (modelPosition.Y > 400)
+            if (modelPosition.Y > boundValue)
             {
-                modelPosition = new Vector3(modelPosition.X, 400, modelPosition.Z);
+                modelPosition = new Vector3(modelPosition.X, boundValue, modelPosition.Z);
                 boundsMessage = "HIT Y BOUND";
             }
-            if (modelPosition.Y < -400)
+            if (modelPosition.Y < -boundValue)
             {
-                modelPosition = new Vector3(modelPosition.X, - 400, modelPosition.Z);
+                modelPosition = new Vector3(modelPosition.X, -boundValue, modelPosition.Z);
                 boundsMessage = "HIT -Y BOUND";
             }
 
-            if (modelPosition.Z > 400)
+            if (modelPosition.Z > boundValue)
             {
-                modelPosition = new Vector3(modelPosition.X, modelPosition.Y, 400);
+                modelPosition = new Vector3(modelPosition.X, modelPosition.Y, boundValue);
                 boundsMessage = "HIT Z BOUND";
             }
-            if (modelPosition.Z < -400)
+            if (modelPosition.Z < -boundValue)
             {
-                modelPosition = new Vector3(modelPosition.X, modelPosition.Y , - 400);
+                modelPosition = new Vector3(modelPosition.X, modelPosition.Y , -boundValue);
                 boundsMessage = "HIT -Z BOUND";
             }
         }

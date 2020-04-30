@@ -50,14 +50,13 @@ namespace SpaceDocker
         /// <returns></returns>
         private Vector3 GetRandomPosition()
         {
-            Vector3 distanceMultipler = new Vector3(100, 100, 100);
+            int scaleValue = 100;
+            Vector3 distanceMultipler = new Vector3(200, 200, 200);
             Vector3 distanceBetween = (new Vector3(
-                (float)rnd.Next(-(int)(distanceMultipler.X), (int)(distanceMultipler.X)),
-                (float)rnd.Next(-(int)(distanceMultipler.Y), (int)(distanceMultipler.Y)),
-                (float)rnd.Next(-(int)(distanceMultipler.Z), (int)distanceMultipler.Z))
+                (float)rnd.Next(-(int)(distanceMultipler.X), (int)(distanceMultipler.X)) + scaleValue,
+                (float)rnd.Next(-(int)(distanceMultipler.Y), (int)(distanceMultipler.Y)) + scaleValue,
+                (float)rnd.Next(-(int)(distanceMultipler.Z), (int)distanceMultipler.Z) + scaleValue)
                 );
-
-            // return Main.ship.modelPosition + new Vector3(0, 0, 40f);
             return distanceBetween;
         }
 

@@ -22,7 +22,8 @@ namespace SpaceDocker
         private int numDuckGeneration;
 
         SpriteFont shipInfo;
-        private bool showTargetLocation = false;
+        private bool showHelp = false;
+        Vector2 gameCommandsTextPos;
         Vector2 shipLocationTextPos;
         Vector2 targetLocationTextPos;
 
@@ -205,6 +206,7 @@ namespace SpaceDocker
 
             shipLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 800), (float)(GraphicsDevice.Viewport.Height - 100));
             targetLocationTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width - 800), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
+            gameCommandsTextPos = new Vector2((float)(GraphicsDevice.Viewport.Width / 6), (float)(GraphicsDevice.Viewport.Height - (GraphicsDevice.Viewport.Height - 100)));
         }
 
         protected override void UnloadContent()
@@ -221,15 +223,16 @@ namespace SpaceDocker
                 Exit();
 
             // show target location coordinates
+            // show keyboard commands
             if (currentKeyboardState.IsKeyDown(Keys.H))
             {
-                showTargetLocation = true;
+                showHelp = true;
             }
 
             //hide target location coordinates
             if (currentKeyboardState.IsKeyDown(Keys.B))
             {
-                showTargetLocation = false;
+                showHelp = false;
             }
 
             // restart game
@@ -260,9 +263,12 @@ namespace SpaceDocker
 
             spriteBatch.DrawString(shipInfo, "ShipLocation: x: " + (int)ship.modelPosition.X + " y: " + (int)ship.modelPosition.Y + " z: " + (int)ship.modelPosition.Z, shipLocationTextPos, Color.Orange);
 
-            if (showTargetLocation)
+            if (showHelp)
             {
                 spriteBatch.DrawString(shipInfo, "TargetLocation: x: " + (int)turtle.modelPosition.X + " y: " + (int)turtle.modelPosition.Y + " z: " + (int)turtle.modelPosition.Z, targetLocationTextPos, Color.Orange);
+                string gameCommands = "Steering:    Yaw (Q/W)    Pitch (L/R Arrows)  Roll (U/D Arrows)    Thrust (T)" +
+                    "\nHelp:    Show (H)   Hide (B)    Restart (R)\nShield:     Enable (S)  Disable (D) \nFireMode:     Enter (F)   Exit (G)    Aim (L/R Arrow)    Fire (Spacebar)";
+                spriteBatch.DrawString(shipInfo, gameCommands, gameCommandsTextPos, Color.Orange);
             }
             spriteBatch.End();
         }
